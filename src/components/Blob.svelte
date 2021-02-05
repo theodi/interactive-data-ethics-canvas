@@ -2,7 +2,7 @@
   import { tweened } from 'svelte/motion';
   export let state;
   $: focussed = $state.focussed;
-  $: hovered = $state.hovered;
+  $: hovered = $state.hovered && !$state.focussed;
 
   export let size;
   export let overlap;
@@ -13,7 +13,7 @@
   let y = tweened();
 
   const zoom = (z) => scale.set(z);
-  const hoverOn = () => state.setProp('hovered', true && !focussed);
+  const hoverOn = () => state.setProp('hovered', true);
   const hoverOff = () => state.setProp('hovered', false);
   const focus = () => state.update(n => { n.focussed = true; return n; } );
 

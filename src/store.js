@@ -19,4 +19,4 @@ const blobStore = (l) => {
   };
 };
 
-export const areas = baseLayout.map(blobStore);
+export const blobs = baseLayout.map(blobStore);
