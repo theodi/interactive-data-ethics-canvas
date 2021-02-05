@@ -31,6 +31,14 @@
   >
   <ellipse class='{ $state.group }' class:hovered rx={ size * (0.5 + overlap) }>
   </ellipse>
+  <foreignObject class="node" x="{ textBoxOffset }" y="{ textBoxOffset }" width="{ textBoxSize }" height="{ textBoxSize }">
+    <h1>
+      { $state.title }
+    </h1>
+    <p>
+      { $state.description }
+    </p>
+  </foreignObject>
 </g>
 
 <style>
@@ -54,5 +62,12 @@
   }
   .integrate {
     fill: hsl(201, 100%, 61%);
+  }
+  h1, p {
+    color: white;
+    padding-bottom: 0.5em;
+  }
+  h1 {
+    font-weight: bold;
   }
 </style>
