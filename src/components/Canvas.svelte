@@ -5,6 +5,7 @@
   const rows = 3;
   const areaConfig = { size: 200, overlap: 0.05 };
   const margin = areaConfig.size * areaConfig.overlap * 5;
+  const height = rows * areaConfig.size;
 </script>
 
 <svg viewBox="-{ margin } -{ margin } { cols * areaConfig.size + 2 * margin} { height + 2 * margin }">
@@ -19,6 +20,7 @@
     <Area
       state={ area }
       { ...areaConfig }
+      canvasHeight={ height }
     />
   {/each}
 </svg>

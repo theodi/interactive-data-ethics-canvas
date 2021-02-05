@@ -1,10 +1,12 @@
 <script>
   import { tweened } from 'svelte/motion';
   export let state;
+  $: focussed = $state.focussed;
   $: hovered = $state.hovered;
 
   export let size;
   export let overlap;
+  export let canvasHeight = 100;
 
   let scale = tweened(1);
   let x = tweened();
@@ -13,10 +15,17 @@
   const zoom = (z) => scale.set(z);
   const hoverOn = () => state.setProp('hovered', true && !focussed);
   const hoverOff = () => state.setProp('hovered', false);
+  const focus = () => state.update(n => { n.focussed = true; return n; } );
 
   $: {
-    x.set(($state.column + 0.5) * size );
-    y.set(($state.row + 0.5) * size)
+    if (focussed) {
+      zoom(4);
+      x.set(canvasHeight / 2);
+      y.set(canvasHeight / 2);
+    } else {
+      x.set(($state.column + 0.5) * size );
+      y.set(($state.row + 0.5) * size)
+    }
   }
 
   const textBoxSize = size * 0.7;
@@ -27,9 +36,10 @@
 <g
   on:mouseover={ () => hoverOn() }
   on:mouseout={ () => hoverOff() }
+  on:click={ () => focus() }
   transform="translate({ $x } { $y }) scale({ $scale })"
   >
-  <ellipse class='{ $state.group }' class:hovered rx={ size * (0.5 + overlap) }>
+  <ellipse class='{ $state.group }' class:hovered class:focussed rx={ size * (0.5 + overlap) }>
   </ellipse>
   <foreignObject class="node" x="{ textBoxOffset }" y="{ textBoxOffset }" width="{ textBoxSize }" height="{ textBoxSize }">
     <h1>
@@ -50,6 +60,8 @@
   .hovered {
     scale: 1.05;
   }
+  .focussed {
+    fill-opacity: 1;
   }
   .know {
     fill: hsl(321, 77%, 52%);
