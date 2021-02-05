@@ -1,24 +1,22 @@
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store';
+import { baseLayout } from './templates/canvas-base';
 
-const baseLayout = [
-  { group: 'know', title: 'GROUP TITLE', row: 0, column: 0 },
-  { group: 'know', title: 'GROUP TITLE', row: 0, column: 1 },
-  { group: 'know', title: 'GROUP TITLE', row: 0, column: 2 },
-  { group: 'know', title: 'GROUP TITLE', row: 0, column: 3 },
+const blobStore = (l) => {
+  const { subscribe, set, update } = writable(l);
 
-  { group: 'explore', title: 'GROUP TITLE', row: 1, column: 0 },
-  { group: 'explore', title: 'GROUP TITLE', row: 1, column: 1 },
-  { group: 'explore', title: 'GROUP TITLE', row: 1, column: 2 },
-  { group: 'explore', title: 'GROUP TITLE', row: 1, column: 3 },
+  function setProp(property, value) {
+    update((n) => {
+      n[property] = value;
+      return n;
+    });
+  }
 
-  { group: 'plan', title: 'GROUP TITLE', row: 2, column: 0 },
-  { group: 'plan', title: 'GROUP TITLE', row: 2, column: 1 },
-  { group: 'plan', title: 'GROUP TITLE', row: 2, column: 2 },
-  { group: 'plan', title: 'GROUP TITLE', row: 2, column: 3 },
+  return {
+    subscribe,
+    set,
+    update,
+    setProp,
+  };
+};
 
-  { group: 'integrate', title: 'GROUP TITLE', row: 0, column: 4 },
-  { group: 'integrate', title: 'GROUP TITLE', row: 1, column: 4 },
-  { group: 'integrate', title: 'GROUP TITLE', row: 2, column: 4 },
-];
-
-export const areas = writable(baseLayout);
+export const areas = baseLayout.map(blobStore);

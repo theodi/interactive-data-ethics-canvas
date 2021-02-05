@@ -1,31 +1,47 @@
 <script>
   import { tweened } from 'svelte/motion';
-  export let column;
-  export let row;
+  export let state;
+  $: hovered = $state.hovered;
+
   export let size;
   export let overlap;
-  export let group = 0;
-  let scale = tweened(1);
 
-  // Set this true to desaturate
-  const wireframe = true;
+  let scale = tweened(1);
+  let x = tweened();
+  let y = tweened();
+
+  const zoom = (z) => scale.set(z);
+  const hoverOn = () => state.setProp('hovered', true && !focussed);
+  const hoverOff = () => state.setProp('hovered', false);
+
+  $: {
+    x.set(($state.column + 0.5) * size );
+    y.set(($state.row + 0.5) * size)
+  }
+
+  const textBoxSize = size * 0.7;
+  const textBoxOffset = -textBoxSize / 2;
+
 </script>
 
 <g
-  on:mouseover={ () => scale.set(1.05) }
-  on:mouseout={ () => scale.set(1) }
-  transform="translate({ (column + 0.5) * size } { (row + 0.5) * size }) scale({ $scale })"
+  on:mouseover={ () => hoverOn() }
+  on:mouseout={ () => hoverOff() }
+  transform="translate({ $x } { $y }) scale({ $scale })"
   >
-  <ellipse class='{ group }' class:wireframe rx={ size * (0.5 + overlap) }></ellipse>
+  <ellipse class='{ $state.group }' class:hovered rx={ size * (0.5 + overlap) }>
+  </ellipse>
 </g>
 
 <style>
   ellipse {
-    fill-opacity: 0.5;
+    fill-opacity: 0.7;
+    transition-property: scale;
+    transition-duration: 0.5s;
   }
-  .wireframe {
-    fill-opacity: 0;
-    stroke: black;    
+  .hovered {
+    scale: 1.05;
+  }
   }
   .know {
     fill: hsl(321, 77%, 52%);

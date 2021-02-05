@@ -1,0 +1,92 @@
+export const baseLayout = [
+  {
+    group: 'know',
+    title: 'Data Sources',
+    row: 0,
+    column: 0,
+  },
+  {
+    group: 'know',
+    title: 'Rights around data sources',
+    row: 0,
+    column: 1,
+  },
+  {
+    group: 'know',
+    title: 'Limitations in data sources',
+    row: 0,
+    column: 2,
+  },
+  {
+    group: 'know',
+    title: 'Ethical and legislative context',
+    row: 0,
+    column: 3,
+  },
+  {
+    group: 'explore',
+    title: 'Your reason for using data',
+    row: 1,
+    column: 0,
+  },
+  {
+    group: 'explore',
+    title: 'Positive effects on people',
+    row: 1,
+    column: 1,
+  },
+  {
+    group: 'explore',
+    title: 'Negative effects on people',
+    row: 1,
+    column: 2,
+  },
+  {
+    group: 'explore',
+    title: 'Minimising negative effects',
+    row: 1,
+    column: 3,
+  },
+  {
+    group: 'plan',
+    title: 'Engaging with people',
+    row: 2,
+    column: 0,
+  },
+  {
+    group: 'plan',
+    title: 'Communicating your purpose',
+    row: 2,
+    column: 1,
+  },
+  {
+    group: 'plan',
+    title: 'Openness and transparency',
+    row: 2,
+    column: 2,
+  },
+  {
+    group: 'plan',
+    title: 'Sharing data with others',
+    row: 2,
+    column: 3,
+  },
+  {
+    group: 'integrate',
+    title: 'Ongoing implementation',
+    row: 0,
+    column: 4,
+  },
+  {
+    group: 'integrate',
+    title: 'Reviews and iterations',
+    row: 1,
+    column: 4,
+  },
+  {
+    group: 'integrate',
+    title: 'Your actions',
+    row: 2,
+    column: 4,
+  },
+];
