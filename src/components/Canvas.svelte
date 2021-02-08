@@ -1,6 +1,6 @@
 <script>
   import Blob from './Blob.svelte';
-  import { blobs } from '../store';
+  import { canvasState } from '../store';
   const cols = 5;
   const rows = 3;
   const areaConfig = { size: 200, overlap: 0.05 };
@@ -16,9 +16,11 @@
     <rect width={ cols - 1 } height={ rows - 1 }/>
   </g>
 
-  {#each blobs as blobStore}
+  {#each $canvasState as blobState}
     <Blob
-      state={ blobStore }
+      { ...blobState }
+      setHover={ (state) => blobState.hovered = state }
+      setFocus={ (state) => blobState.focussed = state }
       { ...areaConfig }
       canvasHeight={ height }
     />

@@ -1,21 +1,28 @@
 <script>
   import { tweened } from 'svelte/motion';
-  export let state;
-  $: focussed = $state.focussed;
-  $: hovered = $state.hovered && !$state.focussed;
+  export let title;
+  export let description;
+  export let group;
+  export let row;
+  export let column;
+  export let focussed = false;
+  export let hovered = false;
+
+  export let setHover = () => {};
+  export let setFocus = () => {};
 
   export let size;
   export let overlap;
   export let canvasHeight = 100;
 
   let scale = tweened(1);
-  let x = tweened();
-  let y = tweened();
+  let x = tweened((column + 0.5) * size );
+  let y = tweened((row + 0.5) * size);
 
   const zoom = (z) => scale.set(z);
-  const hoverOn = () => state.setProp('hovered', true);
-  const hoverOff = () => state.setProp('hovered', false);
-  const focus = () => state.update(n => { n.focussed = true; return n; } );
+  const hoverOn = () => setHover(true);
+  const hoverOff = () => setHover(false);
+  const focus = () => setFocus(true);
 
   $: {
     if (focussed) {
@@ -23,8 +30,9 @@
       x.set(canvasHeight / 2);
       y.set(canvasHeight / 2);
     } else {
-      x.set(($state.column + 0.5) * size );
-      y.set(($state.row + 0.5) * size)
+      zoom(1);
+      x.set((column + 0.5) * size );
+      y.set((row + 0.5) * size)
     }
   }
 
@@ -39,14 +47,14 @@
   on:click={ () => focus() }
   transform="translate({ $x } { $y }) scale({ $scale })"
   >
-  <ellipse class='{ $state.group }' class:hovered class:focussed rx={ size * (0.5 + overlap) }>
+  <ellipse class='{ group }' class:hovered class:focussed rx={ size * (0.5 + overlap) }>
   </ellipse>
   <foreignObject class="node" x="{ textBoxOffset }" y="{ textBoxOffset }" width="{ textBoxSize }" height="{ textBoxSize }">
     <h1>
-      { $state.title }
+      { title }
     </h1>
     <p>
-      { $state.description }
+      { description }
     </p>
   </foreignObject>
 </g>
