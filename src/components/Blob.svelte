@@ -19,18 +19,17 @@
   let x = tweened((column + 0.5) * size );
   let y = tweened((row + 0.5) * size);
 
-  const zoom = (z) => scale.set(z);
   const hoverOn = () => setHover(true);
   const hoverOff = () => setHover(false);
   const focus = () => setFocus(true);
 
   $: {
     if (focussed) {
-      zoom(4);
+      scale.set(4);
       x.set(canvasHeight / 2);
       y.set(canvasHeight / 2);
     } else {
-      zoom(1);
+      scale.set(1);
       x.set((column + 0.5) * size );
       y.set((row + 0.5) * size)
     }
@@ -47,7 +46,7 @@
   on:click={ () => focus() }
   transform="translate({ $x } { $y }) scale({ $scale })"
   >
-  <ellipse class='{ group }' class:hovered class:focussed rx={ size * (0.5 + overlap) }>
+  <ellipse class='{ group }' class:hovered class:focussed rx={ Math.round(size * (0.5 + overlap)) }>
   </ellipse>
   <foreignObject class="node" x="{ textBoxOffset }" y="{ textBoxOffset }" width="{ textBoxSize }" height="{ textBoxSize }">
     <h1>
