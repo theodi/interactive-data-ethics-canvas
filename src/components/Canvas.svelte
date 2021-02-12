@@ -8,18 +8,20 @@
   const cols = 5;
   const rows = 3;
   const areaConfig = { size: 200, overlap: 0.05 };
-  const margin = areaConfig.size * areaConfig.overlap * 5;
+  const margin = areaConfig.size * areaConfig.overlap * 4;
+  const topMargin = 40;
   const height = rows * areaConfig.size;
   $: focusBlob = $canvasState.blobs.findIndex((x) => x.focussed === true);
 </script>
 
-<svg viewBox="-{ margin } -{ margin } { cols * areaConfig.size + 2 * margin} { height + 2 * margin }">
+<svg viewBox="-{ margin } -{ margin + topMargin } { cols * areaConfig.size + 2 * margin} { height + 2 * margin + topMargin }">
   <g class="cloud" transform="scale({ areaConfig.size }) translate(0.5 0.5)">
     {#each Array(cols * rows).fill().map((_, i) => i) as cell}
-      <ellipse cy={ Math.floor(cell / 5) } cx={ cell % 5 } rx={ 0.5 + areaConfig.overlap * 3 }/>
+      <ellipse cy={ Math.floor(cell / 5) } cx={ cell % 5 } rx={ 0.5 + areaConfig.overlap * 2 }/>
     {/each}
     <rect width={ cols - 1 } height={ rows - 1 }/>
   </g>
+  <text x={ Math.round((cols + areaConfig.overlap * 2) * areaConfig.size) } y={ -topMargin - 5 }>Data Ethics Canvas</text> 
 
   {#each $canvasState.blobs as blobState, index}
     {#if index !== focusBlob }
@@ -51,6 +53,13 @@
 <style>
   svg {
     background-color: #eee;
+  }
+  text {
+    font-size: 3em;
+    text-anchor: end;
+    dominant-baseline: middle;
+    font-weight: bold;
+    fill: #345B9F;
   }
   .blank {
     fill: white;

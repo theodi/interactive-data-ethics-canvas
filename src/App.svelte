@@ -3,8 +3,9 @@
 </script>
 
 <main>
-	<h1>ODI Learning Data Ethics Canvas</h1>
-	<Canvas />
+  <article>
+    <Canvas />
+  </article>
 </main>
 
 <style>

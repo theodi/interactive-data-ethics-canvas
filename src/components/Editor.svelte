@@ -10,8 +10,6 @@
   textarea {
     width: 100%;
     font-size: 1em;
-    /* margin: 0.5em;
-    padding: 0.5em; */
     box-sizing: border-box;
     border: none;
   }
