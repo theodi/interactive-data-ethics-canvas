@@ -15,9 +15,10 @@
   export let overlap;
   export let canvasHeight = 100;
 
-  let scale = tweened(1);
-  let x = tweened((column + 0.5) * size );
-  let y = tweened((row + 0.5) * size);
+  const animationDuration = 250;
+  let scale = tweened(1, { duration: animationDuration });
+  let x = tweened((column + 0.5) * size, { duration: animationDuration });
+  let y = tweened((row + 0.5) * size, { duration: animationDuration });
 
   const hoverOn = () => setHover(true);
   const hoverOff = () => setHover(false);
@@ -29,7 +30,7 @@
       x.set(canvasHeight / 2);
       y.set(canvasHeight / 2);
     } else {
-      scale.set(1);
+      scale.set(hovered ? 1.05 : 1);
       x.set((column + 0.5) * size );
       y.set((row + 0.5) * size)
     }
@@ -61,11 +62,6 @@
 <style>
   ellipse {
     fill-opacity: 0.7;
-    transition-property: scale;
-    transition-duration: 0.5s;
-  }
-  .hovered {
-    scale: 1.05;
   }
   .focussed {
     fill-opacity: 1;

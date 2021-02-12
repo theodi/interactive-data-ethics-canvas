@@ -29,7 +29,7 @@
   {/each}
 
   {#if focusBlob > -1}
-  <g class="editor" transition:fade>
+  <g class="editor" transition:fade="{{ duration: 100 }}">
     <rect class="blank" x={-margin} y={-margin} width={ cols * areaConfig.size + 2 * margin} height={ height + 2 * margin } />
     <Blob 
       { ...$canvasState.blobs[focusBlob] }
