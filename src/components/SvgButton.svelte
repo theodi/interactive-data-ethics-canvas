@@ -5,13 +5,15 @@
   export let icon;
 </script>
 
-<g class="button" transform="translate({ x } { y })" on:click={ action } >
+<g transform="translate({ x } { y })" on:click={ action } >
+  <rect x=0 y=0 width=50 height=50 />
   <svelte:component this={ icon } />
 </g>
 
 <style>
-  g {
-    fill: none;
+  rect {
+    fill: #aaa;
+    stroke: none;
   }
 </style>
 
