@@ -21,7 +21,8 @@
     <rect width={ cols - 1 } height={ rows - 1 }/>
   </g>
 
-  {#each $canvasState.blobs as blobState}
+  {#each $canvasState.blobs as blobState, index}
+    {#if index !== focusBlob }
     <Blob
       { ...blobState }
       setHover={ (state) => blobState.hovered = state }
@@ -29,6 +30,7 @@
       { ...areaConfig }
       canvasHeight={ height }
     />
+    {/if}
   {/each}
 
   {#if focusBlob > -1}
@@ -39,7 +41,7 @@
       { ...areaConfig }
       canvasHeight={ height }
     />
-    <SvgButton x={ cols * areaConfig.size - 50 } y=0 action={ () => $canvasState.blobs[focusBlob].focussed = false } icon={ Cross } />
+    <SvgButton x={ cols * areaConfig.size - 50 } y=0 action={ () => setTimeout(() => $canvasState.blobs[focusBlob].focussed = false, 600) } icon={ Cross } />
   </g>
   {/if}
   

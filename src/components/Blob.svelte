@@ -53,9 +53,11 @@
     <h1>
       { title }
     </h1>
-    <p>
-      { description }
-    </p>
+    {#if !focussed}
+      <p class='description'>
+        { description }
+      </p>
+    {/if}
   </foreignObject>
 </g>
 
@@ -86,11 +88,20 @@
   .integrate {
     fill: hsl(201, 100%, 61%);
   }
+  foreignObject {
+    position: relative;
+  }
   h1, p {
     color: white;
     padding-bottom: 0.5em;
   }
   h1 {
     font-weight: bold;
+    font-size: 1.1em;
+  }
+  .description {
+    position: absolute;
+    display: block;
+    bottom: 0;
   }
 </style>
