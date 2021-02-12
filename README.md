@@ -1,5 +1,7 @@
 # ODI Learning Data Ethics Canvas App
 
+_Snyk:_ [![Known Vulnerabilities](https://snyk.io/test/github/opnprd/interactive-data-ethics-canvas/badge.svg?targetFile=package.json)](https://snyk.io/test/github/opnprd/interactive-data-ethics-canvas?targetFile=package.json)
+
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
 ## Get started
