@@ -2,7 +2,7 @@
 <line x1=10 y1=40 x2=40 y2=10 />
 
 <style>
-  rect, line {
+  line {
     stroke: black;
     stroke-width: 5;
   }
