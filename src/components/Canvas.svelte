@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Blob from './Blob.svelte';
   import { canvasState } from '../store';
   import { fade } from 'svelte/transition'

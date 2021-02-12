@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { tweened } from 'svelte/motion';
   export let title;
   export let description;
