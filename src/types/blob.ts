@@ -6,4 +6,5 @@ export type Blob = {
   description: string;
   row: number;
   column: number;
+  content?: string;
 }
