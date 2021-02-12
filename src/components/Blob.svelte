@@ -47,7 +47,7 @@
   on:click={ () => focus() }
   transform="translate({ $x } { $y }) scale({ $scale })"
   >
-  <ellipse class='{ group }' class:hovered class:focussed rx={ Math.round(size * (0.5 + overlap)) }/>
+  <ellipse class='{ group.toLowerCase() }' class:hovered class:focussed rx={ Math.round(size * (0.5 + overlap)) }/>
   <rect class='rect' transform="translate({-size / 2} { -size /2 })" x={ size * 0.115 } y={ size * 0.115 } width={ size * 0.77 } height={ size * 0.77 } />
   <foreignObject class:focussed class="node" x="{ textBoxOffset }" y="{ textBoxOffset }" width="{ textBoxSize }" height="{ textBoxSize }">
     <h1>

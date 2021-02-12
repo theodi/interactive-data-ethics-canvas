@@ -1,18 +1,12 @@
 import { writable } from 'svelte/store';
 import { baseLayout } from './templates/canvas-base';
 import { v4 as uuid } from 'uuid';
-
-interface Blob { }
-
-interface CanvasStore {
-  uuid: string;
-  blobs: Blob[];
-}
+import type { Canvas } from './types/canvas';
 
 const canvas = () => {
   const { subscribe, set, update } = writable({ blobs: baseLayout });
   const setId = (id = uuid()) =>
-    update((s: CanvasStore) => {
+    update((s: Canvas) => {
       s.uuid = id;
       return s;
     });
