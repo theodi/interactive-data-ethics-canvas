@@ -39,6 +39,7 @@
     <Blob 
       { ...$canvasState.blobs[focusBlob] }
       { ...areaConfig }
+      bind:content={ $canvasState.blobs[focusBlob].content }
       canvasHeight={ height }
     />
     <SvgButton x={ cols * areaConfig.size - 50 } y=0 action={ () => setTimeout(() => $canvasState.blobs[focusBlob].focussed = false, 600) } icon={ Cross } />

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { tweened } from 'svelte/motion';
+  import Editor from './Editor.svelte';
   export let title;
   export let description;
   export let group;
@@ -14,6 +15,8 @@
   export let size;
   export let overlap;
   export let canvasHeight = 100;
+
+  export let content;
 
   const animationDuration = 250;
   let scale = tweened(1, { duration: animationDuration });
@@ -31,13 +34,16 @@
       y.set(canvasHeight / 2);
     } else {
       scale.set(hovered ? 1.05 : 1);
-      x.set((column + 0.5) * size );
+      x.set((column + 0.5) * size);
       y.set((row + 0.5) * size)
     }
   }
 
-  const textBoxSize = size * 0.7;
-  const textBoxOffset = -textBoxSize / 2;
+  let textBoxSize, textBoxOffset;
+  $: {
+    textBoxSize = size * (focussed ? $scale : 1) * 0.8;
+    textBoxOffset = -textBoxSize / 2;
+  }
 
 </script>
 
@@ -45,19 +51,25 @@
   on:mouseover={ () => hoverOn() }
   on:mouseout={ () => hoverOff() }
   on:click={ () => focus() }
-  transform="translate({ $x } { $y }) scale({ $scale })"
+  transform="translate({ $x } { $y })"
   >
-  <ellipse class='{ group.toLowerCase() }' class:hovered class:focussed rx={ Math.round(size * (0.5 + overlap)) }/>
-  <rect class='rect' transform="translate({-size / 2} { -size /2 })" x={ size * 0.1 } y={ size * 0.1 } width={ size * 0.8 } height={ size * 0.8 } />
+  <g transform="scale({ $scale })">
+    <ellipse class='{ group.toLowerCase() }' class:hovered class:focussed rx={ Math.round(size * (0.5 + overlap)) }/>
+    <rect class='rect' transform="translate({-size / 2} { -size /2 })" x={ size * 0.1 } y={ size * 0.1 } width={ size * 0.8 } height={ size * 0.8 } />
+  </g>
   <foreignObject class:focussed class="node" x="{ textBoxOffset }" y="{ textBoxOffset }" width="{ textBoxSize }" height="{ textBoxSize }">
-    <h1>
-      { title }
-    </h1>
-    {#if !focussed}
-      <p class='description'>
-        { description }
-      </p>
-    {/if}
+    <section>
+      <h2>
+        { title }
+      </h2>
+      {#if focussed}
+        <Editor bind:content></Editor>
+      {:else}
+        <p class='description'>
+          { description }
+        </p>
+      {/if}  
+    </section>
   </foreignObject>
 </g>
 
@@ -67,7 +79,6 @@
   }
   .focussed {
     fill-opacity: 1;
-    font-size: 0.5em;
   }
   .rect {
     fill: none;
@@ -91,17 +102,23 @@
   foreignObject {
     position: relative;
   }
-  h1, p {
+  section {
+    padding: 1rem;
+    height: 100%;
     color: white;
-    padding-bottom: 0.5em;
   }
-  h1 {
+  h2 {
     font-weight: bold;
     font-size: 1.1em;
+    padding-bottom: 1em;
   }
   .description {
     position: absolute;
     display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
     bottom: 0;
+    left: 0;
   }
 </style>
