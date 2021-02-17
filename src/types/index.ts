@@ -22,6 +22,7 @@ export type BlobState = {
 type BlobUiState = {
   hovered?: boolean;
   focussed?: boolean;
+  dimmed?: boolean;
 }
 
 export type CanvasPrivateState = {

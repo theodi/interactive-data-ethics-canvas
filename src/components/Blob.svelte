@@ -9,6 +9,7 @@ import type { UserContent } from '../types';
   export let column;
   export let focussed = false;
   export let hovered = false;
+  export let dimmed = false;
 
   export let setHover: (...args: any) => any = () => {};
   export let setFocus: (...args: any) => any = () => {};
@@ -53,6 +54,7 @@ import type { UserContent } from '../types';
   on:mouseout={ () => hoverOff() }
   on:click={ () => focus() }
   transform="translate({ $x } { $y })"
+  class:dimmed
   >
   <g transform="scale({ $scale })">
     <ellipse class='{ group.toLowerCase() }' class:hovered class:focussed rx={ Math.round(size * (0.5 + overlap)) }/>
@@ -121,5 +123,8 @@ import type { UserContent } from '../types';
     padding: 1rem;
     bottom: 0;
     left: 0;
+  }
+  .dimmed {
+    filter: grayscale(100%) contrast(50%) brightness(140%);
   }
 </style>
