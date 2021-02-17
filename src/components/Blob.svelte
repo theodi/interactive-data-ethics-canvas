@@ -1,5 +1,6 @@
 <script lang="ts">
   import { tweened } from 'svelte/motion';
+import type { UserContent } from '../types';
   import Editor from './Editor.svelte';
   export let title;
   export let description;
@@ -9,14 +10,14 @@
   export let focussed = false;
   export let hovered = false;
 
-  export let setHover = () => {};
-  export let setFocus = () => {};
+  export let setHover: (...args: any) => any = () => {};
+  export let setFocus: (...args: any) => any = () => {};
 
-  export let size;
-  export let overlap;
+  export let size: number;
+  export let overlap: number;
   export let canvasHeight = 100;
 
-  export let content;
+  export let content: UserContent;
 
   const animationDuration = 250;
   let scale = tweened(1, { duration: animationDuration });

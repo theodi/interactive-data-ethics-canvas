@@ -1,7 +1,7 @@
-import type { Blob } from '../types/blob';
-import { Group } from "../types/Group";
+import type { BlobState } from '../types';
+import { Group } from "../types";
 
-export const baseLayout: Blob[] = [
+export const baseLayout: BlobState[] = [
   {
     group: Group.KNOW,
     title: 'Data Sources',

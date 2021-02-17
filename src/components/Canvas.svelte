@@ -16,7 +16,7 @@
 
 <svg viewBox="-{ margin } -{ margin + topMargin } { cols * areaConfig.size + 2 * margin} { height + 2 * margin + topMargin }">
   <g class="cloud" transform="scale({ areaConfig.size }) translate(0.5 0.5)">
-    {#each Array(cols * rows).fill().map((_, i) => i) as cell}
+    {#each Array(cols * rows).fill(null).map((_, i) => i) as cell}
       <ellipse cy={ Math.floor(cell / 5) } cx={ cell % 5 } rx={ 0.5 + areaConfig.overlap * 2 }/>
     {/each}
     <rect width={ cols - 1 } height={ rows - 1 }/>
@@ -27,7 +27,7 @@
     {#if index !== focusBlob }
     <Blob
       { ...blobState }
-      setHover={ (state) => blobState.hovered = state }
+      setHover={ (state) => { blobState.hovered = state } }
       setFocus={ (state) => blobState.focussed = state }
       { ...areaConfig }
       canvasHeight={ height }
