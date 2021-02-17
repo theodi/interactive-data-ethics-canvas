@@ -20,24 +20,33 @@ const canvas = () => {
   setId();
 
   const loadCanvas = ({ blobs, uuid }: CanvasDefinition) => {
-    // if uuid defined set id to that
-    // set the blobs to the passed in blobs
-    // use the set function to completely override state
+    set({ blobs });
+    if (uuid) setId(uuid);
+  };
+
+  function serialiseCanvas(state): CanvasDefinition {
+    const { uuid, blobs } = state;
+    const filteredBlobState = blobs.map(blob => {
+      const { hovered, focussed, ...blobState } = blob;
+      return blobState;
+    });
+    return { uuid, blobs: filteredBlobState };
   }
 
-  function serialiseCanvas(): CanvasDefinition {
-    // construct a serialised only including state that we want to save.
-    // e.g. each blob should not include hovered, focused, etc;
-    // state is available as `this`
-    return;
-  }
+  let serialisedCanvas;
+
+  subscribe(s => {
+    serialisedCanvas = serialiseCanvas(s);
+    const { uuid, blobs } = serialisedCanvas;
+    localStorage.setItem(uuid, JSON.stringify(blobs));
+  });
 
   return {
     subscribe,
     set,
     update,
     loadCanvas,
-    serialise: serialiseCanvas,
+    serialised: serialisedCanvas,
   };
 };
 
