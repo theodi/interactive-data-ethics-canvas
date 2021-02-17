@@ -1,5 +1,5 @@
 <script lang='ts'>
-  export let content;
+  export let content = null;
 </script>
 
 <div>

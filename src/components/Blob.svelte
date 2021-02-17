@@ -17,7 +17,7 @@ import type { UserContent } from '../types';
   export let overlap: number;
   export let canvasHeight = 100;
 
-  export let content: UserContent;
+  export let content: UserContent = null;
 
   const animationDuration = 250;
   let scale = tweened(1, { duration: animationDuration });
