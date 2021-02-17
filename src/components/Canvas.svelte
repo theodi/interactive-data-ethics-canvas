@@ -36,8 +36,8 @@
   {/each}
 
   {#if focusBlob > -1}
-  <g class="editor" transition:fade="{{ duration: 100 }}">
-    <rect class="blank" x={-margin} y={-margin} width={ cols * areaConfig.size + 2 * margin} height={ height + 2 * margin } />
+  <g class="editor" transition:fade>
+    <rect class="overlay" x={-margin} y={-margin - topMargin} width={ cols * areaConfig.size + 2 * margin} height={ height + 2 * margin + topMargin} />
     <Blob 
       { ...$canvasState.blobs[focusBlob] }
       { ...areaConfig }
@@ -61,8 +61,9 @@
     font-weight: bold;
     fill: #345B9F;
   }
-  .blank {
+  .overlay {
     fill: white;
+    opacity: 50%;
   }
   .cloud {
     fill: white;
