@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { canvasState, savedCanvases } from '../store';
+  import { canvasState, savedCanvases, serialisedCanvas } from '../store';
   import { Group } from '../types';
   import { getLocalization } from '../i18n';
   const { t } = getLocalization();
@@ -11,6 +11,8 @@
       $canvasState.blobs[i].dimmed = !visibleGroups.includes($canvasState.blobs[i].group)
     }
   }
+// ;base64
+  $: dataUrl = 'data:application/json,' + encodeURIComponent(JSON.stringify($serialisedCanvas));
 </script>
 
 <aside>
@@ -24,6 +26,8 @@
       <label for={group}>{ $t(`group:${group}`) }</label>
     {/each}
   </fieldset>
+  
+  <a href='{ dataUrl }'>{ $t('file:Download') }</a>
 
   <h2>Saved canvases</h2>
   <ul>

@@ -9,6 +9,9 @@ export default {
       EXPLORE: 'Explore',
       PLAN: 'Plan',
       INTEGRATE: 'Integrate'
+    },
+    file: {
+      Download: 'Download'
     }
   },
 };
