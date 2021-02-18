@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Canvas from './components/Canvas.svelte';
   import ControlPanel from './components/ControlPanel.svelte';
+
+  import { initLocalizationContext } from './i18n';
+  initLocalizationContext();
 </script>
 
 <main>

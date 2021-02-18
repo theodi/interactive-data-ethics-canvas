@@ -25,6 +25,7 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
+    "i18next": "^19.8.9",
     "sirv-cli": "^1.0.11",
     "uuid": "^8.3.2"
   }

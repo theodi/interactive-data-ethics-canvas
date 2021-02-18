@@ -1,6 +1,9 @@
 <script lang="ts">
   import { canvasState, savedCanvases } from '../store';
   import { Group } from '../types';
+  import { getLocalization } from '../i18n';
+  const { t } = getLocalization();
+
   const groups = Object.keys(Group);
   let visibleGroups = groups;
   $: {
@@ -14,13 +17,12 @@
   <button on:click={ () => canvasState.resetState() }>CLEAR TEMPLATE</button>
 
   <fieldset>
-    <legend><h2>Group filter</h2></legend>
+    <legend><h2>{ $t('group:Title') }</h2></legend>
 
     {#each groups as group}
       <input id={group} type=checkbox bind:group={ visibleGroups } value="{ group }">
-      <label for={group}>{ group }</label>
+      <label for={group}>{ $t(`group:${group}`) }</label>
     {/each}
-    { visibleGroups }
   </fieldset>
 
   <h2>Saved canvases</h2>
