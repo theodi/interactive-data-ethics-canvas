@@ -11,8 +11,10 @@
       $canvasState.blobs[i].dimmed = !visibleGroups.includes($canvasState.blobs[i].group)
     }
   }
-// ;base64
-  $: dataUrl = 'data:application/json,' + encodeURIComponent(JSON.stringify($serialisedCanvas));
+  $: dataUrl = URL.createObjectURL(
+    new Blob([JSON.stringify($serialisedCanvas)], { type: 'application/json'})
+  )
+  $: downloadFilename = `DataEthicsCanvas_${ $canvasState.uuid }.json`
 </script>
 
 <aside>
@@ -27,7 +29,7 @@
     {/each}
   </fieldset>
   
-  <a href='{ dataUrl }'>{ $t('file:Download') }</a>
+  <a href='{ dataUrl }' download='{ downloadFilename }'>{ $t('file:Download') }</a>
 
   <h2>Saved canvases</h2>
   <ul>
