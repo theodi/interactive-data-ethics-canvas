@@ -1,12 +1,12 @@
 <script lang="ts">
   import { tweened } from 'svelte/motion';
-import type { UserContent } from '../types';
+  import type { Group, UserContent } from '../types';
   import Editor from './Editor.svelte';
-  export let title;
-  export let description;
-  export let group;
-  export let row;
-  export let column;
+  export let title: string;
+  export let description: string;
+  export let group: Group;
+  export let row: number;
+  export let column: number;
   export let focussed = false;
   export let hovered = false;
   export let dimmed = false;

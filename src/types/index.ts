@@ -5,12 +5,12 @@ export enum Group {
   INTEGRATE = 'INTEGRATE'
 }
 
-export type CanvasState = {
+export interface CanvasState {
   uuid: string;
   blobs: BlobState[]
 }
 
-export type BlobState = {
+export interface BlobState {
   group: Group;
   title: string;
   description: string;
@@ -19,13 +19,13 @@ export type BlobState = {
   content?: UserContent;
 }
 
-type BlobUiState = {
+interface BlobUiState {
   hovered?: boolean;
   focussed?: boolean;
   dimmed?: boolean;
 }
 
-export type CanvasPrivateState = {
+export interface CanvasPrivateState {
   uuid: string;
   blobs: (BlobState & BlobUiState)[]
 }
