@@ -27,7 +27,7 @@
 
   const hoverOn = () => setHover(true);
   const hoverOff = () => setHover(false);
-  const focus = () => setFocus(true);
+  const focus = () => {if (!dimmed) setFocus(true);}
 
   $: {
     if (focussed) {
@@ -35,7 +35,7 @@
       x.set(canvasHeight / 2);
       y.set(canvasHeight / 2);
     } else {
-      scale.set(hovered ? 1.05 : 1);
+      scale.set((hovered && !dimmed) ? 1.05 : 1);
       x.set((column + 0.5) * size);
       y.set((row + 0.5) * size)
     }
