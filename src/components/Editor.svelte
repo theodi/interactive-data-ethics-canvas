@@ -22,7 +22,7 @@
 </script>
 
 
-<g class="editor" transition:fade transform="translate({ x } { y })">
+<g transition:fade transform="translate({ x } { y })">
   <rect
     class="overlay"
     { width }
@@ -40,11 +40,18 @@
   />
 </g>
 <use xlink:href={`#blob-${focusBlob}`} />
-<foreignObject transition:fade x="{ (canvasHeight - editorSize) / 2 }" y="{ (canvasHeight - editorSize) / 2 }" width="{ editorSize }" height="{ editorSize }">
-  <section id='editor'>
-    <svelte:component this={ editors['Basic'] } bind:content={ $canvasState.blobs[focusBlob].content } />
-  </section>
-</foreignObject>
+<g transition:fade>
+  <foreignObject x={ (canvasHeight - editorSize) / 2 } y={ (canvasHeight - editorSize) / 2 } width={ editorSize } height={ editorSize }>
+    <section id='editor'>
+      <svelte:component this={ editors['Basic'] } bind:content={ $canvasState.blobs[focusBlob].content } />
+    </section>
+  </foreignObject>  
+  <foreignObject x={ width - 40 - 400 } y={ 0 } width={ 400 } height={ height }>
+    <aside>
+      <h2>HINTS AND TIPS GO HERE</h2>
+    </aside>
+  </foreignObject>
+</g>
 
 
 <style>
@@ -62,5 +69,15 @@
   .overlay {
     fill: white;
     opacity: 50%;
+  }
+  aside {
+    background: white;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 1em;
+    padding: 1em;
+    border: solid 1px hsl(0, 0%, 90%);
+    border-radius: 20px 0 0 20px;
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 10%);
   }
 </style>
