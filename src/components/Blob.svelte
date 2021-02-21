@@ -1,14 +1,12 @@
 <script lang="ts">
   import { tweened } from 'svelte/motion';
-  import type { Group, UserContent } from '../types';
-  import Editor from './Editor.svelte';
-
+  import type { Group } from '../types';
+  
   export let title: string;
   export let description: string;
   export let group: Group;
   export let row: number;
   export let column: number;
-  export let content: UserContent = null;
 
   // UiState
   export let focussed = false;
@@ -57,9 +55,7 @@
       <h2>
         { title }
       </h2>
-      {#if focussed}
-        <Editor bind:content></Editor>
-      {:else}
+      {#if !focussed}
         <p class='description'>
           { description }
         </p>

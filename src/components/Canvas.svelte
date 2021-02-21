@@ -1,10 +1,8 @@
 <script lang="ts">
   import Blob from './Blob.svelte';
-  import SvgButton from './SvgButton.svelte';
-  import Cross from './icons/Cross.svelte';
+  import Editor from './Editor.svelte';
 
   import { canvasState } from '../store';
-  import { fade } from 'svelte/transition';
   const cols = 5;
   const rows = 3;
   const areaConfig = { size: 200, overlap: 0.05 };
@@ -24,7 +22,6 @@
         <Blob
           {...blobState}
           {...areaConfig}
-          bind:content={blobState.content}
           canvasHeight={height}
         />
       </g>
@@ -66,26 +63,7 @@
   {/each}
 
   {#if focusBlob > -1}
-    <g class="editor" transition:fade>
-      <rect
-        class="overlay"
-        x={-margin}
-        y={-margin - topMargin}
-        width={cols * areaConfig.size + 2 * margin}
-        height={height + 2 * margin + topMargin}
-      />
-      <SvgButton
-        x={cols * areaConfig.size - 50}
-        y="0"
-        action={() =>
-          setTimeout(
-            () => ($canvasState.blobs[focusBlob].focussed = false),
-            600
-          )}
-        icon={Cross}
-      />
-    </g>
-    <use xlink:href={`#blob-${focusBlob}`} />
+    <Editor { focusBlob } x={ -margin } y={ - margin - topMargin } width={ cols * areaConfig.size + 2 * margin } height={ height + 2 * margin + topMargin } canvasHeight={ height }/>
   {/if}
 </svg>
 
@@ -98,10 +76,6 @@
     text-anchor: end;
     font-weight: bold;
     fill: #345b9f;
-  }
-  .overlay {
-    fill: white;
-    opacity: 50%;
   }
   .cloud {
     fill: white;

@@ -2,9 +2,9 @@
   export let content = null;
 </script>
 
-<div>
-  <textarea bind:value={ content } rows=20></textarea>
-</div>
+<form>
+  <textarea bind:value={ content } rows=10></textarea>
+</form>
 
 <style>
   textarea {
