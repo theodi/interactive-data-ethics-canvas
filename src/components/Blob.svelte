@@ -2,32 +2,27 @@
   import { tweened } from 'svelte/motion';
   import type { Group, UserContent } from '../types';
   import Editor from './Editor.svelte';
+
   export let title: string;
   export let description: string;
   export let group: Group;
   export let row: number;
   export let column: number;
+  export let content: UserContent = null;
+
+  // UiState
   export let focussed = false;
   export let hovered = false;
   export let dimmed = false;
-
-  export let setHover: (...args: any) => any = () => {};
-  export let setFocus: (...args: any) => any = () => {};
 
   export let size: number;
   export let overlap: number;
   export let canvasHeight = 100;
 
-  export let content: UserContent = null;
-
   const animationDuration = 250;
   let scale = tweened(1, { duration: animationDuration });
   let x = tweened((column + 0.5) * size, { duration: animationDuration });
   let y = tweened((row + 0.5) * size, { duration: animationDuration });
-
-  const hoverOn = () => setHover(true);
-  const hoverOff = () => setHover(false);
-  const focus = () => {if (!dimmed) setFocus(true);}
 
   $: {
     if (focussed) {
@@ -41,7 +36,7 @@
     }
   }
 
-  let textBoxSize, textBoxOffset;
+  let textBoxSize: number, textBoxOffset: number;
   $: {
     textBoxSize = size * (focussed ? $scale : 1) * 0.8;
     textBoxOffset = -textBoxSize / 2;
@@ -50,9 +45,6 @@
 </script>
 
 <g
-  on:mouseover={ () => hoverOn() }
-  on:mouseout={ () => hoverOff() }
-  on:click={ () => focus() }
   transform="translate({ $x } { $y })"
   class:dimmed
   >
