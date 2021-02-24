@@ -1,118 +1,60 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import { tweened } from 'svelte/motion';
-  import type { Group } from '../types';
   
-  export let title: string;
-  export let description: string;
-  export let group: Group;
   export let row: number;
   export let column: number;
+
+  const { height, spacing, overlap } = getContext('canvasConfig');
 
   // UiState
   export let focussed = false;
   export let hovered = false;
   export let dimmed = false;
 
-  export let size: number;
-  export let overlap: number;
-  export let canvasHeight = 100;
-
   const animationDuration = 250;
   let scale = tweened(1, { duration: animationDuration });
-  let x = tweened((column + 0.5) * size, { duration: animationDuration });
-  let y = tweened((row + 0.5) * size, { duration: animationDuration });
+  let x = tweened((column + 0.5) * spacing, { duration: animationDuration });
+  let y = tweened((row + 0.5) * spacing, { duration: animationDuration });
 
   $: {
     if (focussed) {
       scale.set(4);
-      x.set(canvasHeight / 2);
-      y.set(canvasHeight / 2);
+      x.set(height / 2);
+      y.set(height / 2);
     } else {
       scale.set((hovered && !dimmed) ? 1.05 : 1);
-      x.set((column + 0.5) * size);
-      y.set((row + 0.5) * size)
+      x.set((column + 0.5) * spacing);
+      y.set((row + 0.5) * spacing)
     }
   }
 
   let textBoxSize: number, textBoxOffset: number;
   $: {
-    textBoxSize = size * (focussed ? $scale : 1) * 0.8;
+    textBoxSize = spacing * (focussed ? $scale : 1) * 0.8;
     textBoxOffset = -textBoxSize / 2;
   }
 
 </script>
 
-<g
-  transform="translate({ $x } { $y })"
-  class:dimmed
-  >
-  <g transform="scale({ $scale })">
-    <ellipse class='{ group.toLowerCase() }' class:hovered class:focussed rx={ Math.round(size * (0.5 + overlap)) }/>
-    <rect class='rect' transform="translate({-size / 2} { -size /2 })" x={ size * 0.1 } y={ size * 0.1 } width={ size * 0.8 } height={ size * 0.8 } />
-  </g>
-  <foreignObject class:focussed class="node" x="{ textBoxOffset }" y="{ textBoxOffset }" width="{ textBoxSize }" height="{ textBoxSize }">
-    <section>
-      <h2>
-        { title }
-      </h2>
-      {#if !focussed}
-        <p class='description'>
-          { description }
-        </p>
-      {/if}  
-    </section>
-  </foreignObject>
+<g transform="translate({ $x } { $y }) scale({ $scale })">
+  <ellipse class:focussed rx={ Math.round(spacing * (0.5 + overlap)) }/>
+  <rect transform="translate({-spacing / 2} { -spacing /2 })" x={ spacing * 0.1 } y={ spacing * 0.1 } width={ spacing * 0.8 } height={ spacing * 0.8 } />
 </g>
 
 <style>
   ellipse {
     fill-opacity: 0.7;
+    filter: inherit;
   }
-  .focussed {
-    fill-opacity: 1;
-  }
-  .rect {
+  rect {
     fill: none;
     stroke: white;
     stroke-width: 1px;
     stroke-dasharray: 2 10;
     stroke-linecap: round;
   }
-  .know {
-    fill: hsl(321, 77%, 52%);
-  }
-  .explore {
-    fill: hsl(36, 72%, 55%);
-  }
-  .plan {
-    fill: hsl(92, 54%, 38%);
-  }
-  .integrate {
-    fill: hsl(201, 100%, 61%);
-  }
-  foreignObject {
-    position: relative;
-  }
-  section {
-    padding: 1rem;
-    height: 100%;
-    color: white;
-  }
-  h2 {
-    font-weight: bold;
-    font-size: 1.1em;
-    padding-bottom: 1em;
-  }
-  .description {
-    position: absolute;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1rem;
-    bottom: 0;
-    left: 0;
-  }
-  .dimmed {
-    filter: grayscale(100%) contrast(50%) brightness(140%);
+  .focussed {
+    fill-opacity: 1;
   }
 </style>
