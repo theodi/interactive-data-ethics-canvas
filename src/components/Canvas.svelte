@@ -143,7 +143,7 @@
       >
         <AreaContent blobRef={focusBlob} />
       </foreignObject>
-      <AreaGuidance />
+      <AreaGuidance blobIndex={ focusBlob } />
     </g>
   {/if}
 </svg>
