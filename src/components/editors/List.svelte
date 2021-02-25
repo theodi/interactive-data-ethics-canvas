@@ -3,7 +3,8 @@
   import { getLocalization } from '../../i18n';
   const { t } = getLocalization();
   
-  export let ref;
+  export let ref: number;
+  const id = canvasState.getBlobId(ref);
 
   if (!$canvasState.blobs[ref].content || !Array.isArray($canvasState.blobs[ref].content)) $canvasState.blobs[ref].content = ['']
 
@@ -14,7 +15,7 @@
 </script>
 
 <p>
-  { $t(`editor.${ ref }.question`) }
+  { $t('areas:' + id + '.questions', { joinArrays: ' ' }) }
 </p>
 <ul>
   {#each $canvasState.blobs[ref].content as value, i}

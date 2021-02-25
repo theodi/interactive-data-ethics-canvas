@@ -12,6 +12,7 @@ export interface CanvasState {
 
 export interface BlobState {
   group: Group;
+  id: string;
   title: string;
   description: string;
   editor: string;

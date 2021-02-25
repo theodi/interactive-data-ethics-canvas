@@ -32,12 +32,18 @@ const canvas = () => {
     dispatchEvent(resetEvent);
   }
 
+  let blobs;
+  subscribe(c => blobs = c.blobs);
+
+  const getBlobId = (index: number) => blobs[index].id;
+
   return {
     subscribe,
     set,
     update,
     loadCanvas,
     resetState,
+    getBlobId,
   };
 };
 
