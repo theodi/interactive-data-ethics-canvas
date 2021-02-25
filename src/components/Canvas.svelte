@@ -124,7 +124,7 @@
       />
       <SvgButton
         x={width + margin - 50}
-        y="0"
+        y={ -margin - topMargin }
         action={() => ($canvasState.blobs[focusBlob].focussed = false)}
         icon={Cross}
       />
