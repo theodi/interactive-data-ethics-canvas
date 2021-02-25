@@ -18,5 +18,8 @@
   section {
     box-sizing: border-box;
     width: 100%;
+    max-height: 90%;
+    padding: 1rem;
+    overflow-y: scroll;
   }
 </style>

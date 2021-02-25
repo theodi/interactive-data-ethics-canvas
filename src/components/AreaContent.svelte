@@ -16,7 +16,7 @@
   }
 </script>
 
-<section>
+<section class:focussed>
   <h2>
     { title }
   </h2>
@@ -31,14 +31,16 @@
 
 <style>
   section {
-    padding: 1rem;
     height: 100%;
     color: white;
+  }
+  section.focussed {
+    font-size: 1.2em;
   }
   h2 {
     font-weight: bold;
     font-size: 1.1em;
-    padding-bottom: 1em;
+    padding: 1rem;
   }
   .description {
     position: absolute;
