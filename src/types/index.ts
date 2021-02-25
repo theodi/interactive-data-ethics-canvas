@@ -14,6 +14,7 @@ export interface BlobState {
   group: Group;
   title: string;
   description: string;
+  editor: string;
   row: number;
   column: number;
   content?: UserContent;
@@ -30,4 +31,4 @@ export interface CanvasPrivateState {
   blobs: (BlobState & BlobUiState)[]
 }
 
-export type UserContent = string;
+export type UserContent = string | string[];
