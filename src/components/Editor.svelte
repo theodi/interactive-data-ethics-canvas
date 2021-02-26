@@ -1,17 +1,19 @@
 <script lang='ts'>
   import { canvasState } from '../store';
   import Basic from './editors/Basic.svelte';
-  import List from './editors/List.svelte';
+  import SimpleList from './editors/SimpleList.svelte';
 
   const editors = {
     Basic,
-    List,
+    SimpleList,
   }
   export let blobRef: number;
+
+  if ( !$canvasState.blobs[blobRef].content ) $canvasState.blobs[blobRef].content = [];
 </script>
 
 <section>
-  <svelte:component this={ editors[$canvasState.blobs[blobRef].editor] } ref={ blobRef } bind:content={ $canvasState.blobs[blobRef].content } />
+  <svelte:component this={ editors[$canvasState.blobs[blobRef].editor] } ref={ blobRef } />
 </section>
 
 <style>

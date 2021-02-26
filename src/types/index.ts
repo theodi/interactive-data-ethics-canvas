@@ -18,7 +18,7 @@ export interface BlobState {
   editor: string;
   row: number;
   column: number;
-  content?: UserContent;
+  content?: UserContent[];
 }
 
 interface BlobUiState {
