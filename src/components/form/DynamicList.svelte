@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Question from './Question.svelte';
   import type { UserContent } from '../../types';
 
   export let question: string;
@@ -15,9 +16,7 @@
 </script>
 
 <section>
-  <p>
-    { question }
-  </p>
+  <Question { question } />
   <ol>
     {#each content as value, i}
       <li><span>{ i + 1 }</span><input id='item-{ i }' bind:value /></li>
@@ -26,9 +25,6 @@
 </section>
 
 <style>
-  p {
-    margin-bottom: 1em;
-  }
   input {
     display: inline-block;
     width: 95%;

@@ -1,16 +1,14 @@
-<script lang='ts'>
-  export let content = null;
+<script lang="ts">
+  import { canvasState } from '../../store';
+  import { getLocalization } from '../../i18n';
+  import Textarea from '../form/Textarea.svelte';
+  import BooleanAndTextarea from '../form/BooleanAndTextarea.svelte';
+
+  export let ref: number;
+
+  const { t } = getLocalization();
+  const id = canvasState.getBlobId(ref);
 </script>
 
-<form>
-  <textarea bind:value={ content } rows=10></textarea>
-</form>
-
-<style>
-  textarea {
-    width: 100%;
-    font-size: 1em;
-    box-sizing: border-box;
-    border: none;
-  }
-</style>
+<Textarea question={ $t('areas:' + id + '.questions', { joinArrays: ' ' }) } bind:content={ $canvasState.blobs[ref].content[0] } />
+<BooleanAndTextarea question={ 'Q2' } bind:content={ $canvasState.blobs[ref].content[1] } />
