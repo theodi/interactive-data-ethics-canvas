@@ -28,7 +28,6 @@
     padding: 1em;
     padding-right: 4em;
     border: solid 1px hsl(0, 0%, 90%);
-    border-radius: 20px 0 0 20px;
     box-shadow: 0 0 10px hsla(0, 0%, 0%, 10%);
   }
   h2 {

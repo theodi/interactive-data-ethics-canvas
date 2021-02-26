@@ -21,22 +21,28 @@
 <p>
   { $t('areas:' + id + '.questions', { joinArrays: ' ' }) }
 </p>
-<ul>
+<ol>
   {#each $canvasState.blobs[ref].content as value, i}
-    <li><input id='item-{ i }' bind:value /></li>
+    <li><span>{ i + 1 }</span><input id='item-{ i }' bind:value /></li>
   {/each}
-</ul>
+</ol>
 
 <style>
   p {
     margin-bottom: 1em;
   }
   input {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: 95%;
     margin-bottom: 1em;
     padding: 0.3em;
     border: none;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255);
+  }
+  span {
+    width: 5%;
+    display: inline-block;
+    text-align: right;
+    padding-right: 1em;
   }
 </style>
