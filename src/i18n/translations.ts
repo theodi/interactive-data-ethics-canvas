@@ -36,6 +36,31 @@ export default {
 * anti-discrimination laws;
 * and data sharing, policies, regulation and ethics codes/frameworks specific to sectors (eg health, employment, taxation).`
       },
+      mitigations: {
+        title: 'Minimising negative effects',
+        questions: ['What steps can you take to minimise harm?', 'How could you reduce any limitations in your data sources? How are you keeping personal and other sensitive information secure?', 'How are you measuring, reporting and acting on potential negative impacts of your project?', 'What benefits will these actions bring to your project?'],
+        guidance: ''
+      }, 
+      reasons: {
+        title: 'Your reasons for using data',
+        questions: ['What is your primary motivation for collecting and using data in this project?', 'What are your main use cases? What is your business model?', 'Are you making things better for society? How and for whom?', 'Are you replacing another product or service as a result of this project? '],
+        guidance: ''
+      }, 
+      'positive-effects': {
+        title: 'Positive effects on people',
+        questions: ['Which individuals, groups, demographics or organisations will be positively affected by this project? How?', 'How are you measuring and communicating positive impact? How could you increase it?'],
+        guidance: ''
+      },
+      'negative-effects': {
+        title: 'Negative effects on people',
+        questions: ['Who could be negatively affected by this project?', 'Could the way that data is collected, used or shared cause harm or expose individuals to risk of being re-identified?', 'Could it be used to target,profile or prejudice people, or unfairly restrict access (eg exclusive arrangements)?', 'How are limitations and risks communicated to people?'],
+        guidance: `Consider:
+        
+        * people whom the data is
+        about;
+        * people impacted by its use
+        * organisations using the data`
+      }
     }
   },
 };
