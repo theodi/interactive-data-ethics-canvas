@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - run: npm config --local user.name Giles Dring
-    - run: npm config --local user.email giles.dring@odileeds.org
+    - run: npm config set user.name Giles Dring
+    - run: npm config set user.email giles.dring@odileeds.org
     - run: npm ci
     - run: npm run deploy
