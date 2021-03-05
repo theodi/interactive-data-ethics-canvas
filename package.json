@@ -6,7 +6,7 @@
     "build": "rollup -c",
     "clean": "npx del public/build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public",
+    "deploy": "gh-pages --dist public --user \"Giles Dring <giles.dring@odileeds.org>\"",
     "dev": "rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check",
