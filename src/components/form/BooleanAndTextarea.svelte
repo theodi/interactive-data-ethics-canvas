@@ -1,36 +1,46 @@
 <script lang='ts'>
   import Question from './Question.svelte';
   export let question: string;
-  export let content;
+  export let content: { checked: Choice, text: string };
+
+  enum Choice {
+    UNSET = 'UNSET',
+    YES = 'YES',
+    NO = 'NO',
+  }
+
   $: {
-    if (!content) content = { checked: false, text: null };
+    if (!content) content  = { checked: Choice.UNSET, text: null };
   }
 </script>
 
 <form>
   <Question { question } />
-  <input type='checkbox' bind:checked={ content.checked } />
+  <fieldset class:highlight={ content.checked !== Choice.YES && content.checked !== Choice.NO }>
+    <input id='opt-yes' type='radio' bind:group={ content.checked } value={ Choice.YES } />
+    <label for='opt-yes'>Yes</label>
+    /
+    <input id='opt-no' type='radio' bind:group={ content.checked } value={ Choice.NO } />
+    <label for='opt-no'>No</label>
+    <input id='opt-unset' type='radio' bind:group={ content.checked } value={ Choice.UNSET } />
+  </fieldset>
+
   <textarea bind:value={ content.text } rows=10></textarea>
 </form>
 
 <style>
-  [type=checkbox] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: solid 2px white;
-    margin-right: 8px;
-    position: relative;
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1em;
   }
-  [type=checkbox]:checked::before {
-    /* content: "\2713"; */
-    content: '';
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    position: absolute;
-    top: 3px;
-    left: 3px;
+  [type=radio] {
+    appearance: none;
+    position: fixed;
+  }
+  :checked + label {
+    text-decoration: underline;
+    font-weight: bold;
   }
   textarea {
     width: 100%;
