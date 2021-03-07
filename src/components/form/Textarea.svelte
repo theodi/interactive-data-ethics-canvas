@@ -11,6 +11,9 @@ import Question from './Question.svelte';
 </form>
 
 <style>
+  form {
+    padding-bottom: 1em;
+  }
   textarea {
     width: 100%;
     font-size: 1em;

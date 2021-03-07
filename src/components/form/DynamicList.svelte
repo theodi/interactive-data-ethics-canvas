@@ -15,14 +15,14 @@
   }
 </script>
 
-<section>
+<form>
   <Question { question } />
   <ol>
     {#each content as value, i}
       <li><span>{ i + 1 }</span><input id='item-{ i }' bind:value /></li>
     {/each}
   </ol>  
-</section>
+</form>
 
 <style>
   input {
@@ -38,5 +38,8 @@
     display: inline-block;
     text-align: right;
     padding-right: 1em;
+  }
+  form {
+    padding-bottom: 1em;
   }
 </style>
