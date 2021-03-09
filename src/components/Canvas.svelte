@@ -121,12 +121,7 @@
         y={-margin - topMargin}
         width={width + 2 * margin}
         height={height + 2 * margin + topMargin}
-      />
-      <SvgButton
-        x={width + margin - 50}
-        y={ -margin - topMargin }
-        action={() => ($canvasState.blobs[focusBlob].focussed = false)}
-        icon={Cross}
+        on:click={() => ($canvasState.blobs[focusBlob].focussed = false)}
       />
     </g>
     <use
@@ -143,6 +138,13 @@
       >
         <AreaContent blobRef={focusBlob} />
       </foreignObject>
+      <SvgButton
+        x={580}
+        y={-10}
+        action={() => ($canvasState.blobs[focusBlob].focussed = false)}
+        icon={Cross}
+      />
+
       <AreaGuidance blobIndex={ focusBlob } />
     </g>
   {/if}
@@ -162,15 +164,15 @@
     fill: hsl(0, 0%, 75%);
   }
   .know {
-    fill: hsl(321, 77%, 52%);
+    fill: var(--know);
   }
   .explore {
-    fill: hsl(36, 72%, 55%);
+    fill: var(--explore);
   }
   .plan {
-    fill: hsl(92, 54%, 38%);
+    fill: var(--plan);
   }
   .integrate {
-    fill: hsl(201, 100%, 61%);
+    fill: var(--integrate);
   }
 </style>

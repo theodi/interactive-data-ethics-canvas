@@ -20,4 +20,14 @@
 		padding: 1em;
 		margin: 0 auto;
 	}
+  :global(:root) {
+    --know: hsl(321, 77%, 52%);
+    --explore: hsl(36, 72%, 55%);
+    --plan: hsl(92, 54%, 38%);
+    --integrate: hsl(201, 100%, 61%);
+
+    --pale-grey: hsl(0, 0%, 93%);
+    --dark-blue: hsl(218, 51%, 41%);
+  }
+
 </style>

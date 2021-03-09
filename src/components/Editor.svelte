@@ -29,7 +29,7 @@
     box-sizing: border-box;
     width: 100%;
     max-height: 90%;
-    padding: 1rem;
+    padding: 0.7rem;
     overflow-y: auto;
   }
 </style>

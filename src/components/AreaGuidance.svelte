@@ -7,32 +7,40 @@
   export let blobIndex: number;
 
   const id = canvasState.getBlobId(blobIndex);
+  $: group = $canvasState.blobs[blobIndex].group.toLowerCase();
 
   const { width, margin, height } = getContext('canvasConfig');
   const { t } = getLocalization();
+  console.log(margin);
 </script>
 
-<foreignObject x={width + 2 * margin - 450} y=0 width=450 {height}>
-  <aside class="guidance">
-    <h2>{ $t('guidance_title') }</h2>
-    {@html marked($t(`areas:${ id }.guidance`)) } 
-  </aside>
-</foreignObject>
+<g transform="translate({width + 2 * margin - 420} -20)">
+  <rect class={ group } width=360 height={ height + 40 }></rect>  
+  <foreignObject x=0 y=0 width=360 height={ height + 40 }>
+    <aside class="guidance">
+      <h2>{ $t('guidance_title') }</h2>
+      {@html marked($t(`areas:${ id }.guidance`)) } 
+    </aside>
+  </foreignObject>  
+</g>
 
 <style>
+  rect {
+    stroke: white;
+    stroke-width: 8px;
+    stroke-dasharray: 0 40;
+    stroke-linecap: round;
+    /* TODO Fix colour lightness */
+  }
   aside {
-    background: white;
     box-sizing: border-box;
     width: 100%;
-    margin: 1em;
     padding: 1em;
-    padding-right: 4em;
-    border: solid 1px hsl(0, 0%, 90%);
-    box-shadow: 0 0 10px hsla(0, 0%, 0%, 10%);
+    color: white;
   }
   h2 {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.25em;
     padding-bottom: 1em;
   }
   :global(.guidance p) {
@@ -44,5 +52,17 @@
   }
   :global(.guidance li) {
     padding-left: 1em;
+  }
+  .know {
+    fill: var(--know)
+  }
+  .explore {
+    fill: var(--explore)
+  }
+  .plan {
+    fill: var(--plan)
+  }
+  .integrate {
+    fill: var(--integrate)
   }
 </style>

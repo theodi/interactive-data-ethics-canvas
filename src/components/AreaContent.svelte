@@ -36,7 +36,7 @@
     font-size: 0.8em;
   }
   section.focussed {
-    font-size: 1.2em;
+    font-size: 1em;
   }
   h2, .description {
     padding: 0.7rem;
