@@ -33,14 +33,14 @@
   section {
     height: 100%;
     color: white;
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
   section.focussed {
     font-size: 1.2em;
   }
   h2 {
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.4em;
     padding: 1rem;
   }
   .description {

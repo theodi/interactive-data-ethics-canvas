@@ -50,8 +50,8 @@
   rect {
     fill: none;
     stroke: white;
-    stroke-width: 1px;
-    stroke-dasharray: 2 10;
+    stroke-width: 2px;
+    stroke-dasharray: 0 10;
     stroke-linecap: round;
   }
   .focussed {
