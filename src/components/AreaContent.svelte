@@ -38,17 +38,18 @@
   section.focussed {
     font-size: 1.2em;
   }
+  h2, .description {
+    padding: 0.7rem;
+  }
   h2 {
     font-weight: bold;
     font-size: 1.4em;
-    padding: 1rem;
   }
   .description {
     position: absolute;
     display: block;
     width: 100%;
     box-sizing: border-box;
-    padding: 1rem;
     bottom: 0;
     left: 0;
   }
