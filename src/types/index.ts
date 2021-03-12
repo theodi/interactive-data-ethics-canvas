@@ -5,6 +5,12 @@ export enum Group {
   INTEGRATE = 'INTEGRATE'
 }
 
+export enum Status {
+  IN_PROGRESS = 'IN_PROGRESS',
+  FOR_REVIEW = 'FOR_REVIEW',
+  COMPLETE = 'COMPLETE',
+}
+
 export interface CanvasState {
   uuid: string;
   blobs: BlobState[]
@@ -19,6 +25,7 @@ export interface BlobState {
   row: number;
   column: number;
   content?: UserContent[];
+  status: Status;
   notes?: string;
 }
 

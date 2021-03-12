@@ -3,6 +3,12 @@ export default {
     common: {
       guidance_title: 'Guidance',
       notes_title: 'Notes',
+      status_title: 'Status',
+    },
+    status: {
+      IN_PROGRESS: 'In progress',
+      FOR_REVIEW: 'For review',
+      COMPLETE: 'Complete',
     },
     group: {
       Title: 'Filter by Group',

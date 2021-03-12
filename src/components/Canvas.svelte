@@ -8,6 +8,7 @@
   import Sidebar from './Sidebar.svelte';
   import SvgButton from './SvgButton.svelte';
   import Cross from './icons/Cross.svelte';
+  import Status from './Status.svelte';
 
   import { canvasState } from '../store';
 
@@ -19,6 +20,7 @@
   const height = rows * spacing;
   const margin = spacing * overlap * 4;
   const topMargin = 40;
+  const bottomMargin = 20;
   const zoomLevel = 4;
 
   setContext('canvasConfig', {
@@ -51,7 +53,7 @@
 <svg
   viewBox="-{margin} -{margin + topMargin} {width + 2 * margin} {height +
     2 * margin +
-    topMargin}"
+    topMargin + bottomMargin}"
 >
   <defs>
     {#each $canvasState.blobs as blobState, index}
@@ -146,6 +148,8 @@
       />
 
       <Sidebar blobIndex={ focusBlob } />
+      <Status ref={ focusBlob }/>
+
     </g>
   {/if}
 </svg>
