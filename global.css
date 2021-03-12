@@ -58,3 +58,6 @@ html, body {
 html, body, textarea, input {
   font-family: Arial, Helvetica, sans-serif;
 }
+textarea {
+  resize: none;
+}
