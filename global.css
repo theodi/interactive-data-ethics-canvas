@@ -55,16 +55,24 @@ html, body {
   font-size: 10pt;
 }
 
-html, body, textarea, input {
+html {
   font-family: Arial, Helvetica, sans-serif;
+}
+body, textarea, input, button {
+  font-family: inherit;
+  font-size: inherit;
   border-radius: 0;
   border: none;
 }
 textarea {
   resize: none;
 }
-
-select {
+button {
+  appearance: none;
+  cursor: pointer;
+  padding: 0.5em 0.5em;
+}
+select{
   appearance: none;
   background-color: transparent;
   border: none;
@@ -75,4 +83,5 @@ select {
   cursor: inherit;
   line-height: inherit;
   outline: none;
+  cursor: pointer;
 }
