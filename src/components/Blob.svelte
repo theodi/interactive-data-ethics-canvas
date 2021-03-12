@@ -39,7 +39,7 @@
 
 <g transform="translate({ $x } { $y }) scale({ $scale })">
   <ellipse class:focussed rx={ Math.round(spacing * (0.5 + overlap)) }/>
-  <rect transform="translate({-spacing / 2} { -spacing /2 })" x={ spacing * 0.1 } y={ spacing * 0.1 } width={ spacing * 0.8 } height={ spacing * 0.8 } />
+  <rect class:focussed class='dot-box' transform="translate({-spacing / 2} { -spacing /2 })" x={ spacing * 0.1 } y={ spacing * 0.1 } width={ spacing * 0.8 } height={ spacing * 0.8 } />
 </g>
 
 <style>
@@ -49,12 +49,18 @@
   }
   rect {
     fill: none;
+  }
+  ellipse.focussed {
+    fill-opacity: 1;
+  }
+  .dot-box {
     stroke: white;
     stroke-width: 2px;
     stroke-dasharray: 0 10;
     stroke-linecap: round;
   }
-  .focussed {
-    fill-opacity: 1;
+  .dot-box.focussed {
+    stroke-width: 0.75px;
+    stroke-dasharray: 0 5;
   }
 </style>

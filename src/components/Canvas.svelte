@@ -98,7 +98,7 @@
         <g
           transform="translate({blobState.column * spacing} {blobState.row *
             spacing})"
-          on:click={() => (blobState.focussed = true)}
+          on:click={() => { blobState.focussed = true; blobState.hovered = false; } }
         >
           <foreignObject
             x={contentBoxOffset}

@@ -27,8 +27,8 @@
 <style>
   rect {
     stroke: white;
-    stroke-width: 8px;
-    stroke-dasharray: 0 40;
+    stroke-width: 3px;
+    stroke-dasharray: 0 20;
     stroke-linecap: round;
     /* TODO Fix colour lightness */
   }
