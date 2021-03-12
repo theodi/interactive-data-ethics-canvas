@@ -12,7 +12,7 @@
 
 <style>
   rect {
-    fill: var(--pale-grey);
+    fill: none;
     stroke: none;
   }
 </style>

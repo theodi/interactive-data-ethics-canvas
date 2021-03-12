@@ -3,7 +3,7 @@
 
 <style>
   line {
-    stroke: var(--dark-blue);
+    stroke: white;
     stroke-width: 5;
   }
 </style>
