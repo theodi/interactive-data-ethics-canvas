@@ -1,0 +1,1 @@
+export const Notebook = 'Notebook by ProSymbols from the Noun Project';

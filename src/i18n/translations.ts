@@ -4,6 +4,11 @@ export default {
       guidance_title: 'Guidance',
       notes_title: 'Notes',
       status_title: 'Status',
+      new_canvas_button: 'New Canvas',
+      export_button: 'Export',
+      load_button: 'Load',
+      filter_by_group_title: 'Filter by Group',
+      filter_by_status_title: 'Filter by status',
     },
     status: {
       IN_PROGRESS: 'In progress',
@@ -11,7 +16,6 @@ export default {
       COMPLETE: 'Complete',
     },
     group: {
-      Title: 'Filter by Group',
       KNOW: 'Know',
       EXPLORE: 'Explore',
       PLAN: 'Plan',

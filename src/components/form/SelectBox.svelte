@@ -14,7 +14,6 @@
 <style>
   select {
     padding: 0.25em 0.5em;
-    cursor: pointer;
     line-height: 1.1;
     background-color: white;
   }
