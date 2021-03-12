@@ -83,28 +83,28 @@
     width: 100%;
   }
   .know {
-    background: var(--know);
+    background: var(--know-light);
   }
   .know.inactive {
     color: var(--know);
     background: var(--pale-grey);
   }
   .explore {
-    background: var(--explore);
+    background: var(--explore-light);
   }
   .explore.inactive {
     color: var(--explore);
     background: var(--pale-grey);
   }
   .plan {
-    background: var(--plan);
+    background: var(--plan-light);
   }
   .plan.inactive {
     color: var(--plan);
     background: var(--pale-grey);
   }
   .integrate {
-    background: var(--integrate);
+    background: var(--integrate-light);
   }
   .integrate.inactive {
     color: var(--integrate);
