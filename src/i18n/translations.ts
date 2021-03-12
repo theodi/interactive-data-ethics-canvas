@@ -1,7 +1,8 @@
 export default {
   en: {
     common: {
-      guidance_title: 'Guidance'
+      guidance_title: 'Guidance',
+      notes_title: 'Notes',
     },
     group: {
       Title: 'Filter by Group',

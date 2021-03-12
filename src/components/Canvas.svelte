@@ -5,7 +5,7 @@
   import CanvasBackground from './CanvasBackground.svelte';
   import Blob from './Blob.svelte';
   import AreaContent from './AreaContent.svelte';
-  import AreaGuidance from './AreaGuidance.svelte';
+  import Sidebar from './Sidebar.svelte';
   import SvgButton from './SvgButton.svelte';
   import Cross from './icons/Cross.svelte';
 
@@ -145,7 +145,7 @@
         icon={Cross}
       />
 
-      <AreaGuidance blobIndex={ focusBlob } />
+      <Sidebar blobIndex={ focusBlob } />
     </g>
   {/if}
 </svg>

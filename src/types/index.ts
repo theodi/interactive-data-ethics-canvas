@@ -19,6 +19,7 @@ export interface BlobState {
   row: number;
   column: number;
   content?: UserContent[];
+  notes?: string;
 }
 
 interface BlobUiState {
