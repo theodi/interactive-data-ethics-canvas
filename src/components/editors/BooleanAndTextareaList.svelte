@@ -1,7 +1,7 @@
 <script lang="ts">
     import { canvasState } from '../../store';
     import { getLocalization } from '../../i18n';
-    import Textarea from '../form/Textarea.svelte';
+    import BooleanAndTextarea from '../form/BooleanAndTextarea.svelte';
 
     export let ref: number;
   
@@ -10,5 +10,5 @@
 </script>
 
 {#each $t('areas:' + id + '.questions', { returnObjects: true }) as l, i }
-    <Textarea question={ l } bind:content={ $canvasState.blobs[ref].content[i] } />
+    <BooleanAndTextarea question={ l } questionIndex={i} bind:content={ $canvasState.blobs[ref].content[i] } />
 {/each}

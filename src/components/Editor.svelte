@@ -6,6 +6,10 @@
   import ExploreReasons from './editors/ExploreReasons.svelte';
   import ExplorePositiveEffects from './editors/ExplorePositiveEffects.svelte';
   import ExploreNegativeEffects from './editors/ExploreNegativeEffects.svelte';
+  import BooleanAndTextareaList from './editors/BooleanAndTextareaList.svelte';
+  import PlanCommunicating from './editors/PlanCommunicating.svelte';
+  import PlanEngaging from './editors/PlanEngaging.svelte';
+  import IntegrateImplementation from './editors/IntegrateImplementation.svelte';
 
   const editors = {
     Basic,
@@ -13,7 +17,11 @@
     TextareaList,
     ExploreReasons,
     ExplorePositiveEffects,
-    ExploreNegativeEffects
+    ExploreNegativeEffects,
+    BooleanAndTextareaList,
+    PlanCommunicating,
+    PlanEngaging,
+    IntegrateImplementation
   }
   export let blobRef: number;
 

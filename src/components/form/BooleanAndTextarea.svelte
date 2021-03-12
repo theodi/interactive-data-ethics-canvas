@@ -1,6 +1,7 @@
 <script lang='ts'>
   import Question from './Question.svelte';
   export let question: string;
+  export let questionIndex: number;
   export let content: { checked: Choice, text: string };
 
   enum Choice {
@@ -17,11 +18,11 @@
 <form>
   <Question { question } />
   <fieldset class:highlight={ content.checked !== Choice.YES && content.checked !== Choice.NO }>
-    <input id='opt-yes' type='radio' bind:group={ content.checked } value={ Choice.YES } />
-    <label for='opt-yes'>Yes</label>
+    <input id='opt-yes-{questionIndex}'  type='radio' bind:group={ content.checked } value={ Choice.YES } />
+    <label for='opt-yes-{questionIndex}'>Yes</label>
     /
-    <input id='opt-no' type='radio' bind:group={ content.checked } value={ Choice.NO } />
-    <label for='opt-no'>No</label>
+    <input id='opt-no-{questionIndex}' type='radio' bind:group={ content.checked } value={ Choice.NO } />
+    <label for='opt-no-{questionIndex}'>No</label>
     <input id='opt-unset' type='radio' bind:group={ content.checked } value={ Choice.UNSET } />
   </fieldset>
 
@@ -42,6 +43,11 @@
     text-decoration: underline;
     font-weight: bold;
   }
+
+  fieldset {
+    margin-bottom: 0.5em;
+  }
+
   textarea {
     width: 100%;
     font-size: 1em;

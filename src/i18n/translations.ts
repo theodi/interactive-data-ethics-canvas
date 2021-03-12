@@ -60,6 +60,36 @@ export default {
         about;
         * people impacted by its use
         * organisations using the data`
+      },
+      'openness': {
+        title: 'Openness and transparency',
+        questions: ['How open can you be about this project? Could you publish your methodology, metadata, datasets, code or impact measurements?','Can you ask peers for feedback on the project? How will you communicate it internally?', 'Will you publish your actions and answers to this canvas openly?'],
+        guidance: ''
+      },
+      'sharing': {
+        title: 'Sharing data with others',
+        questions: ['Are you going to be sharing data with other organisations? If so, who?', 'Are you planning to publish any of the data? Under what conditions?'],
+        guidance: ''
+      },
+      'communicating': {
+        title: 'Communicating your purpose',
+        questions: ['Do people understand your purpose – especially people whom the data is about or who are impacted by its use?', 'How have you been communicating your purpose? Has this communication been clear?', 'How are you ensuring more vulnerable individuals or groups understand?'],
+        guidance: ''
+      },
+      'engaging': {
+        title: 'Engaging with people',
+        questions: ['How can people engage with you about the project?','How can people correct information, appeal or request changes to the product/service? To what extent?', 'Are appeal mechanisms reasonable and well understood?'],
+        guidance: ''
+      },
+      'implementation': {
+        title: 'Ongoing implementation',
+        questions: ['Are you routinely building in thoughts, ideas and considerations of people affected by your project? How?', 'What information or training might be needed to help people understand data issues?', 'Are systems, processes and resources available for responding to data issues that arise in the long-term?'],
+        guidance: ''
+      },
+      'review': {
+        title: 'Reviews and iterations',
+        questions: ['How will ongoing data ethics issues be measured, monitored, discussed and actioned?', 'How often will your responses to this canvas be reviewed or updated? When?'],
+        guidance: ''
       }
     }
   },
