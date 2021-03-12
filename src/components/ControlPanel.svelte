@@ -132,7 +132,6 @@
   }
   .export-controls {
     position: absolute;
-    top: 0;
     left: 20%;
     top: 50px;
     background: var(--pale-grey);
@@ -146,5 +145,21 @@
   }
   .icon-button :global(svg path, svg polygon) {
     fill: white;
+  }
+  @media (min-width: 1400px) {
+    aside {
+      display: initial;
+      padding-left: 20px;
+      min-width: 180px;
+      max-width: 280px;
+    }
+    .export-controls {
+      position: relative;
+      left: initial;
+      top: -1em;
+    }
+    h2 {
+      padding-top: 1em;
+    }
   }
 </style>

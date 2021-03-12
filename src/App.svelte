@@ -34,5 +34,9 @@
     --pale-grey: hsl(0, 0%, 93%);
     --dark-blue: hsl(218, 51%, 41%);
   }
-
+  @media (min-width: 1400px) {
+    article {
+      display: flex;
+    }
+  }
 </style>
