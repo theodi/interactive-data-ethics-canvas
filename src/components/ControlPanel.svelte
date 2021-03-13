@@ -150,6 +150,7 @@
     aside {
       display: initial;
       padding-left: 20px;
+      padding-top: 0;
       min-width: 180px;
       max-width: 280px;
     }
