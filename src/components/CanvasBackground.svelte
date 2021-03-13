@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+  import OdiLogo from './icons/ODILogo.svelte';
   const { spacing, overlap, columns, rows, topMargin } = getContext('canvasConfig');
 </script>
 
@@ -17,8 +18,11 @@
 </g>
 <text
   x={Math.round((columns + overlap * 2) * spacing)}
-  y={- topMargin}>Data Ethics Canvas</text
+  y={- topMargin + 3}>Data Ethics Canvas</text
 >
+<g transform="translate(0 -10) scale(0.75)">
+  <OdiLogo />
+</g>
 
 <style>
   .cloud {
