@@ -2,16 +2,20 @@
   import Canvas from './components/Canvas.svelte';
   import ControlPanel from './components/ControlPanel.svelte';
   import Console from './components/Console.svelte';
+  import StatusBar from './components/StatusBar.svelte';
 
   import { initLocalizationContext } from './i18n';
   initLocalizationContext();
 </script>
 
-<main>
-  <article>
+<main role="main">
+  <section>
     <Canvas />
     <ControlPanel />
-  </article>
+  </section>
+  <section>
+    <StatusBar />
+  </section>
   <Console />
 </main>
 
@@ -19,6 +23,7 @@
 	main {
 		padding: 1em;
 		margin: 0 auto;
+    max-width: 1480px;
 	}
   :global(:root) {
     --know: hsl(321, 77%, 52%);
@@ -35,7 +40,7 @@
     --dark-blue: hsl(218, 51%, 41%);
   }
   @media (min-width: 1400px) {
-    article {
+    section {
       display: flex;
     }
   }
