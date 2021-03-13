@@ -16,7 +16,6 @@
   <section>
     <StatusBar />
   </section>
-  <Console />
 </main>
 
 <style>
