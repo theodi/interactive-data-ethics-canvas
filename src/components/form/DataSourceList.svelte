@@ -13,7 +13,7 @@
     $: {
         if (!contentTest(content)) content = initialValue;
           const lastItem = content.slice(-1)[0];
-        if (lastItem && lastItem.title && lastItem.description && lastItem.url && lastItem.owner) content = [...content, { title: null, description : null, url: null, owner: null}];
+        if (lastItem && lastItem.title) content = [...content, { title: null, description : null, url: null, owner: null}];
     }
     
   </script>
