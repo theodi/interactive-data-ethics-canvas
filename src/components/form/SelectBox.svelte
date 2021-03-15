@@ -1,11 +1,13 @@
 <script lang="typescript">
+  import { v4 as uuid } from 'uuid';
   export let label: string;
   export let options: { value:string, label: string }[]
   export let value: any;
+  const id = uuid();
 </script>
 
-<label for='status'>{ label }</label>
-<select id='status' bind:value>
+<label for={ id }>{ label }</label>
+<select { id } bind:value>
   {#each options as { value: v, label: l }}
     <option value={ v }>{ l }</option>
   {/each}
