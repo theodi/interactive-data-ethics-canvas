@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import type { CanvasState, CanvasPrivateState } from './types';
 import { resetEvent } from './events';
 
+export const lastUpdate = <Writable<Date>>writable(new Date());
 
 // const CANVAS_STATE_KEY = 'canvas_state';
 const CURRENT_KEY = 'canvas_current_key';
@@ -14,20 +15,36 @@ const cleanTemplate = () => ({
   uuid: CANVAS_STATE_KEY, blobs: baseLayout
 })
 
-const initialCanvas = (): CanvasState => {
-  const localStorageCanvas = JSON.parse(localStorage.getItem(CANVAS_STATE_KEY));
-  return localStorageCanvas || cleanTemplate();
+/**
+ * JSON reviver function to inflate lastUpdated to JS Date object 
+ * @param key 
+ * @param value 
+ * @returns 
+ */
+const canvasReviver = (key, value) => {
+  if (key === 'lastUpdated') return new Date(value);
+  return value;
+}
+
+const initialCanvas = (): CanvasPrivateState => {
+  const localStorageCanvas = JSON.parse(localStorage.getItem(CANVAS_STATE_KEY), canvasReviver);
+  if (localStorageCanvas === undefined) return cleanTemplate();
+  const { blobs, title, lastUpdated, uuid } = localStorageCanvas;
+  lastUpdate.set(lastUpdated);
+  return { blobs, title, uuid };
 };
 
 const canvas = () => {
   const { subscribe, set, update } = writable<CanvasPrivateState>(initialCanvas());
 
-  const loadCanvas = ({ blobs, uuid }: CanvasState) => {
-    set({ blobs, uuid });
+  const loadCanvas = ({ blobs, lastUpdated, title, uuid }: CanvasState) => {
+    lastUpdate.set(lastUpdated);
+    set({ blobs, uuid, title });
   };
 
   const resetState = () => {
     CANVAS_STATE_KEY = uuid();
+    lastUpdate.set(new Date());
     set(cleanTemplate());
     dispatchEvent(resetEvent);
   }
@@ -49,14 +66,22 @@ const canvas = () => {
 
 export const canvasState = canvas();
 
-export const serialisedCanvas = derived<Writable<CanvasPrivateState>, CanvasState>(
-  canvasState,
+canvasState.subscribe((c: CanvasState) => {
+  lastUpdate.set(new Date());
+});
+
+export const serialisedCanvas = derived<[Writable<CanvasPrivateState>, Writable<Date>], CanvasState>(
+  [canvasState, lastUpdate],
   $s => {
-    const uuid = $s.uuid;
-    const blobs = $s.blobs.map(({ hovered, focussed, ...blobState }) => blobState);
+    const uuid = $s[0].uuid;
+    const lastUpdated: Date = $s[1];
+    const title = $s[0].title;
+    const blobs = $s[0].blobs.map(({ hovered, focussed, dimmed, ...blobState }) => blobState);
     return {
       uuid,
       blobs,
+      lastUpdated,
+      title,
     }
   }
 );

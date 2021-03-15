@@ -1,10 +1,8 @@
 <script>
-
-import { savedCanvases } from '../store';
-
+  import { lastUpdate } from '../store';
 </script>
 <ul>
-  <li>Last saved....</li>
+  <li>Last saved { $lastUpdate.toLocaleString() }</li>
 </ul>  
 
 <style>

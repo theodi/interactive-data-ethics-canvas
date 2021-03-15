@@ -25,7 +25,9 @@ export enum Choice {
 
 export interface CanvasState {
   uuid: string;
-  blobs: BlobState[]
+  title: string;
+  lastUpdated: Date;
+  blobs: BlobState[];
 }
 
 export interface Action {
@@ -67,6 +69,7 @@ interface BlobUiState {
 export interface CanvasPrivateState {
   uuid: string;
   blobs: (BlobState & BlobUiState)[]
+  title?: string;
 }
 
 export type UserContent = string | string[] | DataSource[] | Action[];
