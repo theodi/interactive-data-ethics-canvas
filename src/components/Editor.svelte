@@ -10,6 +10,8 @@
   import PlanCommunicating from './editors/PlanCommunicating.svelte';
   import PlanEngaging from './editors/PlanEngaging.svelte';
   import IntegrateImplementation from './editors/IntegrateImplementation.svelte';
+  import KnowSources from './editors/KnowSources.svelte';
+  import KnowRights from './editors/KnowRights.svelte';
 
   const editors = {
     Basic,
@@ -21,7 +23,9 @@
     BooleanAndTextareaList,
     PlanCommunicating,
     PlanEngaging,
-    IntegrateImplementation
+    IntegrateImplementation,
+    KnowSources,
+    KnowRights
   }
   export let blobRef: number;
 

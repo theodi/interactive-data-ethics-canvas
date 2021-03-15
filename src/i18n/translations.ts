@@ -67,10 +67,9 @@ export default {
         questions: ['Who could be negatively affected by this project?', 'Could the way that data is collected, used or shared cause harm or expose individuals to risk of being re-identified?', 'Could it be used to target,profile or prejudice people, or unfairly restrict access (eg exclusive arrangements)?', 'How are limitations and risks communicated to people?'],
         guidance: `Consider:
         
-        * people whom the data is
-        about;
-        * people impacted by its use
-        * organisations using the data`
+* people whom the data is about;
+* people impacted by its use
+* organisations using the data`
       },
       'openness': {
         title: 'Openness and transparency',
@@ -100,6 +99,16 @@ export default {
       'review': {
         title: 'Reviews and iterations',
         questions: ['How will ongoing data ethics issues be measured, monitored, discussed and actioned?', 'How often will your responses to this canvas be reviewed or updated? When?'],
+        guidance: ''
+      },
+      'sources': {
+        title: 'Data Sources',
+        questions: ['Name/describe your project’s key data sources, whether you’re collecting data yourself or accessing via third parties.'],
+        guidance: ''
+      },
+      'rights': {
+        title: 'Rights around data',
+        questions: [],
         guidance: ''
       }
     }

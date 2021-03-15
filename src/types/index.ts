@@ -16,6 +16,13 @@ export interface CanvasState {
   blobs: BlobState[]
 }
 
+export interface DataSource {
+  title: string;
+  description : string; 
+  url: string;
+  owner: string 
+}
+
 export interface BlobState {
   group: Group;
   id: string;
@@ -40,4 +47,4 @@ export interface CanvasPrivateState {
   blobs: (BlobState & BlobUiState)[]
 }
 
-export type UserContent = string | string[];
+export type UserContent = string | string[] | DataSource[];
