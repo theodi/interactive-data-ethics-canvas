@@ -3,6 +3,8 @@
     import type { UserContent } from '../../types';
     import type { DataSource } from '../../types';
   
+
+    export let questions: number;
   
     export let question: string;
     export let content: DataSource[];

@@ -133,7 +133,7 @@ export const baseLayout: BlobState[] = [
     id: 'actions',
     title: 'Your actions',
     description: 'What actions will you take before moving forward with this project? Which should take priority?',
-    editor: 'Basic',
+    editor: 'Actions',
     row: 2,
     column: 4,
   },

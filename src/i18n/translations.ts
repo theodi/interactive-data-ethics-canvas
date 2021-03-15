@@ -110,6 +110,11 @@ export default {
         title: 'Rights around data',
         questions: [],
         guidance: ''
+      },
+      'actions': {
+        title: 'Your actions',
+        questions: ['What action will you take before moving forward with this project?', 'Who will be responsible for these actions, and who must be involved?', 'Will you openly publish your actions and answers to this canvas?'],
+        guidance: ''
       }
     }
   },

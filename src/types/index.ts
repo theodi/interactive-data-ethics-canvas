@@ -11,9 +11,31 @@ export enum Status {
   COMPLETE = 'COMPLETE',
 }
 
+export enum Priority {
+  HIGH = 'HIGH',
+  MEDIUM = 'MEDIUM',
+  LOW = 'LOW',
+}
+
+export enum Choice {
+  UNSET = 'UNSET',
+  YES = 'YES',
+  NO = 'NO',
+}  
+
 export interface CanvasState {
   uuid: string;
   blobs: BlobState[]
+}
+
+export interface Action {
+  title: string;
+  priority: Priority;
+  responsibility: string;
+  publish: {
+    checked: Choice,
+    text: string
+  }
 }
 
 export interface DataSource {
@@ -47,4 +69,4 @@ export interface CanvasPrivateState {
   blobs: (BlobState & BlobUiState)[]
 }
 
-export type UserContent = string | string[] | DataSource[];
+export type UserContent = string | string[] | DataSource[] | Action[];

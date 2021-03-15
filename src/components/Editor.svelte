@@ -12,6 +12,7 @@
   import IntegrateImplementation from './editors/IntegrateImplementation.svelte';
   import KnowSources from './editors/KnowSources.svelte';
   import KnowRights from './editors/KnowRights.svelte';
+  import Actions from './editors/Actions.svelte';
 
   const editors = {
     Basic,
@@ -25,7 +26,8 @@
     PlanEngaging,
     IntegrateImplementation,
     KnowSources,
-    KnowRights
+    KnowRights,
+    Actions
   }
   export let blobRef: number;
 
