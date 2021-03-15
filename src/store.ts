@@ -36,6 +36,7 @@ const initialCanvas = (): CanvasPrivateState => {
 
 const canvas = () => {
   const { subscribe, set, update } = writable<CanvasPrivateState>(initialCanvas());
+  let blobs;
 
   const loadCanvas = ({ blobs, lastUpdated, title, uuid }: CanvasState) => {
     lastUpdate.set(lastUpdated);
@@ -45,11 +46,11 @@ const canvas = () => {
   const resetState = () => {
     CANVAS_STATE_KEY = uuid();
     lastUpdate.set(new Date());
+    blobs.filter(b => b.focussed).forEach(b => b.focussed = false);
     set(cleanTemplate());
     dispatchEvent(resetEvent);
   }
 
-  let blobs;
   subscribe(c => blobs = c.blobs);
 
   const getBlobId = (index: number) => blobs[index].id;
