@@ -1,4 +1,4 @@
-import type { BlobState } from '../types';
+import { BlobState, Status } from '../types';
 import { Group } from "../types";
 
 export const baseLayout: BlobState[] = [
@@ -10,6 +10,7 @@ export const baseLayout: BlobState[] = [
     editor: 'KnowSources',
     row: 0,
     column: 0,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.KNOW,
@@ -19,6 +20,7 @@ export const baseLayout: BlobState[] = [
     editor: 'KnowRights',
     row: 0,
     column: 1,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.KNOW,
@@ -28,6 +30,7 @@ export const baseLayout: BlobState[] = [
     editor: 'SimpleList',
     row: 0,
     column: 2,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.KNOW,
@@ -37,6 +40,7 @@ export const baseLayout: BlobState[] = [
     editor: 'SimpleList',
     row: 0,
     column: 3,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.EXPLORE,
@@ -46,6 +50,7 @@ export const baseLayout: BlobState[] = [
     editor: 'ExploreReasons',
     row: 1,
     column: 0,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.EXPLORE,
@@ -55,6 +60,7 @@ export const baseLayout: BlobState[] = [
     editor: 'ExplorePositiveEffects',
     row: 1,
     column: 1,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.EXPLORE,
@@ -64,6 +70,7 @@ export const baseLayout: BlobState[] = [
     editor: 'ExploreNegativeEffects',
     row: 1,
     column: 2,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.EXPLORE,
@@ -73,6 +80,7 @@ export const baseLayout: BlobState[] = [
     editor: 'TextareaList',
     row: 1,
     column: 3,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.PLAN,
@@ -82,6 +90,7 @@ export const baseLayout: BlobState[] = [
     editor: 'PlanEngaging',
     row: 2,
     column: 0,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.PLAN,
@@ -91,6 +100,7 @@ export const baseLayout: BlobState[] = [
     editor: 'PlanCommunicating',
     row: 2,
     column: 1,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.PLAN,
@@ -100,6 +110,7 @@ export const baseLayout: BlobState[] = [
     editor: 'BooleanAndTextareaList',
     row: 2,
     column: 2,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.PLAN,
@@ -109,6 +120,7 @@ export const baseLayout: BlobState[] = [
     editor: 'BooleanAndTextareaList',
     row: 2,
     column: 3,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.INTEGRATE,
@@ -118,6 +130,7 @@ export const baseLayout: BlobState[] = [
     editor: 'IntegrateImplementation',
     row: 0,
     column: 4,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.INTEGRATE,
@@ -127,6 +140,7 @@ export const baseLayout: BlobState[] = [
     editor: 'TextareaList',
     row: 1,
     column: 4,
+    status: Status.IN_PROGRESS,
   },
   {
     group: Group.INTEGRATE,
@@ -136,5 +150,6 @@ export const baseLayout: BlobState[] = [
     editor: 'Actions',
     row: 2,
     column: 4,
+    status: Status.IN_PROGRESS,
   },
 ];
