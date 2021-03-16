@@ -55,6 +55,9 @@
   .tab-top {
     padding: 1em;
   }
+  .inactive {
+    cursor: pointer;
+  }
   div {
     position: absolute;
     display: block;
