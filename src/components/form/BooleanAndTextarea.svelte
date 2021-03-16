@@ -1,8 +1,10 @@
 <script lang='ts'>
+  import { v4 as uuid } from 'uuid';
+
   import Question from './Question.svelte';
-  import SelectBox from './SelectBox.svelte';
   import { getLocalization } from '../../i18n';
   import { Choice } from '../../types';
+  import Choices from './Choices.svelte';
 
   export let question: string;
   export let content: { checked: Choice, text: string };
@@ -12,28 +14,31 @@
   $: {
     if (!content) content  = { checked: Choice.UNSET, text: null };
   }
+  const id = uuid();
 </script>
 
 <form>
-  <Question { question } />
+  <div>
+    <Question { question } />
 
-  <SelectBox options={[
-      { value: Choice.UNSET, label: $t(Choice.UNSET) },
-      { value: Choice.YES, label: $t(Choice.YES) },
-      { value: Choice.NO, label: $t(Choice.NO) },
-    ]}
-    bind:value={ content.checked }
-  />
-
+    <Choices bind:value={ content.checked } options={
+      [
+        { value: Choice.YES, label: $t(Choice.YES) },
+        { value: Choice.NO, label: $t(Choice.NO) },
+        { value: Choice.UNSET, label: $t(Choice.UNSET) },
+      ]
+    } />
+  </div>
   <textarea bind:value={ content.text } rows=10></textarea>
 </form>
 
 <style>
   form {
-    display: flex;
-    flex-wrap: wrap;
     padding-bottom: 1em;
-    align-items: baseline;
+  }
+  div {
+    display: flex;
+    flex-wrap: nowrap;
   }
   textarea {
     width: 100%;
@@ -42,4 +47,10 @@
     border: none;
     resize: none;
   }
+  /* form :global(fieldset) {
+    flex-shrink: 0;
+  }
+  /* form :global(p) {
+    max-width: 50%;
+  } */
 </style>

@@ -2,6 +2,10 @@
     import Question from './Question.svelte';
     import Textarea from './Textarea.svelte';
     import BooleanAndTextarea from './BooleanAndTextarea.svelte';
+    import Choices from './Choices.svelte';
+
+    import { getLocalization } from '../../i18n';
+    const { t } = getLocalization();
 
     import { Priority } from '../../types';
     import { Choice } from '../../types';
@@ -24,30 +28,30 @@
     
 </script>
     <form>
+      <Question question={questions[0]} />
         <ol>
-            {#each content as l, i}
-                <h2>Action { i + 1 }</h2>
-                <li>
-                    <Question question={questions[0]} />
-                    <input id='title-{ i }' bind:value={ l.title} />
-                    <SelectBox bind:value={ l.priority }
-                        label={ 'Priority:' }
-                        options={[
-                            { value: Priority.LOW, label: 'Low' },
-                            { value: Priority.MEDIUM, label: 'Medium' },
-                            { value: Priority.HIGH, label: 'High' },
-                        ]}
-                    />
-                    <br><br>
-            {/each}
+          {#each content as l, i}
+            <li>
+              <h2>Action { i + 1 }</h2>
+              <input id='title-{ i }' bind:value={ l.title} />
+              <Choices bind:value={ l.priority }
+                label={ 'Priority:' }
+                options={[
+                    { value: Priority.LOW, label: $t('priority:LOW') },
+                    { value: Priority.MEDIUM, label: $t('priority:MEDIUM') },
+                    { value: Priority.HIGH, label: $t('priority:HIGH') },
+                ]}
+              />
+            </li>
+          {/each}
         </ol>  
     </form>
   <style>
     h2 {
-        font-weight: bold;
-        font-size: 1.4em;
-        padding: 0.7rem;
-        padding-left: 0;
+      font-weight: bold;
+      font-size: 1.4em;
+      padding: 0.7rem;
+      padding-left: 0;
     }  
     form {
         border-bottom: 1px dashed white;
@@ -61,22 +65,12 @@
       border: none;
       background: rgba(255,255,255);
     }
-    span {
-      width: 5%;
-      display: inline-block;
-      text-align: right;
-      padding-right: 1em;
-    }
     form {
       padding-bottom: 1em;
     }
-
-    textarea {
-        width: 100%;
-        font-size: 1em;
-        box-sizing: border-box;
-        border: none;
-        resize: none;
-        margin-bottom: 1em;
+    li {
+      border-top: 1px dashed white;
+      padding-top: 1em;
+      margin-bottom: 1em;
     }
   </style>

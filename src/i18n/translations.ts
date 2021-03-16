@@ -11,9 +11,14 @@ export default {
       filter_by_status_title: 'Filter by status',
       YES: 'Yes',
       NO: 'No',
-      UNSET: 'Yes / No',
+      UNSET: 'Unset',
       canvas_title: 'Canvas title',
       canvas_title_placeholder: 'Enter a name for your canvas',
+    },
+    priority: {
+      LOW: 'Low',
+      MEDIUM: 'Medium',
+      HIGH: 'High',
     },
     status: {
       IN_PROGRESS: 'In progress',
