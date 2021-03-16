@@ -11,8 +11,12 @@
 </g>
 
 <style>
+  g {
+    cursor: pointer;
+  }
   rect {
-    fill: none;
+    fill: black;
+    opacity: 0;
     stroke: none;
   }
 </style>
