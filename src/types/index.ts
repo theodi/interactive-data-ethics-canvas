@@ -33,11 +33,6 @@ export interface CanvasState {
 export interface Action {
   title: string;
   priority: Priority;
-  responsibility: string;
-  publish: {
-    checked: Choice,
-    text: string
-  }
 }
 
 export interface DataSource {
