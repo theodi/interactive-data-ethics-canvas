@@ -9,6 +9,8 @@ export default {
       load_button: 'Load',
       filter_by_group_title: 'Filter by group',
       filter_by_status_title: 'Filter by status',
+      canvas_title: 'Canvas title',
+      canvas_title_placeholder: 'Enter a name for your canvas',
     },
     status: {
       IN_PROGRESS: 'In progress',

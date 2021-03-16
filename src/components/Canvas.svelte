@@ -9,6 +9,7 @@
   import SvgButton from './SvgButton.svelte';
   import Cross from './icons/Cross.svelte';
   import Status from './Status.svelte';
+  import Title from './Title.svelte'
 
   import { canvasState } from '../store';
 
@@ -64,6 +65,9 @@
   </defs>
 
   <CanvasBackground />
+  <foreignObject x=85 y=-85 width=500 height=60>
+    <Title />
+  </foreignObject>
 
   {#each $canvasState.blobs as blobState, index}
     {#if blobState && blobState.dimmed}
