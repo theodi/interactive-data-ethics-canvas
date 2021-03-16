@@ -13,16 +13,16 @@
     <Canvas />
     <ControlPanel />
   </section>
-  <section>
+  <footer>
     <StatusBar />
-  </section>
+  </footer>
 </main>
 
 <style>
 	main {
-		padding: 1em;
 		margin: 0 auto;
     max-width: 1480px;
+    background: var(--pale-grey);
 	}
   :global(:root) {
     --know: hsl(321, 77%, 52%);

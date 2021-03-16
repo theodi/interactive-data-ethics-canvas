@@ -30,7 +30,7 @@
 </script>
 
 <aside class='container'>
-  <div>
+  <div class='narrow-bordered-right wide-bordered-bottom'>
     <button on:click={ () => canvasState.resetState() }>{ $t('new_canvas_button') }</button>
     <div>
       <button on:click={ () => showExportControls = !showExportControls }>{ $t('export_button') }</button>
@@ -47,8 +47,8 @@
     <button on:click={ () => showLoadControls = !showLoadControls }>{ $t('load_button') }</button>  
   </div>
 
-  <div>
-    <fieldset class='two-cols'>
+  <div class='two-cols narrow-bordered-right'>
+    <fieldset class='wide-bordered-bottom narrow-bordered-bottom'>
       <legend><h2>{ $t('filter_by_group_title') }</h2></legend>
 
       <ul>
@@ -61,7 +61,7 @@
       </ul>
     </fieldset>
 
-    <fieldset class='two-cols'>
+    <fieldset class='wide-bordered-bottom'>
       <legend><h2>{ $t('filter_by_status_title') }</h2></legend>
 
       <ul>
@@ -75,7 +75,7 @@
     </fieldset>
   </div>
 
-  <div>
+  <div class="two-cols">
     <Info />
   </div>
 </aside>
@@ -93,11 +93,12 @@
 <style>
   aside {
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-gap: 10px;
-    padding-top: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1em;
+    padding: 1em;
     max-width: 1200px;
     font-size: 1.25em;
+    border-top: 1px dashed var(--dark-blue);
   }
   button {
     width: 100%;
@@ -152,13 +153,27 @@
   .icon-button :global(svg path, svg polygon) {
     fill: white;
   }
+  .narrow-bordered-right {
+    border-right: 1px dashed var(--dark-blue);
+    padding-right: 1em;
+  }
+  .narrow-bordered-bottom {
+    border-bottom: 1px dashed var(--dark-blue);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+  }
   @media (min-width: 1400px) {
+    .narrow-bordered-right {
+      border: none;
+      padding-right: 0;
+    }
     aside {
       display: initial;
-      padding-left: 20px;
-      padding-top: 0;
+      padding: 1em;
       min-width: 180px;
       max-width: 280px;
+      border-top: none;
+      border-left: 1px dashed var(--dark-blue);
     }
     .export-controls {
       position: relative;
@@ -167,6 +182,10 @@
     }
     h2 {
       padding-top: 1em;
+    }
+    .wide-bordered-bottom {
+      border-bottom: 1px dashed var(--dark-blue);
+      padding-bottom: 1em;
     }
   }
 </style>

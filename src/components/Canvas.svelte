@@ -160,7 +160,6 @@
 
 <style>
   svg {
-    background-color: #eee;
     max-width: 1200px;
   }
   .overlay {

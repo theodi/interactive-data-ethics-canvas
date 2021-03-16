@@ -1,6 +1,7 @@
 <script>
   import { lastUpdate } from '../store';
 </script>
+
 <ul>
   <li>Last saved { $lastUpdate.toLocaleString() }</li>
 </ul>  
