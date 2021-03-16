@@ -2,6 +2,7 @@
   import { canvasState, savedCanvases, serialisedCanvas } from '../store';
   import { Group, Status } from '../types';
   import { getLocalization } from '../i18n';
+  import Info from './Info.svelte';
   import DownloadIcon from './icons/noun_Notebook_791773.svelte';
 
   const { t } = getLocalization();
@@ -46,32 +47,37 @@
     <button on:click={ () => showLoadControls = !showLoadControls }>{ $t('load_button') }</button>  
   </div>
 
-  <fieldset class='two-cols'>
-    <legend><h2>{ $t('filter_by_group_title') }</h2></legend>
+  <div>
+    <fieldset class='two-cols'>
+      <legend><h2>{ $t('filter_by_group_title') }</h2></legend>
 
-    <ul>
-      {#each groups as group}
-        <li>
-          <input id={group} type=checkbox bind:group={ visibleGroups } value="{ group }">
-          <label for={group}>{ $t(`group:${group}`) }</label>  
-        </li>
-      {/each}
-    </ul>
-  </fieldset>
+      <ul>
+        {#each groups as group}
+          <li>
+            <input id={group} type=checkbox bind:group={ visibleGroups } value="{ group }">
+            <label for={group}>{ $t(`group:${group}`) }</label>  
+          </li>
+        {/each}
+      </ul>
+    </fieldset>
 
-  <fieldset class='two-cols'>
-    <legend><h2>{ $t('filter_by_status_title') }</h2></legend>
+    <fieldset class='two-cols'>
+      <legend><h2>{ $t('filter_by_status_title') }</h2></legend>
 
-    <ul>
-      {#each statuses as status}
-        <li>
-        <input id={status} type=checkbox bind:group={ visibleStatuses } value="{ status }">
-        <label for={status}>{ $t(`status:${status}`) }</label>
-        </li>
-      {/each}
-    </ul>
-  </fieldset>
+      <ul>
+        {#each statuses as status}
+          <li>
+          <input id={status} type=checkbox bind:group={ visibleStatuses } value="{ status }">
+          <label for={status}>{ $t(`status:${status}`) }</label>
+          </li>
+        {/each}
+      </ul>
+    </fieldset>
+  </div>
 
+  <div>
+    <Info />
+  </div>
 </aside>
 
 {#if showLoadControls}
