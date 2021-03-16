@@ -1,14 +1,13 @@
 <script lang='ts'>
   import Question from './Question.svelte';
+  import SelectBox from './SelectBox.svelte';
+  import { getLocalization } from '../../i18n';
+  import { Choice } from '../../types';
+
   export let question: string;
-  export let questionIndex: number;
   export let content: { checked: Choice, text: string };
 
-  enum Choice {
-    UNSET = 'UNSET',
-    YES = 'YES',
-    NO = 'NO',
-  }
+  const { t } = getLocalization();
 
   $: {
     if (!content) content  = { checked: Choice.UNSET, text: null };
@@ -17,14 +16,14 @@
 
 <form>
   <Question { question } />
-  <fieldset class:highlight={ content.checked !== Choice.YES && content.checked !== Choice.NO }>
-    <input id='opt-yes-{questionIndex}'  type='radio' bind:group={ content.checked } value={ Choice.YES } />
-    <label for='opt-yes-{questionIndex}'>Yes</label>
-    /
-    <input id='opt-no-{questionIndex}' type='radio' bind:group={ content.checked } value={ Choice.NO } />
-    <label for='opt-no-{questionIndex}'>No</label>
-    <input id='opt-unset' type='radio' bind:group={ content.checked } value={ Choice.UNSET } />
-  </fieldset>
+
+  <SelectBox options={[
+      { value: Choice.UNSET, label: $t(Choice.UNSET) },
+      { value: Choice.YES, label: $t(Choice.YES) },
+      { value: Choice.NO, label: $t(Choice.NO) },
+    ]}
+    bind:value={ content.checked }
+  />
 
   <textarea bind:value={ content.text } rows=10></textarea>
 </form>
@@ -34,20 +33,8 @@
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 1em;
+    align-items: baseline;
   }
-  [type=radio] {
-    appearance: none;
-    position: fixed;
-  }
-  :checked + label {
-    text-decoration: underline;
-    font-weight: bold;
-  }
-
-  fieldset {
-    margin-bottom: 0.5em;
-  }
-
   textarea {
     width: 100%;
     font-size: 1em;

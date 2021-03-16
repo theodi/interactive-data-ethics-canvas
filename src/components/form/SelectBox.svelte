@@ -6,7 +6,7 @@
   const id = uuid();
 </script>
 
-<label for={ id }>{ label }</label>
+{#if label}<label for={ id }>{ label }</label>{/if}
 <select { id } bind:value>
   {#each options as { value: v, label: l }}
     <option value={ v }>{ l }</option>
@@ -18,5 +18,6 @@
     padding: 0.25em 0.5em;
     line-height: 1.1;
     background-color: white;
+    display: inline-block;
   }
 </style>
