@@ -16,10 +16,6 @@
   {/each}
   <rect width={columns - 1} height={rows - 1} />
 </g>
-<text
-  x={Math.round((columns + overlap * 2) * spacing)}
-  y={- topMargin + 3}>Data Ethics Canvas</text
->
 <g transform="translate(0 -10) scale(0.75)">
   <OdiLogo />
 </g>
@@ -27,11 +23,5 @@
 <style>
   .cloud {
     fill: white;
-  }
-  text {
-    font-size: 3em;
-    text-anchor: end;
-    font-weight: bold;
-    fill: #345b9f;
   }
 </style>

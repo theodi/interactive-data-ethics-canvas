@@ -65,7 +65,7 @@
   </defs>
 
   <CanvasBackground />
-  <foreignObject x=85 y=-85 width=500 height=60>
+  <foreignObject x=85 y=-85 width=950 height=60>
     <Title />
   </foreignObject>
 

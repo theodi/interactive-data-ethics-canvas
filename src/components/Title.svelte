@@ -5,23 +5,31 @@
 </script>
 
 <fieldset>
-  <label for='title'>{ $t('canvas_title') }</label>
-  <input id='title' bind:value={ $canvasState.title } placeholder={ $t('canvas_title_placeholder')}>
+  <input class:unset={ $canvasState.title === '' || $canvasState.title === undefined } id='title' bind:value={ $canvasState.title } placeholder={ $t('data_ethics_canvas')}>
 </fieldset>
 
 <style>
   fieldset {
     padding: 1em;
   }
-  label, input {
-    display: block;
-  }
   input {
-    font-size: 1.5em;
-    width: 100%
-  }
-  label {
+    display: block;
+    text-align: right;
+    font-size: 3.0em;
+    font-weight: bold;
+    width: 100%;
+    background: none;
     color: var(--dark-blue);
-    padding-bottom: 0.2em;
+    outline: none;
+  }
+  .unset {
+    text-decoration: underline solid;
+    cursor: pointer;
+  }
+  input:focus {
+    text-decoration: underline dotted;
+  }
+  ::placeholder {
+    opacity: 1;
   }
 </style>

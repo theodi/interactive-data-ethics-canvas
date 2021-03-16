@@ -14,6 +14,7 @@ export default {
       UNSET: 'Unset',
       canvas_title: 'Canvas title',
       canvas_title_placeholder: 'Enter a name for your canvas',
+      data_ethics_canvas: 'Data Ethics Canvas',
     },
     priority: {
       LOW: 'Low',
