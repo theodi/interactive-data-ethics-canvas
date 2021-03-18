@@ -3,14 +3,23 @@
   import CanvasCard from './CanvasCard.svelte';
   import { refreshStoredCanvasList } from '../events';
 
+  const loadFromLocalStorage = (uuid) => JSON.parse(localStorage.getItem(uuid), canvasReviver);
+  const saveToLocalStorage = (uuid, canvas) => localStorage.setItem(uuid, JSON.stringify(canvas));
+
   let currentCanvas;
   const load = (uuid: string) => {
-    const data = JSON.parse(localStorage.getItem(uuid), canvasReviver);
+    const data = loadFromLocalStorage(uuid);
     canvasState.loadCanvas(data);
   }
 
   const deleteCanvas = (uuid: string) => {
     localStorage.removeItem(uuid);
+    dispatchEvent(refreshStoredCanvasList);
+  }
+  const renameSavedCanvas = (uuid: string, newName: string) => {
+    const data = loadFromLocalStorage(uuid);
+    data.title = newName;
+    saveToLocalStorage(uuid, data);
     dispatchEvent(refreshStoredCanvasList);
   }
 
@@ -24,12 +33,18 @@
 <div>
   <ul>
     <li class='loaded'>
-      <CanvasCard canvas={ currentCanvas } loaded={ true } />
+      <CanvasCard canvas={ currentCanvas }
+        loaded={ true }
+        renameAction={ (newName) => $canvasState.title = newName }
+      />
     </li>
     {#each $savedCanvases as canvas }
       {#if canvas.uuid !== $canvasState.uuid }
       <li class='loadable' on:click={ () => load(canvas.uuid)}>
-        <CanvasCard { canvas } deleteAction={ () => deleteCanvas(canvas.uuid) } />
+        <CanvasCard { canvas }
+          renameAction={ (newName) => renameSavedCanvas(canvas.uuid, newName) }
+          deleteAction={ () => deleteCanvas(canvas.uuid) }
+        />
       </li>
       {/if}
     {/each}
@@ -51,6 +66,9 @@
     border: none;
     background-color: var(--dark-blue);
     color: white;
+  }
+  .loaded :global(svg) {
+    fill: white;
   }
   .loadable {
     cursor: pointer;
