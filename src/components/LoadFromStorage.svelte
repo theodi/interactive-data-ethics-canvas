@@ -1,11 +1,17 @@
 <script lang='typescript'>
   import { savedCanvases, canvasState, lastUpdate, canvasReviver } from '../store';
   import CanvasCard from './CanvasCard.svelte';
+  import { refreshStoredCanvasList } from '../events';
 
   let currentCanvas;
   const load = (uuid: string) => {
     const data = JSON.parse(localStorage.getItem(uuid), canvasReviver);
     canvasState.loadCanvas(data);
+  }
+
+  const deleteCanvas = (uuid: string) => {
+    localStorage.removeItem(uuid);
+    dispatchEvent(refreshStoredCanvasList);
   }
 
   $: {
@@ -23,7 +29,7 @@
     {#each $savedCanvases as canvas }
       {#if canvas.uuid !== $canvasState.uuid }
       <li class='loadable' on:click={ () => load(canvas.uuid)}>
-        <CanvasCard { canvas } />
+        <CanvasCard { canvas } deleteAction={ () => deleteCanvas(canvas.uuid) } />
       </li>
       {/if}
     {/each}
