@@ -23,7 +23,6 @@ export const initLocalizationContext = () => {
   // Initialize our services
   const i18n = new I18nService();
   const tranlator = new I18NextTranslationService(i18n);
-  console.log("INITIALIZING");
   // Setting the Svelte context
   setLocalization({
     t: tranlator.translate,

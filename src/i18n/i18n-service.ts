@@ -19,6 +19,8 @@ export class I18nService {
 
   // Initializing i18n
   initialize() {
+    if (this.i18n.isInitialized) return;
+
     this.i18n.init({
       lng: INITIAL_LANGUAGE,
       fallbackLng: 'en',
