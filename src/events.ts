@@ -1,3 +1,3 @@
-const resetEvent = new Event('odi_canvasreset');
+const refreshStoredCanvasList = new Event('odi_canvas_refresh');
 
-export { resetEvent };
+export { refreshStoredCanvasList };

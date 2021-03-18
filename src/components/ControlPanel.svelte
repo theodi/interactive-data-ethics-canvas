@@ -80,15 +80,6 @@
   </div>
 </aside>
 
-{#if showLoadControls}
-<h2>Saved canvases</h2>
-<ul>
-  {#each $savedCanvases as canvas }
-    <li>{canvas}</li>
-  {/each}
-</ul>
-<button on:click={ () => { localStorage.clear(); canvasState.resetState();} }>DELETE ALL</button>
-{/if}
 
 <style>
   aside {

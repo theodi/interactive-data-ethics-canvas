@@ -2,7 +2,7 @@ import { derived, writable, readable, Writable } from 'svelte/store';
 import { baseLayout } from './templates/canvas-base';
 import { v4 as uuid } from 'uuid';
 import type { CanvasState, CanvasPrivateState } from './types';
-import { resetEvent } from './events';
+import { refreshStoredCanvasList } from './events';
 
 export const lastUpdate = <Writable<Date>>writable(new Date());
 
@@ -11,8 +11,8 @@ const CURRENT_KEY = 'canvas_current_key';
 
 let CANVAS_STATE_KEY: string = localStorage.getItem(CURRENT_KEY) || uuid();
 
-const cleanTemplate = () => ({
-  uuid: CANVAS_STATE_KEY, blobs: baseLayout
+const cleanTemplate = (uuid) => ({
+  uuid, blobs: baseLayout
 })
 
 /**
@@ -28,32 +28,32 @@ export const canvasReviver = (key, value) => {
 
 const initialCanvas = (): CanvasPrivateState => {
   const localStorageCanvas = JSON.parse(localStorage.getItem(CANVAS_STATE_KEY), canvasReviver);
-  if (localStorageCanvas === undefined) return cleanTemplate();
+  if (localStorageCanvas === undefined) return cleanTemplate(CANVAS_STATE_KEY);
   const { blobs, title, lastUpdated, uuid } = localStorageCanvas;
-  lastUpdate.set(lastUpdated);
+  lastUpdate.set(lastUpdated || new Date());
   return { blobs, title, uuid };
 };
 
 const canvas = () => {
   const { subscribe, set, update } = writable<CanvasPrivateState>(initialCanvas());
-  let blobs;
+  let currentBlobs;
 
   const loadCanvas = ({ blobs, lastUpdated, title, uuid }: CanvasState) => {
+    CANVAS_STATE_KEY = uuid;
     lastUpdate.set(lastUpdated);
     set({ blobs, uuid, title });
+    dispatchEvent(refreshStoredCanvasList);
   };
 
   const resetState = () => {
-    CANVAS_STATE_KEY = uuid();
-    lastUpdate.set(new Date());
-    blobs.filter(b => b.focussed).forEach(b => b.focussed = false);
-    set(cleanTemplate());
-    dispatchEvent(resetEvent);
+    currentBlobs.filter(b => b.focussed).forEach(b => b.focussed = false);
+    const blankCanvas = cleanTemplate(uuid());
+    loadCanvas({ ...blankCanvas, title: undefined, lastUpdated: new Date() });
   }
 
-  subscribe(c => blobs = c.blobs);
+  subscribe(c => currentBlobs = c.blobs);
 
-  const getBlobId = (index: number) => blobs[index].id;
+  const getBlobId = (index: number) => currentBlobs[index].id;
 
   return {
     subscribe,
@@ -88,14 +88,19 @@ export const serialisedCanvas = derived<[Writable<CanvasPrivateState>, Writable<
 );
 
 serialisedCanvas.subscribe(c => {
+  if (!CANVAS_STATE_KEY) return;
   localStorage.setItem(CURRENT_KEY, CANVAS_STATE_KEY);
   localStorage.setItem(CANVAS_STATE_KEY, JSON.stringify(c));
+  dispatchEvent(refreshStoredCanvasList);
 });
 
-const getLocalCanvases = () => Object.entries(localStorage).filter(([k, v]) => k !== CURRENT_KEY).map(([k, v]) => k);
+const getLocalCanvases = () => Object.entries(localStorage).filter(([k, v]) => k !== CURRENT_KEY).map(([uuid, v]) => {
+  const { title, lastUpdated } = JSON.parse(v, canvasReviver);
+  return { uuid, title, lastUpdated };
+});
 
 export const savedCanvases = readable(getLocalCanvases(), (set) => {
   const handler = () => set(getLocalCanvases());
-  addEventListener('odi_canvasreset', handler, false);
-  return () => removeEventListener('odi_canvasreset', handler, false);
+  addEventListener('odi_canvas_refresh', handler, false);
+  return () => removeEventListener('odi_canvas_refresh', handler, false);
 });

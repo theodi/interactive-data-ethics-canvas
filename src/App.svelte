@@ -45,6 +45,7 @@
     --integrate-light: hsl(201, 100%, 72.5%);
 
     --pale-grey: hsl(0, 0%, 93%);
+    --mid-grey: #777;
     --dark-blue: hsl(218, 51%, 41%);
   }
   @media (min-width: 1400px) {
