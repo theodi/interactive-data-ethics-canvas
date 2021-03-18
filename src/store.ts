@@ -21,7 +21,7 @@ const cleanTemplate = () => ({
  * @param value 
  * @returns 
  */
-const canvasReviver = (key, value) => {
+export const canvasReviver = (key, value) => {
   if (key === 'lastUpdated') return new Date(value);
   return value;
 }

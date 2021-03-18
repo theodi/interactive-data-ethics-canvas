@@ -3,6 +3,8 @@
   import ControlPanel from './components/ControlPanel.svelte';
   import Console from './components/Console.svelte';
   import StatusBar from './components/StatusBar.svelte';
+  import Upload from './components/Upload.svelte';
+  import LoadFromStorage from './components/LoadFromStorage.svelte';
 
   import { initLocalizationContext } from './i18n';
   initLocalizationContext();
@@ -16,6 +18,13 @@
   <footer>
     <StatusBar />
   </footer>
+
+  <section>
+    <h1>Work in progress</h1>
+    <Upload />
+    <LoadFromStorage />
+
+  </section>
 </main>
 
 <style>
