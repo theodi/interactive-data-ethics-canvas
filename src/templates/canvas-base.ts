@@ -11,6 +11,8 @@ export const baseLayout: BlobState[] = [
     row: 0,
     column: 0,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.KNOW,
@@ -21,6 +23,8 @@ export const baseLayout: BlobState[] = [
     row: 0,
     column: 1,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.KNOW,
@@ -31,6 +35,8 @@ export const baseLayout: BlobState[] = [
     row: 0,
     column: 2,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.KNOW,
@@ -41,6 +47,8 @@ export const baseLayout: BlobState[] = [
     row: 0,
     column: 3,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.EXPLORE,
@@ -51,6 +59,8 @@ export const baseLayout: BlobState[] = [
     row: 1,
     column: 0,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.EXPLORE,
@@ -61,6 +71,8 @@ export const baseLayout: BlobState[] = [
     row: 1,
     column: 1,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.EXPLORE,
@@ -71,6 +83,8 @@ export const baseLayout: BlobState[] = [
     row: 1,
     column: 2,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.EXPLORE,
@@ -81,6 +95,8 @@ export const baseLayout: BlobState[] = [
     row: 1,
     column: 3,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.PLAN,
@@ -91,6 +107,8 @@ export const baseLayout: BlobState[] = [
     row: 2,
     column: 0,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.PLAN,
@@ -101,6 +119,8 @@ export const baseLayout: BlobState[] = [
     row: 2,
     column: 1,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.PLAN,
@@ -111,6 +131,8 @@ export const baseLayout: BlobState[] = [
     row: 2,
     column: 2,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.PLAN,
@@ -121,6 +143,8 @@ export const baseLayout: BlobState[] = [
     row: 2,
     column: 3,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.INTEGRATE,
@@ -131,6 +155,8 @@ export const baseLayout: BlobState[] = [
     row: 0,
     column: 4,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.INTEGRATE,
@@ -141,6 +167,8 @@ export const baseLayout: BlobState[] = [
     row: 1,
     column: 4,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
   {
     group: Group.INTEGRATE,
@@ -151,5 +179,7 @@ export const baseLayout: BlobState[] = [
     row: 2,
     column: 4,
     status: Status.IN_PROGRESS,
+    content: null,
+    notes: null,
   },
 ];

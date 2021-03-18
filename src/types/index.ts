@@ -50,9 +50,9 @@ export interface BlobState {
   editor: string;
   row: number;
   column: number;
-  content?: UserContent[];
+  content: UserContent[];
   status: Status;
-  notes?: string;
+  notes: string;
 }
 
 interface BlobUiState {

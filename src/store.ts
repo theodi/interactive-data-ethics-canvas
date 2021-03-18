@@ -11,8 +11,9 @@ const CURRENT_KEY = 'canvas_current_key';
 
 let CANVAS_STATE_KEY: string = localStorage.getItem(CURRENT_KEY) || uuid();
 
-const cleanTemplate = (uuid) => ({
-  uuid, blobs: baseLayout
+const cleanTemplate = (uuid: string) => ({
+  uuid,
+  blobs: baseLayout,
 })
 
 /**
@@ -46,8 +47,9 @@ const canvas = () => {
   };
 
   const resetState = () => {
-    currentBlobs.filter(b => b.focussed).forEach(b => b.focussed = false);
+    // currentBlobs.filter(b => b.focussed).forEach(b => b.focussed = false);
     const blankCanvas = cleanTemplate(uuid());
+    console.log({ blankCanvas });
     loadCanvas({ ...blankCanvas, title: undefined, lastUpdated: new Date() });
   }
 
