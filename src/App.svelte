@@ -18,13 +18,6 @@
   <footer>
     <StatusBar />
   </footer>
-
-  <section>
-    <h1>Work in progress</h1>
-    <Upload />
-    <LoadFromStorage />
-
-  </section>
 </main>
 
 <style>
@@ -48,7 +41,7 @@
     --mid-grey: #777;
     --dark-blue: hsl(218, 51%, 41%);
   }
-  @media (min-width: 1400px) {
+  @media (min-width: 1480px) {
     section {
       display: flex;
     }

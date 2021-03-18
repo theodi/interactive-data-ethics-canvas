@@ -15,7 +15,7 @@
       <form class='name-edit'>
         <input
           bind:value={ newName }
-          on:keyup|preventDefault|stopPropagation={ (e) => {
+          on:keypress|stopPropagation={ (e) => {
             if (!e) return;
             if(e.key == 'Enter') {
               renameAction(newName);
@@ -71,9 +71,6 @@
     height: 1.5em;
     position: relative;
     bottom: -0.4em;
-  }
-  button {
-    background: none;
   }
   .name-edit :global(svg) {
     height: 1em;

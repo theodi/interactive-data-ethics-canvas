@@ -85,3 +85,11 @@ select{
   outline: none;
   cursor: pointer;
 }
+
+.wip {
+  font-family: monospace;
+  font-size: 10pt;
+  border: 2px dotted red;
+  padding: 1em;
+  margin-bottom: 1em;
+}

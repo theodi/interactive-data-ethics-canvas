@@ -51,8 +51,6 @@
   </ul>
 </div>
 
-<button on:click={ () => { localStorage.clear(); canvasState.resetState();} }>DELETE ALL</button>
-
 <style>
   li {
     display: block;
