@@ -28,7 +28,7 @@ export const canvasReviver = (key, value) => {
 
 const initialCanvas = (): CanvasPrivateState => {
   const localStorageCanvas = JSON.parse(localStorage.getItem(CANVAS_STATE_KEY), canvasReviver);
-  if (localStorageCanvas === undefined) return cleanTemplate(CANVAS_STATE_KEY);
+  if (localStorageCanvas === null) return cleanTemplate(CANVAS_STATE_KEY);
   const { blobs, title, lastUpdated, uuid } = localStorageCanvas;
   lastUpdate.set(lastUpdated || new Date());
   return { blobs, title, uuid };
