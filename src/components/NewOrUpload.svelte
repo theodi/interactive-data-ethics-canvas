@@ -9,9 +9,9 @@
 
 <nav>
   {#if actionComponent}
-    <svelte:component this={ actionComponent } />
+    <svelte:component this={ actionComponent } doneAction={ () => actionComponent = undefined }/>
   {:else}
-    <button class='large-button' on:click={ () => actionComponent = New }>{ $t('new_button') }</button>
-    <button class='large-button' on:click={ () => actionComponent = Upload }>upload_button</button>
+    <button class='large-button' on:click={ () => actionComponent = New }>{ $t('blank_button') }</button>
+    <button class='large-button' on:click={ () => actionComponent = Upload }>{ $t('upload_button') }</button>
   {/if}
 </nav>
