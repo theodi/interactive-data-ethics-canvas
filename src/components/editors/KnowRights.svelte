@@ -19,9 +19,12 @@
 </script>
 
 
-
-{#each sources as l, i}
-    {#if l.title}
-       <DataRight title={ l.title } sourceIndex={i} bind:content={ $canvasState.blobs[ref].content[i] } />
-    {/if}
-{/each}
+{#if sources.length == 0}
+    <p>Please complete the Data Sources section before filling in the rights around your data sources.</p>
+{:else}
+    {#each sources as l, i}
+        {#if l.title}
+            <DataRight title={ l.title } sourceIndex={i} bind:content={ $canvasState.blobs[ref].content[i] } />
+        {/if}
+    {/each}
+{/if}

@@ -1,16 +1,13 @@
 <script lang="ts">
     import Question from './Question.svelte';
     import Textarea from './Textarea.svelte';
-    import BooleanAndTextarea from './BooleanAndTextarea.svelte';
     import Choices from './Choices.svelte';
 
     import { getLocalization } from '../../i18n';
     const { t } = getLocalization();
 
     import { Priority } from '../../types';
-    import { Choice } from '../../types';
     import type { Action } from '../../types';
-    import SelectBox from './SelectBox.svelte';
 
     import type { UserContent } from '../../types';
 
@@ -18,12 +15,12 @@
     export let content: Action[];
 
     const contentTest = (c: UserContent): boolean => c && Array.isArray(c) && c.length > 0;
-    const initialValue = [{ title: null, priority: Priority.MEDIUM}]
+    const initialValue = [{ title: null, priority: Priority.MEDIUM, responsibility: null}]
 
     $: {
         if (!contentTest(content)) content = initialValue;
           const lastItem = content.slice(-1)[0];
-        if (lastItem && lastItem.title) content = [...content,{ title: null, priority: Priority.MEDIUM}];
+        if (lastItem && lastItem.title) content = [...content,{ title: null, priority: Priority.MEDIUM, responsibility: null}];
     }
     
 </script>
@@ -42,6 +39,8 @@
                     { value: Priority.HIGH, label: $t('priority:HIGH') },
                 ]}
               />
+              <br>
+              <Textarea question={ questions[1] } bind:content={ l.responsibility } />
             </li>
           {/each}
         </ol>  
