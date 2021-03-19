@@ -20,7 +20,7 @@
 <style>
 	main {
 		margin: 0 auto;
-    max-width: 1480px;
+    max-width: 1200px;
     background: var(--pale-grey);
 	}
   :global(:root) {
@@ -39,6 +39,9 @@
     --dark-blue: hsl(218, 51%, 41%);
   }
   @media (min-width: 1480px) {
+    main {
+      max-width: 1480px;
+    }
     section {
       display: flex;
     }
