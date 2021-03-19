@@ -20,7 +20,7 @@
   <form>
     <h2>{ title }</h2>
     <Question question='License / Rights' />
-    <input id='license-rights-{ sourceIndex }' bind:value={ content.license_rights} /> 
+    <input class='ninety-five' id='license-rights-{ sourceIndex }' bind:value={ content.license_rights} /> 
     <Question question='Sensitive?' />
 
     <Choices bind:value={ content.sensitive.checked }
@@ -33,7 +33,7 @@
       }
     />
 
-    <textarea bind:value={ content.sensitive.text } rows=10></textarea>
+    <textarea class='ninety-five' bind:value={ content.sensitive.text } rows=10></textarea>
   </form>
  
   <style>

@@ -7,7 +7,7 @@ import Question from './Question.svelte';
 
 <form>
   <Question { question } />
-  <textarea bind:value={ content } rows=10></textarea>
+  <textarea class='ninety-five' bind:value={ content } rows=10></textarea>
 </form>
 
 <style>

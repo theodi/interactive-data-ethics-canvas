@@ -19,7 +19,7 @@
   <Question { question } />
   <ol>
     {#each content as value, i}
-      <li><span>{ i + 1 }</span><input id='item-{ i }' bind:value /></li>
+      <li class='ninety-five'><span>{ i + 1 }</span><input id='item-{ i }' bind:value /></li>
     {/each}
   </ol>  
 </form>

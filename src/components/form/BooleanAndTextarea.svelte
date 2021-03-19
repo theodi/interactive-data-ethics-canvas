@@ -29,7 +29,7 @@
       ]
     } />
   </div>
-  <textarea bind:value={ content.text } rows=10></textarea>
+  <textarea class='ninety-five' bind:value={ content.text } rows=10></textarea>
 </form>
 
 <style>

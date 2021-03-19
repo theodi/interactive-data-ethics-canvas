@@ -24,7 +24,7 @@
     <Question { question } />
     <ol>
         {#each content as l, i}
-            <li><Question question={'Title'} /><input id='title-{ i }' bind:value={ l.title} /><Question question={'Description'}/><textarea id='description-{ i}' bind:value={ l.description } rows=10></textarea><Question question={'URL'}/><input id='url-{ i }' bind:value={ l.url} /><Question question={'Owner'}/><input id='owner-{ i }' bind:value={ l.owner} /></li>
+            <li><Question question={'Title'} /><input class='ninety-five' id='title-{ i }' bind:value={ l.title} /><Question question={'Description'}/><textarea class='ninety-five' id='description-{ i}' bind:value={ l.description } rows=10></textarea><Question question={'URL'}/><input class='ninety-five' id='url-{ i }' bind:value={ l.url} /><Question question={'Owner'}/><input class='ninety-five' id='owner-{ i }' bind:value={ l.owner} /></li>
         {/each}
     </ol>  
   </form>

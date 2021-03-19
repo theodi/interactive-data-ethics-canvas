@@ -33,7 +33,7 @@
           {#each content as l, i}
             <li>
               <h2>Action { i + 1 }</h2>
-              <input id='title-{ i }' bind:value={ l.title} />
+              <input class='ninety-five' id='title-{ i }' bind:value={ l.title} />
               <Choices bind:value={ l.priority }
                 label={ 'Priority:' }
                 options={[

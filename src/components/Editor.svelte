@@ -46,4 +46,9 @@
     padding: 0.7rem;
     overflow-y: auto;
   }
+  section :global(.ninety-five) {
+    max-width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%
+  }
 </style>
