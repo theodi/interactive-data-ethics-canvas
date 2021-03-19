@@ -17,6 +17,7 @@
     text-align: right;
     font-size: 3.0em;
     font-weight: bold;
+    padding: 0;
     width: 100%;
     background: none;
     color: var(--dark-blue);

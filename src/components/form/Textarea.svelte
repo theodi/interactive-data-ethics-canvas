@@ -16,7 +16,6 @@ import Question from './Question.svelte';
   }
   textarea {
     width: 100%;
-    font-size: 1em;
     box-sizing: border-box;
     border: none;
     resize: none;
