@@ -5,7 +5,7 @@
 </script>
 
 <fieldset>
-  <input class:unset={ $canvasState.title === '' || $canvasState.title === undefined } id='title' bind:value={ $canvasState.title } placeholder={ $t('data_ethics_canvas')}>
+  <input id='title' bind:value={ $canvasState.title } placeholder={ $t('data_ethics_canvas')}>
 </fieldset>
 
 <style>
@@ -22,11 +22,7 @@
     color: var(--dark-blue);
     outline: none;
   }
-  .unset {
-    text-decoration: underline solid;
-    cursor: pointer;
-  }
-  input:focus {
+  input:hover, input:focus {
     text-decoration: underline dotted;
   }
   ::placeholder {
