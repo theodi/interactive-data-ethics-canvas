@@ -39,7 +39,10 @@
     <div class='narrow-bordered-right wide-bordered-bottom'>
       <button class='large-button' on:click={ () => sidebarComponent = LoadControls }>{ $t('new_button') }</button>
       <a class='large-button' href='{ dataUrl }' download='{ downloadFilename }'>{ $t('export_button') }</a>
-      <button class='large-button' >{ $t('print_button') }</button>  
+      <a
+        class='large-button'
+        href='report?uuid={ $canvasState.uuid }'
+        target='_blank'>{ $t('print_button') }</a>  
     </div>
 
     <div class='two-cols narrow-bordered-right'>
@@ -135,13 +138,6 @@
   .container {
     position: relative;
   }
-  .export-controls {
-    position: absolute;
-    left: 20%;
-    top: 50px;
-    background: var(--pale-grey);
-    padding: 20px;
-  }
   .narrow-bordered-right {
     border-right: 1px dashed var(--dark-blue);
     padding-right: 1em;
@@ -163,11 +159,6 @@
       border-top: none;
       border-left: 1px dashed var(--dark-blue);
       overflow-y: auto;
-    }
-    .controls {
-      position: relative;
-      left: initial;
-      top: -1em;
     }
     h2 {
       padding-top: 1em;
