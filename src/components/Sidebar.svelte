@@ -2,7 +2,7 @@
   import { getContext } from 'svelte';
   import { getLocalization } from '../i18n';
   import { canvasState } from '../store';
-  import marked from 'marked';
+  import Guidance from './Guidance.svelte';
 
   export let blobIndex: number;
 
@@ -27,9 +27,7 @@
       </ul>
       <div class={ group }>
         {#if selected == 'guidance'}
-        <section class="guidance" >
-          {@html marked($t(`areas:${ id }.guidance`)) }
-        </section>
+          <Guidance id={ id } />
         {/if}
         {#if selected == 'notes'}
         <section>
@@ -71,16 +69,6 @@
   h2 {
     font-weight: bold;
     font-size: 1.25em;
-  }
-  :global(.guidance p) {
-    padding-bottom: 1em;
-  }
-  :global(.guidance ul) {
-    padding-left: 1em;
-    list-style: "\203A";
-  }
-  :global(.guidance li) {
-    padding-left: 1em;
   }
   textarea {
     width: 100%;
