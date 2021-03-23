@@ -3,6 +3,7 @@ import { baseLayout } from './templates/canvas-base';
 import { v4 as uuid } from 'uuid';
 import type { CanvasState, CanvasPrivateState } from './types';
 import { refreshStoredCanvasList } from './events';
+import { canvasReviver } from './utils/canvas-reviver';
 
 export const lastUpdate = <Writable<Date>>writable(new Date());
 
@@ -15,17 +16,6 @@ const cleanTemplate = (uuid: string) => ({
   uuid,
   blobs: baseLayout,
 })
-
-/**
- * JSON reviver function to inflate lastUpdated to JS Date object 
- * @param key 
- * @param value 
- * @returns 
- */
-export const canvasReviver = (key, value) => {
-  if (key === 'lastUpdated') return new Date(value);
-  return value;
-}
 
 const initialCanvas = (): CanvasPrivateState => {
   const localStorageCanvas = JSON.parse(localStorage.getItem(CANVAS_STATE_KEY), canvasReviver);

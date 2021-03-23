@@ -1,6 +1,7 @@
 <script>
   let fileJSON, fileinput;
-  import { canvasState, canvasReviver } from '../store';
+  import { canvasState } from '../store';
+  import { canvasReviver } from '../utils/canvas-reviver';
 
 	const onFileSelected =(e)=>{
     let file = e.target.files[0];

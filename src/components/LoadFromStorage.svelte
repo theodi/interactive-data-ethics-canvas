@@ -1,7 +1,8 @@
 <script lang='typescript'>
-  import { savedCanvases, canvasState, lastUpdate, canvasReviver } from '../store';
+  import { savedCanvases, canvasState, lastUpdate } from '../store';
   import CanvasCard from './CanvasCard.svelte';
   import { refreshStoredCanvasList } from '../events';
+  import { canvasReviver } from '../utils/canvas-reviver';
 
   const loadFromLocalStorage = (uuid) => JSON.parse(localStorage.getItem(uuid), canvasReviver);
   const saveToLocalStorage = (uuid, canvas) => localStorage.setItem(uuid, JSON.stringify(canvas));
