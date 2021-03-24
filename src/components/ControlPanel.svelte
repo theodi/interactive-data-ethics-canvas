@@ -16,6 +16,8 @@
   let visibleStatuses = statuses;
   let sidebarComponent = undefined;
 
+  let infoPane = undefined;
+
   $: {
     for ( let i = 0; i < $canvasState.blobs.length; i++ ) {
       filtered.setState(
@@ -68,7 +70,7 @@
 
         <ul>
           {#each groups as group}
-            <li>
+            <li on:mouseover={ () => infoPane = group } on:mouseout={ () => infoPane = undefined }>
               <input id={group} type=checkbox bind:group={ visibleGroups } value="{ group }">
               <label for={group}>{ $t(`group:${group}`) }</label>  
             </li>
@@ -78,7 +80,7 @@
     </div>
 
     <div class="two-cols">
-      <Info />
+      <Info { infoPane }/>
     </div>
   {/if}
 </aside>

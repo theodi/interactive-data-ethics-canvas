@@ -36,6 +36,36 @@ export default {
     file: {
       Download: 'Download'
     },
+    info: {
+      default: `
+        <p>
+          The <a href="https://theodi.org/article/data-ethics-canvas/" target="_blank">ODI Data Ethics Canvas</a>
+          is a tool for anyone who collects, shares or uses data. It helps identify and manage ethical issues –
+          at the start of a project that uses data, and throughout. It encourages you to ask important questions
+          about projects that use data, and reflect on the responses. These might be:
+        </p>
+        <ul>
+          <li>What is your primary purpose for using data in this project?</li>
+          <li>Who could be negatively affected by this project?</li>
+        </ul>
+        <p>
+          The Data Ethics Canvas provides a framework to develop ethical guidance that suits any context, whatever
+          the project’s size or scope.
+        </p>
+      `,
+      KNOW: `
+        <p>Information about the KNOW section</p>
+      `,
+      EXPLORE: `
+        <p>Information about the EXPLORE section</p>
+      `,
+      PLAN: `
+        <p>Information about the PLAN section</p>
+      `,
+      INTEGRATE: `
+        <p>Information about the INTEGRATE section</p>
+      `,
+    },
     areas: {
       limitations: {
         title: 'Limitations in data sources',
