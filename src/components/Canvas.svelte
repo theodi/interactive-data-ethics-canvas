@@ -168,6 +168,7 @@
 <style>
   svg {
     max-width: 1200px;
+    width: 100%;
   }
   .overlay {
     fill: white;
