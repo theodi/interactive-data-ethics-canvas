@@ -33,6 +33,8 @@
     height: 100%;
     color: white;
     font-size: 0.8em;
+    position: fixed;
+    width: 100%;
   }
   section.focussed {
     font-size: 1em;

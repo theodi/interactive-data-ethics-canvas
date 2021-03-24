@@ -45,7 +45,7 @@
     width: 100%;
     height: 100%;
     color: white;
-    position: relative;
+    position: fixed;
   }
   .tabs {
     display: flex;
