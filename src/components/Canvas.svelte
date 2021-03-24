@@ -12,6 +12,7 @@
   import Title from './Title.svelte'
 
   import { canvasState } from '../store';
+  import { filtered } from '../store/filtered';
 
   const spacing = 200;
   const overlap = 0.05;
@@ -36,7 +37,9 @@
     topMargin,
   });
 
-  $: focusBlob = $canvasState.blobs.findIndex((x) => x.focussed === true);
+  const hovered = {};
+  let focussed = undefined;
+
   const contentBoxSize = spacing * 0.8;
   const contentBoxOffset = (spacing - contentBoxSize) / 2;
   const contentScale = 0.8;
@@ -57,9 +60,14 @@
     topMargin + bottomMargin}"
 >
   <defs>
-    {#each $canvasState.blobs as blobState, index}
+    {#each $canvasState.blobs as { row, column, id }, index}
       <g id={'blob-' + index}>
-        <Blob {...blobState} />
+        <Blob
+          { row } { column }
+          hovered={ hovered[id] }
+          focussed={ focussed === index }
+          dimmed={ $filtered[id] }
+          />
       </g>
     {/each}
   </defs>
@@ -69,14 +77,13 @@
     <Title />
   </foreignObject>
 
-  {#each $canvasState.blobs as blobState, index}
-    {#if blobState && blobState.dimmed}
+  {#each $canvasState.blobs as { id, column, row }, index}
+    {#if $filtered[id] }
       <g class="dimmed">
         <use xlink:href={`#blob-${index}`} />
         <g
-          transform="translate({blobState.column * spacing} {blobState.row *
+          transform="translate({column * spacing} {row *
             spacing})"
-          on:click={() => (blobState.focussed = true)}
         >
           <foreignObject
             x={contentBoxOffset}
@@ -84,27 +91,27 @@
             width={contentBoxSize}
             height={contentBoxSize}
           >
-            <AreaContent blobRef={index} />
+            <AreaContent blobRef={index} focussed={ false } />
           </foreignObject>
         </g>
       </g>
     {/if}
   {/each}
 
-  {#each $canvasState.blobs as blobState, index}
-    {#if blobState && !blobState.focussed && !blobState.dimmed}
+  {#each $canvasState.blobs as { id, group, column, row }, index}
+    {#if focussed !== index && !$filtered[id] }
       <g
-        on:mouseover={() => (blobState.hovered = true)}
-        on:mouseout={() => (blobState.hovered = false)}
+        on:mouseover={() => (hovered[id] = true)}
+        on:mouseout={() => (hovered[id] = false)}
       >
         <use
-          class={blobState.group.toLowerCase()}
+          class={group.toLowerCase()}
           xlink:href={`#blob-${index}`}
         />
         <g
-          transform="translate({blobState.column * spacing} {blobState.row *
+          transform="translate({column * spacing} {row *
             spacing})"
-          on:click={() => { blobState.focussed = true; blobState.hovered = false; } }
+          on:click={() => { focussed = index; hovered[id] = false; } }
         >
           <foreignObject
             x={contentBoxOffset}
@@ -112,14 +119,14 @@
             width={contentBoxSize}
             height={contentBoxSize}
           >
-            <AreaContent blobRef={index} />
+            <AreaContent blobRef={index} focussed={ false }/>
           </foreignObject>
         </g>
       </g>
     {/if}
   {/each}
 
-  {#if focusBlob > -1}
+  {#if focussed !== undefined}
     <g transition:fade>
       <rect
         class="overlay"
@@ -127,12 +134,12 @@
         y={-margin - topMargin}
         width={width + 2 * margin}
         height={height + 2 * margin + topMargin}
-        on:click={() => ($canvasState.blobs[focusBlob].focussed = false)}
+        on:click={() => (focussed = undefined)}
       />
     </g>
     <use
-      class={$canvasState.blobs[focusBlob].group.toLowerCase()}
-      xlink:href={`#blob-${focusBlob}`}
+      class={$canvasState.blobs[focussed].group.toLowerCase()}
+      xlink:href={`#blob-${focussed}`}
     />
     <g transition:fade>
       <foreignObject
@@ -142,17 +149,17 @@
         width={content.focussed.size}
         height={content.focussed.size}
       >
-        <AreaContent blobRef={focusBlob} />
+        <AreaContent blobRef={focussed} focussed={ true }/>
       </foreignObject>
       <SvgButton
         x={580}
         y={-10}
-        action={() => ($canvasState.blobs[focusBlob].focussed = false)}
+        action={() => (focussed = undefined)}
         icon={Cross}
       />
 
-      <Sidebar blobIndex={ focusBlob } />
-      <Status ref={ focusBlob }/>
+      <Sidebar blobIndex={ focussed } />
+      <Status ref={ focussed }/>
 
     </g>
   {/if}

@@ -3,14 +3,13 @@
   import Editor from './Editor.svelte';
 
   export let blobRef: number;
+  export let focussed: boolean;
 
   let title: string;
   let description: string;
-  let focussed: boolean;
   $: {
     ({
       title,
-      focussed,
       description
     } = $canvasState.blobs[blobRef]);
   }

@@ -23,6 +23,8 @@ export enum Choice {
   NO = 'NO',
 }  
 
+export type AreaIdentifier = 'sources' | 'rights' | 'limitations' | 'ethical-legislative' | 'reasons' | 'positive-effects' | 'negative-effects' | 'mitigations' | 'engaging' | 'communicating' | 'openness' | 'sharing' | 'implementation' | 'review' | 'actions';
+
 export interface CanvasState {
   uuid: string;
   title: string;
@@ -45,7 +47,7 @@ export interface DataSource {
 
 export interface BlobState {
   group: Group;
-  id: string;
+  id: AreaIdentifier;
   title: string;
   description: string;
   editor: string;
@@ -56,15 +58,9 @@ export interface BlobState {
   notes: string;
 }
 
-interface BlobUiState {
-  hovered?: boolean;
-  focussed?: boolean;
-  dimmed?: boolean;
-}
-
 export interface CanvasPrivateState {
   uuid: string;
-  blobs: (BlobState & BlobUiState)[]
+  blobs: BlobState[]
   title?: string;
 }
 

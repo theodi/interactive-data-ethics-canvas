@@ -1,5 +1,6 @@
 <script lang="ts">
   import { canvasState, savedCanvases, serialisedCanvas } from '../store';
+  import { filtered } from '../store/filtered';
   import { Group, Status } from '../types';
   import { getLocalization } from '../i18n';
   import Info from './Info.svelte';
@@ -17,9 +18,12 @@
 
   $: {
     for ( let i = 0; i < $canvasState.blobs.length; i++ ) {
-      $canvasState.blobs[i].dimmed = !(
-        visibleGroups.includes($canvasState.blobs[i].group) &&
-        visibleStatuses.includes($canvasState.blobs[i].status || Status.IN_PROGRESS)
+      filtered.setState(
+        $canvasState.blobs[i].id,
+        !(
+          visibleGroups.includes($canvasState.blobs[i].group) &&
+          visibleStatuses.includes($canvasState.blobs[i].status || Status.IN_PROGRESS)
+        )
       )
     }
   }

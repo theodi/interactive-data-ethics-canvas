@@ -39,7 +39,6 @@ const canvas = () => {
   const resetState = () => {
     // currentBlobs.filter(b => b.focussed).forEach(b => b.focussed = false);
     const blankCanvas = cleanTemplate(uuid());
-    console.log({ blankCanvas });
     loadCanvas({ ...blankCanvas, title: undefined, lastUpdated: new Date() });
   }
 
@@ -69,7 +68,7 @@ export const serialisedCanvas = derived<[Writable<CanvasPrivateState>, Writable<
     const uuid = $s[0].uuid;
     const lastUpdated: Date = $s[1];
     const title = $s[0].title;
-    const blobs = $s[0].blobs.map(({ hovered, focussed, dimmed, ...blobState }) => blobState);
+    const blobs = $s[0].blobs.map(blobState => blobState);
     return {
       uuid,
       blobs,
@@ -96,3 +95,4 @@ export const savedCanvases = readable(getLocalCanvases(), (set) => {
   addEventListener('odi_canvas_refresh', handler, false);
   return () => removeEventListener('odi_canvas_refresh', handler, false);
 });
+
