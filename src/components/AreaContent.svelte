@@ -34,7 +34,8 @@
     color: white;
     font-size: 0.8em;
     position: fixed;
-    width: 100%;
+    left: 0;
+    right: 0;
   }
   section.focussed {
     font-size: 1em;
