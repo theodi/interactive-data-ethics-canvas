@@ -50,20 +50,7 @@
     </div>
 
     <div class='two-cols narrow-bordered-right'>
-      <fieldset class='wide-bordered-bottom narrow-bordered-bottom'>
-        <legend><h2>{ $t('filter_by_group_title') }</h2></legend>
-
-        <ul>
-          {#each groups as group}
-            <li>
-              <input id={group} type=checkbox bind:group={ visibleGroups } value="{ group }">
-              <label for={group}>{ $t(`group:${group}`) }</label>  
-            </li>
-          {/each}
-        </ul>
-      </fieldset>
-
-      <fieldset class='wide-bordered-bottom'>
+      <fieldset class='wide-bordered-bottom  narrow-bordered-bottom'>
         <legend><h2>{ $t('filter_by_status_title') }</h2></legend>
 
         <ul>
@@ -71,6 +58,19 @@
             <li>
             <input id={status} type=checkbox bind:group={ visibleStatuses } value="{ status }">
             <label for={status}>{ $t(`status:${status}`) }</label>
+            </li>
+          {/each}
+        </ul>
+      </fieldset>
+
+      <fieldset class='wide-bordered-bottom'>
+        <legend><h2>{ $t('filter_by_group_title') }</h2></legend>
+
+        <ul>
+          {#each groups as group}
+            <li>
+              <input id={group} type=checkbox bind:group={ visibleGroups } value="{ group }">
+              <label for={group}>{ $t(`group:${group}`) }</label>  
             </li>
           {/each}
         </ul>
