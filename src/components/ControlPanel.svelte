@@ -42,7 +42,7 @@
       backAction={ () => sidebarComponent = undefined }
     />
   {:else}
-    <div class='narrow-bordered-right wide-bordered-bottom'>
+    <div class='content-holder narrow-bordered-right wide-bordered-bottom'>
       <button class='large-button' on:click={ () => sidebarComponent = LoadControls }>{ $t('new_button') }</button>
       <a class='large-button' href='{ dataUrl }' download='{ downloadFilename }'>{ $t('export_button') }</a>
       <a
@@ -52,7 +52,7 @@
     </div>
 
     <div class='two-cols narrow-bordered-right'>
-      <fieldset class='wide-bordered-bottom  narrow-bordered-bottom'>
+      <fieldset class='content-holder wide-bordered-bottom  narrow-bordered-bottom'>
         <legend><h2>{ $t('filter_by_status_title') }</h2></legend>
 
         <ul>
@@ -65,7 +65,7 @@
         </ul>
       </fieldset>
 
-      <fieldset class='wide-bordered-bottom'>
+      <fieldset class='content-holder wide-bordered-bottom'>
         <legend><h2>{ $t('filter_by_group_title') }</h2></legend>
 
         <ul>
@@ -79,7 +79,7 @@
       </fieldset>
     </div>
 
-    <div class="two-cols">
+    <div class="content-holder two-cols">
       <Info { infoPane }/>
     </div>
   {/if}
@@ -100,12 +100,11 @@
 <style>
   aside {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1em;
-    padding: 1em;
+    grid-template-columns: 280px 280px auto;
+    padding: 0.5em;
     max-width: 1200px;
     font-size: 1.25em;
-    border-top: 1px dashed var(--dark-blue);
+    border-top: 1px dashed var(--mid-grey);
   }
   :global(.large-button) {
     width: 100%;
@@ -124,9 +123,6 @@
     top: -5px;
     left: -5px;
   }
-  .two-cols {
-    grid-column-end: span 2;
-  }
   h2 {
     font-size: 1.25em;
     padding-bottom: 1em;
@@ -141,37 +137,36 @@
     width: 50%;
     padding-bottom: 0.5em;
   }
+  fieldset {
+    display: block;
+  }
   .container {
     position: relative;
   }
+  .content-holder {
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+  }
   .narrow-bordered-right {
-    border-right: 1px dashed var(--dark-blue);
-    padding-right: 1em;
+    border-right: 1px dashed var(--mid-grey);
   }
   .narrow-bordered-bottom {
-    border-bottom: 1px dashed var(--dark-blue);
-    padding-bottom: 1em;
-    margin-bottom: 1em;
+    border-bottom: 1px dashed var(--mid-grey);
   }
   @media (min-width: 1480px) {
     .narrow-bordered-right {
-      border: none;
-      padding-right: 0;
+      border-right: none;
     }
     aside {
       display: initial;
-      padding: 1em;
+      padding: 0.5em;
       width: 280px;
       border-top: none;
-      border-left: 1px dashed var(--dark-blue);
+      border-left: 1px dashed var(--mid-grey);
       overflow-y: auto;
     }
-    h2 {
-      padding-top: 1em;
-    }
     .wide-bordered-bottom {
-      border-bottom: 1px dashed var(--dark-blue);
-      padding-bottom: 1em;
+      border-bottom: 1px dashed var(--mid-grey);
     }
   }
 </style>

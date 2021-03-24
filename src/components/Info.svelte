@@ -9,9 +9,6 @@
 </article>
 
 <style>
-  article {
-    padding-top: 1em;
-  }
   article :global(p),
   article :global(ul)
   {
