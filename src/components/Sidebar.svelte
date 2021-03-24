@@ -30,9 +30,7 @@
           <Guidance id={ id } />
         {/if}
         {#if selected == 'notes'}
-        <section>
-          <textarea bind:value={ $canvasState.blobs[blobIndex].notes } rows=20/>
-        </section>  
+          <textarea bind:value={ $canvasState.blobs[blobIndex].notes }/>
         {/if}
   </div>
     </aside>
@@ -59,9 +57,8 @@
   div {
     position: absolute;
     display: block;
-    height: 100%;
-    top: 0;
-    margin-top: 3em;
+    top: 3em;
+    bottom: 0;
     left: 0;
     right: 0;
     padding: 1em;
@@ -72,6 +69,7 @@
   }
   textarea {
     width: 100%;
+    height: 100%;
   }
   .know {
     background: var(--know-light);
