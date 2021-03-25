@@ -3,9 +3,6 @@
     import type { UserContent } from '../../types';
     import type { DataSource } from '../../types';
   
-
-    export let questions: number;
-  
     export let question: string;
     export let content: DataSource[];
 
@@ -41,12 +38,6 @@
       padding: 0.3em;
       border: none;
       background: rgba(255,255,255);
-    }
-    span {
-      width: 5%;
-      display: inline-block;
-      text-align: right;
-      padding-right: 1em;
     }
     form {
       padding-bottom: 1em;
