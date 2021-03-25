@@ -1,38 +1,40 @@
 <script lang='typescript'>
+  import { afterUpdate } from 'svelte'
   import Trash from './icons/noun_Trash_3775714.svelte';
-  export let canvas: { uuid: string, title: string, lastUpdated: Date };
+  export let title: string;
+  export let lastUpdated: Date;
+
   export let loaded: boolean = false;
   export let renameAction: (name: string) => void;
   export let deleteAction: () => void;
 
   let renaming = false;
-  let newName = canvas.title;
+  let newName: string;
+  // $: if (newName !== title) renameAction(newName)
+  $: newName = title;
 </script>
 
 <section>
   <h2 class:action={ renameAction !== undefined } on:click|stopPropagation={ () => { if (renameAction !== undefined) renaming = true; } }>
-    {#if renaming}
-      <form class='name-edit'>
-        <input
-          bind:value={ newName }
-          on:keypress|stopPropagation={ (e) => {
-            if (!e) return;
-            if(e.key == 'Enter') {
-              renameAction(newName);
-              renaming = false;
-            }
-            if (e.key == 'Escape') {
-              newName = canvas.title;
-              renaming = false;
-            }
-          } }>
-      </form>
+    {#if renaming || title === '' }
+      <input
+        class:highlight={ title === '' }
+        bind:value={ newName }
+        on:keyup={ (e) => {
+          renameAction(newName);
+          if (e.key == 'Enter') renaming = false;
+        } }
+        on:focusout={ (e) => {
+          renameAction(newName);
+          renaming = false;
+        }}
+      >
     {:else}
-      { canvas.title || 'Untitled' }
+      <input type='disabled' value={ title } />
     {/if}
   </h2>
   <p class='small-font'>Status: { 'TKTKTK' }</p>
-  <p class='small-font'>Last saved: { canvas.lastUpdated.toLocaleString() }</p>
+  <p class='small-font'>Last saved: { lastUpdated.toLocaleString() }</p>
   <footer>
     <p>{ loaded ? 'Loaded' : 'Load' }</p>
     <ul>
@@ -54,6 +56,10 @@
   .small-font {
     font-size: 0.7em;
   }
+  h2 {
+    display: block;
+    height: 1.5em;
+  }
   footer {
     position: absolute;
     bottom: 0;
@@ -72,7 +78,18 @@
     position: relative;
     bottom: -0.4em;
   }
-  .name-edit :global(svg) {
-    height: 1em;
+  input {
+    font-size: inherit;
+    padding: 0;
+    background: none;
+    color: inherit;
+    width: 100%;
+    border-bottom-width: 2px;
+    border-bottom-style: unset;
+    outline: none;
+  }
+  .highlight, input:focus, input:hover {
+    border-bottom-width: 2px;
+    border-bottom-style: dotted;
   }
 </style>

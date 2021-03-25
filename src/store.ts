@@ -39,7 +39,7 @@ const canvas = () => {
   const resetState = () => {
     // currentBlobs.filter(b => b.focussed).forEach(b => b.focussed = false);
     const blankCanvas = cleanTemplate(uuid());
-    loadCanvas({ ...blankCanvas, title: undefined, lastUpdated: new Date() });
+    loadCanvas({ ...blankCanvas, title: '', lastUpdated: new Date() });
   }
 
   subscribe(c => currentBlobs = c.blobs);

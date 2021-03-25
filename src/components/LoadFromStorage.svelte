@@ -20,6 +20,7 @@
   const renameSavedCanvas = (uuid: string, newName: string) => {
     const data = loadFromLocalStorage(uuid);
     data.title = newName;
+    data.lastUpdated = new Date();
     saveToLocalStorage(uuid, data);
     dispatchEvent(refreshStoredCanvasList);
   }
@@ -34,7 +35,9 @@
 <div>
   <ul>
     <li class='loaded'>
-      <CanvasCard canvas={ currentCanvas }
+      <CanvasCard
+        title={ $canvasState.title }
+        lastUpdated={ $lastUpdate }
         loaded={ true }
         renameAction={ (newName) => $canvasState.title = newName }
       />
@@ -42,7 +45,9 @@
     {#each $savedCanvases as canvas }
       {#if canvas.uuid !== $canvasState.uuid }
       <li class='loadable' on:click={ () => load(canvas.uuid)}>
-        <CanvasCard { canvas }
+        <CanvasCard
+          title={ canvas.title }
+          lastUpdated={ canvas.lastUpdated }
           renameAction={ (newName) => renameSavedCanvas(canvas.uuid, newName) }
           deleteAction={ () => deleteCanvas(canvas.uuid) }
         />
@@ -68,6 +73,13 @@
   }
   .loaded :global(svg) {
     fill: white;
+  }
+  li :global(input) {
+    border-bottom-width: 3px;
+    border-color: var(--mid-grey);
+  }
+  .loaded :global(input) {
+    border-color: white;
   }
   .loadable {
     cursor: pointer;
