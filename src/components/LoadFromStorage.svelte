@@ -60,14 +60,14 @@
 <style>
   li {
     display: block;
-    height: 5em;
-    border: 1px dotted var(--mid-grey);
+    height: 100px;
+    border: 1px dashed var(--mid-grey);
     width: 100%;
     margin-bottom: 0.5em;
     padding: 0.3em;
   }
   .loaded {
-    border: none;
+    border-style: none;
     background-color: var(--dark-blue);
     color: white;
   }

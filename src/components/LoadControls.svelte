@@ -9,8 +9,5 @@
 
 <button class='large-button' on:click={ () => backAction() }>{ $t('back_button') }</button>
 
-<div class='wip'>
-  <p>WIP - not properly styled</p>
-  <NewOrUpload />
-</div>
+<NewOrUpload />
 <LoadFromStorage />
