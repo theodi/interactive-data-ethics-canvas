@@ -1,10 +1,16 @@
 <script lang='typescript'>
   import Trash from './icons/noun_Trash_3775714.svelte';
   import Print from './icons/noun_print_89538.svelte';
+  import { getOverallCanvasStatus } from '../utils/canvas-state';
+  import type { BlobState } from '../types';
+  import { getLocalization } from '../i18n';
+
+  const { t } = getLocalization();
 
   export let title: string;
   export let uuid: string;
   export let lastUpdated: Date;
+  export let blobs: BlobState[];
 
   export let loaded: boolean = false;
   export let renameAction: (name: string) => void;
@@ -13,6 +19,7 @@
   let renaming = false;
   let newName: string;
   $: newName = title;
+  $: state = getOverallCanvasStatus(blobs);
 </script>
 
 <section>
@@ -34,12 +41,12 @@
       <input type='disabled' value={ title } />
     {/if}
   </h2>
-  <p class='small-font'>Status: { 'TKTKTK' }</p>
+  <p class='small-font'>Status: { $t('status:' + state) }</p>
   <p class='small-font'>Last saved: { lastUpdated.toLocaleString() }</p>
   <footer>
     <ul>
       <li>
-        { loaded ? 'Loaded' : 'Load' }
+        { $t(loaded ? 'loaded' : 'load_action') }
       </li>
       <li>
         <a href='./report?uuid={ uuid }' target='_blank' alt='Open a printable version of this canvas'><Print /></a>

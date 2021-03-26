@@ -27,6 +27,7 @@
         title={ $canvasState.title }
         uuid={ $canvasState.uuid }
         lastUpdated={ $lastUpdate }
+        blobs={ $canvasState.blobs }
         loaded={ true }
         renameAction={ (newName) => $canvasState.title = newName }
         deleteAction={ () => deleteCurrent() }
@@ -39,6 +40,7 @@
           title={ canvas.title }
           uuid={ canvas.uuid }
           lastUpdated={ canvas.lastUpdated }
+          blobs={ canvas.blobs }
           renameAction={ (newName) => renameSavedCanvas(canvas.uuid, newName) }
           deleteAction={ () => deleteCanvas(canvas.uuid) }
         />

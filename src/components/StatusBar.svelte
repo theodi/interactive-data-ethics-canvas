@@ -2,23 +2,13 @@
   import { lastUpdate } from '../store';
   import { canvasState } from '../store';
   import { getLocalization } from '../i18n';
-  import { Status } from '../types';
+  import { getOverallCanvasStatus } from '../utils/canvas-state';
+
   const { t } = getLocalization();
   const src = 'images/CC-BY-SA_icon_white.png';
 
-  function getOverallCanvasStatus(statuses) {
-    for (const status in Status) {
-      if (statuses.indexOf(status) > -1) {
-        return status;
-      }
-    }
-  }
-
   let blobStatus: string;
-  $: {
-    const blobStatuses = $canvasState.blobs.map(blob => blob.status);
-    blobStatus = getOverallCanvasStatus(blobStatuses);
-  }
+  $: blobStatus = getOverallCanvasStatus($canvasState.blobs);
 </script>
 
 <ul>

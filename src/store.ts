@@ -86,8 +86,8 @@ serialisedCanvas.subscribe(c => {
 });
 
 const getLocalCanvases = () => Object.entries(localStorage).filter(([k, v]) => k !== CURRENT_KEY).map(([uuid, v]) => {
-  const { title, lastUpdated } = JSON.parse(v, canvasReviver);
-  return { uuid, title, lastUpdated };
+  const { title, lastUpdated, blobs } = JSON.parse(v, canvasReviver);
+  return { uuid, title, lastUpdated, blobs };
 });
 
 export const savedCanvases = readable(getLocalCanvases(), (set) => {
