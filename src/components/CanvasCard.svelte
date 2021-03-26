@@ -1,7 +1,9 @@
 <script lang='typescript'>
-  import { afterUpdate } from 'svelte'
   import Trash from './icons/noun_Trash_3775714.svelte';
+  import Print from './icons/noun_print_89538.svelte';
+
   export let title: string;
+  export let uuid: string;
   export let lastUpdated: Date;
 
   export let loaded: boolean = false;
@@ -10,7 +12,6 @@
 
   let renaming = false;
   let newName: string;
-  // $: if (newName !== title) renameAction(newName)
   $: newName = title;
 </script>
 
@@ -36,8 +37,13 @@
   <p class='small-font'>Status: { 'TKTKTK' }</p>
   <p class='small-font'>Last saved: { lastUpdated.toLocaleString() }</p>
   <footer>
-    <p>{ loaded ? 'Loaded' : 'Load' }</p>
     <ul>
+      <li>
+        { loaded ? 'Loaded' : 'Load' }
+      </li>
+      <li>
+        <a href='./report?uuid={ uuid }' target='_blank' alt='Open a printable version of this canvas'><Print /></a>
+      </li>
       {#if deleteAction }
         <li on:click|stopPropagation={ deleteAction }><Trash /></li>
       {/if}
@@ -63,20 +69,22 @@
   footer {
     position: absolute;
     bottom: 0;
+    width: 100%;
   }
-  footer {
+  footer ul {
     display: flex;
     width: 100%;
     flex-wrap: nowrap;
-    align-items: flex-end;
+    align-items: center;
   }
-  footer > p {
+  footer ul > li:first-child {
     flex-grow: 1;
   }
   footer :global(svg) {
-    height: 1.5em;
+    cursor: pointer;
+    height: 1.2em;
     position: relative;
-    bottom: -0.4em;
+    padding-left: 0.2em;
   }
   input {
     font-size: inherit;

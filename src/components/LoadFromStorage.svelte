@@ -25,6 +25,7 @@
     <li class='loaded'>
       <CanvasCard
         title={ $canvasState.title }
+        uuid={ $canvasState.uuid }
         lastUpdated={ $lastUpdate }
         loaded={ true }
         renameAction={ (newName) => $canvasState.title = newName }
@@ -36,6 +37,7 @@
       <li class='loadable' on:click={ () => load(canvas.uuid)}>
         <CanvasCard
           title={ canvas.title }
+          uuid={ canvas.uuid }
           lastUpdated={ canvas.lastUpdated }
           renameAction={ (newName) => renameSavedCanvas(canvas.uuid, newName) }
           deleteAction={ () => deleteCanvas(canvas.uuid) }
