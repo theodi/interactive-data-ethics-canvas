@@ -1,58 +1,55 @@
-<script>
-  let fileJSON, fileinput;
+<script lang='typescript'>
+  export let fileInput;
+  export let doneAction: () => void;
+
+  import { v4 as newUuid } from 'uuid';
   import { canvasState } from '../store';
-  import { canvasReviver } from '../utils/canvas-reviver';
   import { savedCanvases } from '../store';
+  import { getLocalization } from '../i18n';
+  import { loadFile } from '../utils/file-loader';
+
+  const { t } = getLocalization();
+  
+  let contents;
+  const loader = loadFile(fileInput.files[0]).then(res => contents = res);
 
   let uuidClash = false;
-
-  function cancelUpload() {
-    uuidClash = false;
-  }
-
-  function proceedUpload() {
-    if (fileJSON) {
-      canvasState.loadCanvas(fileJSON);
-      uuidClash = false;
+  $: {
+    if (contents !== undefined ) {
+      uuidClash = $savedCanvases.map(canvas => canvas.uuid).indexOf(contents.uuid) > -1;
+      if (!uuidClash) proceedUpload();
     }
   }
 
-  const onFileSelected =(e)=>{
-    let file = e.target.files[0];
-    let reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = e => {
-      fileJSON = JSON.parse(e.target.result, canvasReviver);
-      uuidClash = ((fileJSON && $savedCanvases.map(canvas => canvas.uuid).indexOf(fileJSON.uuid) > -1) ? true : false);
-      if (uuidClash == false) {
-        canvasState.loadCanvas(fileJSON);
-      }
-    };
+  function duplicateBeforeLoad() {
+    contents.uuid = newUuid();
   }
 
+  function proceedUpload() {
+    canvasState.loadCanvas(contents);
+    doneAction();
+  }
 </script>
 
-<div>
-  <h2>Upload canvas</h2>
-  
-</div>
-{#if uuidClash == false}
-  <input type="file" accept=".json" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
-{:else}
-  <p>You already have a version of this canvas saved. Loading from file will overwrite your existing version.</p>
-  <button class="large-button" on:click={proceedUpload}>Proceed</button>
-  <button class="large-button" on:click={cancelUpload}>Cancel</button> 
-{/if}
-
+{#await loader }
+  <p>{ $t('file_loading_message') }</p>
+{:then res}
+  {#if uuidClash == true }
+    <p>{ $t('duplicate_file_message') }</p>
+    <div class='actions'>
+      <button on:click={ proceedUpload }>{ $t('duplicate_file_overwrite') }</button>
+      <button on:click={ duplicateBeforeLoad }>{ $t('duplicate_file_clone') }</button>
+      <button on:click={ doneAction }>{ $t('duplicate_file_cancel' )}</button> 
+    </div>
+  {/if}
+{/await}
 
 <style>
-  h2 {
-    font-weight: bold;
-    margin: 1em 0.3em 0.5em 0.3em;
+  p {
+    padding: 0 0.5em;
+    font-size: 0.8em;
   }
-
-  input {
-    margin: 0 0.3em 2em 0.3em;
+  button {
+    font-size: 0.8em;
   }
-
 </style>

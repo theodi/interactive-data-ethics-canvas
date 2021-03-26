@@ -9,12 +9,18 @@
 
   const { t } = getLocalization();
 
-  let startScreen = true;
-  let actionComponent = undefined;
+  let startScreen;
+  let actionComponent;
+  let actionComponentOptions;
+
+  let fileInput;
+
   function reset() {
     startScreen = true;
     actionComponent = undefined;
+    actionComponentOptions = {};
   }
+  reset();
 </script>
 
 <nav>
@@ -24,21 +30,21 @@
       <h2>{ $t('new_canvas_button') }</h2>
     </button>
   {:else if actionComponent }
-    <svelte:component this={ actionComponent } doneAction={ () => reset() }/>
+    <svelte:component this={ actionComponent } { ...actionComponentOptions } doneAction={ () => reset() }/>
   {:else}
     <div>
       <button class='right-border' on:click={ () => { canvasState.resetState(); reset(); } }>
         <File />
-        <h2>{ $t('blank_button') }</h2>
+        <p>{ $t('blank_button') }</p>
       </button>
-      <button on:click={ () => actionComponent = Upload }>
+      <button><label for='file-loader'>
         <UploadIcon />
-        <h2>{ $t('upload_button') }</h2>
-      </button>  
+        <p>{ $t('upload_button') }</p>
+      </label></button>  
     </div>
   {/if}
 </nav>
-
+<input id='file-loader' type="file" accept=".json" bind:this={ fileInput } on:change={ () => { actionComponentOptions = { fileInput }; actionComponent = Upload; }} >
 <style>
   nav {
     height: 100px;

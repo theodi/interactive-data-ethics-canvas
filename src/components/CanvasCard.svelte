@@ -118,17 +118,4 @@ import Actions from './editors/Actions.svelte';
     border-bottom-width: 2px;
     border-bottom-style: dotted;
   }
-  .actions {
-    display: flex;
-  }
-  .actions button {
-    flex-grow: 1;
-    color: inherit;
-    background: inherit;
-    box-sizing: border-box;
-    outline-width: 1px;
-  }
-  .actions button:hover {
-    outline-style: dashed;
-  }
 </style>
