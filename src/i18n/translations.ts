@@ -21,6 +21,9 @@ export default {
       data_ethics_canvas: 'Data Ethics Canvas',
       loaded: 'Loaded',
       load_action: 'Load',
+      confirm_delete: 'Do you want to delete this?',
+      confirm_delete_yes: 'Delete',
+      confirm_delete_no: 'Keep',
     },
     priority: {
       LOW: 'Low',

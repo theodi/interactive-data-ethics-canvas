@@ -4,6 +4,8 @@
   import { getOverallCanvasStatus } from '../utils/canvas-state';
   import type { BlobState } from '../types';
   import { getLocalization } from '../i18n';
+import ActionList from './form/ActionList.svelte';
+import Actions from './editors/Actions.svelte';
 
   const { t } = getLocalization();
 
@@ -16,6 +18,7 @@
   export let renameAction: (name: string) => void;
   export let deleteAction: () => void;
 
+  let action = undefined;
   let renaming = false;
   let newName: string;
   $: newName = title;
@@ -41,6 +44,7 @@
       <input type='disabled' value={ title } />
     {/if}
   </h2>
+  {#if action === undefined}
   <p class='small-font'>Status: { $t('status:' + state) }</p>
   <p class='small-font'>Last saved: { lastUpdated.toLocaleString() }</p>
   <footer>
@@ -52,10 +56,17 @@
         <a href='./report?uuid={ uuid }' target='_blank' alt='Open a printable version of this canvas'><Print /></a>
       </li>
       {#if deleteAction }
-        <li on:click|stopPropagation={ deleteAction }><Trash /></li>
+        <li on:click|stopPropagation={ () => action = 'delete' }><Trash /></li>
       {/if}
     </ul>
   </footer>
+  {:else if action === 'delete'}
+    <p>{ $t('confirm_delete') }</p>
+    <footer class='actions'>
+      <button on:click={ () => { deleteAction(); action = undefined; } }>{ $t('confirm_delete_yes') }</button>
+      <button on:click={ () => { action = undefined; } }>{ $t('confirm_delete_no') }</button>
+    </footer>
+  {/if}
 </section>
 
 <style>
@@ -106,5 +117,18 @@
   .highlight, input:focus, input:hover {
     border-bottom-width: 2px;
     border-bottom-style: dotted;
+  }
+  .actions {
+    display: flex;
+  }
+  .actions button {
+    flex-grow: 1;
+    color: inherit;
+    background: inherit;
+    box-sizing: border-box;
+    outline-width: 1px;
+  }
+  .actions button:hover {
+    outline-style: dashed;
   }
 </style>
