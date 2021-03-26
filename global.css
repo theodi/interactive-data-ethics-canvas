@@ -99,3 +99,18 @@ textarea, input {
   color: #444;
   padding: 0.5em;
 }
+
+/* Flexible actions buttons */
+.actions {
+  display: flex;
+}
+.actions button {
+  flex-grow: 1;
+  color: inherit;
+  background: inherit;
+  box-sizing: border-box;
+  outline-width: 1px;
+}
+.actions button:hover {
+  outline-style: dashed;
+}
