@@ -88,7 +88,7 @@
 <style>
   aside {
     display: grid;
-    grid-template-columns: 280px 280px auto;
+    grid-template-columns: 245px 280px auto;
     padding: 0.5em;
     max-width: 1200px;
     font-size: 1.25em;
