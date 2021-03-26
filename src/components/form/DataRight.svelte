@@ -1,39 +1,27 @@
 <script lang="ts">
-    import Choices from './Choices.svelte';
-    import Question from './Question.svelte';
-    import { Choice } from '../../types';
-    import { getLocalization } from '../../i18n';
-    
-    const { t } = getLocalization();
-
-    export let title: string;
-    export let sourceIndex: number;
-
-    export let content: { title: string, license_rights: string, sensitive: {checked: Choice, text: string }};
+  import Question from './Question.svelte';
+  import BooleanAndTextarea from './BooleanAndTextarea.svelte';
+  import Textarea from './Textarea.svelte';
+  import { Choice } from '../../types';
+  import { getLocalization } from '../../i18n';
+  
+  export let title: string;
+  export let sourceIndex: number;
+  export let content: {title: string, license: string, data_collection: {checked: Choice, text: string },personal_information: {checked: Choice, text: string }, commercial_data: {checked: Choice, text: string }, notes: string};
 
   $: {
-    if (!content) content  = { title: title, license_rights: null, sensitive: {checked: Choice.UNSET, text: null }};
+    if (!content) content  = {title: title, license: null, data_collection: {checked: Choice.UNSET, text: null }, personal_information: {checked: Choice.UNSET, text: null}, commercial_data: {checked: Choice.UNSET, text: null }, notes: null};
   }
-
-  </script>
+</script>
 
   <form>
     <h2>{ title }</h2>
-    <Question question='License / Rights' />
-    <input class='ninety-five' id='license-rights-{ sourceIndex }' bind:value={ content.license_rights} /> 
-    <Question question='Sensitive?' />
-
-    <Choices bind:value={ content.sensitive.checked }
-      options={
-        [
-          { value: Choice.YES, label: $t(Choice.YES)},
-          { value: Choice.NO, label: $t(Choice.NO)},
-          { value: Choice.UNSET, label: $t(Choice.UNSET)},
-        ]
-      }
-    />
-
-    <textarea class='ninety-five' bind:value={ content.sensitive.text } rows=10></textarea>
+    <Question question='What basis or licence do you have for using this data?' />
+    <input class='ninety-five' id='license-rights-{ sourceIndex }' bind:value={ content.license } /> 
+    <BooleanAndTextarea question='Was the data collected for this project or another purpose?' questionIndex={ sourceIndex + 'data_collection' } bind:content={ content.data_collection } />
+    <BooleanAndTextarea question='Does the data contain any personal information?' questionIndex={ sourceIndex + 'personal_information' } bind:content={ content.personal_information } />
+    <BooleanAndTextarea question='Does the data contain any commercially or otherwise sensitive information? ' questionIndex={ sourceIndex + 'commercial_data' } bind:content={ content.commercial_data } />
+    <Textarea question='Additional notes related to this data source.' bind:content={ content.notes } />
   </form>
  
   <style>
@@ -54,10 +42,9 @@
       background: rgba(255,255,255);
     }
     form {
-      display: flex;
-      flex-wrap: wrap;
       padding-bottom: 1em;
       border-bottom: 1px dashed white;
+      width: 100%;
     }
     textarea {
       width: 100%;
