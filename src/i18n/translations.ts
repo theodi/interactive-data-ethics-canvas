@@ -2,6 +2,7 @@ export default {
   en: {
     common: {
       guidance_title: 'Guidance',
+      action_title: 'Actions / decisions',
       notes_title: 'Notes',
       status_title: 'Status',
       new_button: 'New / Load Canvas',

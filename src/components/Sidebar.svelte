@@ -3,6 +3,7 @@
   import { getLocalization } from '../i18n';
   import { canvasState } from '../store';
   import Guidance from './Guidance.svelte';
+  import ActionCapture from './ActionCapture.svelte';
 
   export let blobIndex: number;
 
@@ -21,6 +22,9 @@
         <li id='guidance' class='tab-top { group }' class:inactive={ selected != 'guidance' }>
           <h2 on:click={ () => selected = 'guidance' }>{ $t('guidance_title') }</h2>
         </li>
+        <li id='action' class='tab-top { group }' class:inactive={ selected != 'action' }>
+          <h2 on:click={ () => selected = 'action' }>{ $t('action_title')}</h2>
+        </li>
         <li id='notes' class='tab-top { group }' class:inactive={ selected != 'notes' }>
           <h2 on:click={ () => selected = 'notes' }>{ $t('notes_title')}</h2>
         </li>
@@ -28,6 +32,9 @@
       <div class={ group }>
         {#if selected == 'guidance'}
           <Guidance id={ id } />
+        {/if}
+        {#if selected == 'action'}
+          <ActionCapture />
         {/if}
         {#if selected == 'notes'}
           <textarea bind:value={ $canvasState.blobs[blobIndex].notes }/>
@@ -62,6 +69,7 @@
     left: 0;
     right: 0;
     padding: 1em;
+    overflow-y: scroll;
   }
   h2 {
     font-weight: bold;
