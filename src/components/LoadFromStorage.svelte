@@ -51,13 +51,19 @@
 </div>
 
 <style>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
   li {
     display: block;
     height: 100px;
     border: 1px dashed var(--mid-grey);
     width: 100%;
     margin-bottom: 0.5em;
+    margin-right: 0.5em;
     padding: 0.3em;
+    max-width: 280px;
   }
   .loaded {
     border-style: none;
@@ -76,5 +82,14 @@
   }
   .loadable {
     cursor: pointer;
+  }
+  @media (min-width: 1480px) {
+    ul {
+      display: initial;
+    }
+    li {
+      margin-right: 0;
+      max-width: initial;
+    }
   }
 </style>
