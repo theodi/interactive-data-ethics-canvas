@@ -85,18 +85,6 @@
   {/if}
 </aside>
 
-<!--
-{#if showLoadControls}
-<h2>Saved canvases</h2>
-<ul>
-  {#each $savedCanvases as canvas }
-    <li>{canvas}</li>
-  {/each}
-</ul>
-<button on:click={ () => { localStorage.clear(); canvasState.resetState();} }>DELETE ALL</button>
-{/if}
--->
-
 <style>
   aside {
     display: grid;
@@ -164,6 +152,7 @@
       border-top: none;
       border-left: 1px dashed var(--mid-grey);
       overflow-y: auto;
+      max-height: 800px;
     }
     .wide-bordered-bottom {
       border-bottom: 1px dashed var(--mid-grey);
