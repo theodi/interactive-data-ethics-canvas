@@ -13,6 +13,7 @@
   import KnowSources from './editors/KnowSources.svelte';
   import KnowRights from './editors/KnowRights.svelte';
   import Actions from './editors/Actions.svelte';
+  import ListWithDescription from './editors/ListWithDescription.svelte';
 
   const editors = {
     Basic,
@@ -27,7 +28,8 @@
     IntegrateImplementation,
     KnowSources,
     KnowRights,
-    Actions
+    Actions,
+    ListWithDescription
   }
   export let blobRef: number;
 

@@ -75,10 +75,12 @@ export default {
       limitations: {
         title: 'Limitations in data sources',
         questions: ['Are there limitations that could influence your project’s outcomes?'],
+        listlabel: 'Description'
       },
       'ethical-legislative': {
         title: 'Ethical and legislative context',
-        questions: ['What existing ethical codes apply to your sector or project?', 'What legislation, policies, or other regulation shape how you use data?', 'What requirements do they introduce?'],
+        questions: ['What existing ethical codes apply to your sector or project?', 'What legislation, policies, or other regulation shape how you use data?'],
+        listlabel: 'What requirements does this introduce?'
       },
       mitigations: {
         title: 'Minimising negative effects',
@@ -91,10 +93,12 @@ export default {
       'positive-effects': {
         title: 'Positive effects on people',
         questions: ['Which individuals, groups, demographics or organisations will be positively affected by this project? How?', 'How are you measuring and communicating positive impact? How could you increase it?'],
+        listlabel: 'How?'
       },
       'negative-effects': {
         title: 'Negative effects on people',
         questions: ['Who could be negatively affected by this project?', 'Could the way that data is collected, used or shared cause harm or expose individuals to risk of being re-identified?', 'Could it be used to target,profile or prejudice people, or unfairly restrict access (eg exclusive arrangements)?', 'How are limitations and risks communicated to people?'],
+        listlabel: 'How?'
       },
       'openness': {
         title: 'Openness and transparency',
