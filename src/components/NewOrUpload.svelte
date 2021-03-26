@@ -45,6 +45,7 @@
   {/if}
 </nav>
 <input id='file-loader' type="file" accept=".json" bind:this={ fileInput } on:change={ () => { actionComponentOptions = { fileInput }; actionComponent = Upload; }} >
+
 <style>
   nav {
     height: 100px;
@@ -52,6 +53,9 @@
     border: 1px dashed var(--mid-grey);
     margin-bottom: 0.5em;
     padding: 0.5em 0;
+  }
+  #file-loader {
+    display: none;
   }
   .right-border {
     border-right: 1px dashed var(--mid-grey);
