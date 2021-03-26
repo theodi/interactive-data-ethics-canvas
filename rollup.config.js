@@ -34,9 +34,13 @@ function serve() {
 const plugins = [
   svelte({
     preprocess: sveltePreprocess({
-      sourceMap: !production, postcss: {
+      sourceMap: !production,
+      postcss: {
         plugins: [autoprefixer],
-      }
+      },
+      defaults: {
+        script: 'typescript',
+      },
     }),
     compilerOptions: {
       // enable run-time checks when not in production

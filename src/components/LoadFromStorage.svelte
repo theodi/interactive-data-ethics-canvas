@@ -1,35 +1,23 @@
 <script lang='typescript'>
   import { savedCanvases, canvasState, lastUpdate } from '../store';
   import CanvasCard from './CanvasCard.svelte';
-  import { refreshStoredCanvasList } from '../events';
-  import { canvasReviver } from '../utils/canvas-reviver';
-
-  const loadFromLocalStorage = (uuid) => JSON.parse(localStorage.getItem(uuid), canvasReviver);
-  const saveToLocalStorage = (uuid, canvas) => localStorage.setItem(uuid, JSON.stringify(canvas));
+  import { load, renameSavedCanvas, deleteCanvas } from '../utils/local-storage';
 
   let currentCanvas;
-  const load = (uuid: string) => {
-    const data = loadFromLocalStorage(uuid);
-    canvasState.loadCanvas(data);
-  }
-
-  const deleteCanvas = (uuid: string) => {
-    localStorage.removeItem(uuid);
-    dispatchEvent(refreshStoredCanvasList);
-  }
-  const renameSavedCanvas = (uuid: string, newName: string) => {
-    const data = loadFromLocalStorage(uuid);
-    data.title = newName;
-    data.lastUpdated = new Date();
-    saveToLocalStorage(uuid, data);
-    dispatchEvent(refreshStoredCanvasList);
-  }
-
   $: {
     const { title, uuid } = $canvasState;
     const lastUpdated = $lastUpdate;
     currentCanvas = { title, uuid, lastUpdated };
   };
+  const deleteCurrent = () => {
+    const thisUuid = $canvasState.uuid;
+    const otherUuid = $savedCanvases.map(x => x.uuid).filter(x => x !== $canvasState.uuid);
+    if (otherUuid.length < 1)
+      canvasState.resetState()
+    else
+      load(otherUuid[0]);
+    deleteCanvas(thisUuid);
+  }
 </script>
 
 <div>
@@ -40,6 +28,7 @@
         lastUpdated={ $lastUpdate }
         loaded={ true }
         renameAction={ (newName) => $canvasState.title = newName }
+        deleteAction={ () => deleteCurrent() }
       />
     </li>
     {#each $savedCanvases as canvas }
