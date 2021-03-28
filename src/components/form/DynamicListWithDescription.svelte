@@ -24,7 +24,7 @@
     <Question { question } />
     <ol>
       {#each content as l, i}
-        <li class='ninety-five'><span>{ i + 1 }</span><input id='item-{ i }' bind:value={ l.title } /><Question question={descriptionlabel } /><textarea rows="5" bind:value={ l.description } /></li>
+        <li class='ninety-five'><span>{ i + 1 }</span><input id='item-{ i }' bind:value={ l.title } /><p>{descriptionlabel }</p><textarea rows="5" bind:value={ l.description } /></li>
       {/each}
     </ol>  
   </form>
@@ -62,5 +62,12 @@
         width: 95%;
         margin-bottom: 1em;
         margin-left: 5%;
+    }
+
+    li p {
+      margin-bottom: 0.5em;
+      flex-grow: 1;
+      font-size: 1em;
+      margin-left: 2.5%;
     }
   </style>
