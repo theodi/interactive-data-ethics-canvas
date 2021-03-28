@@ -2,7 +2,7 @@
   export let question: string;
 </script>
 
-<p>
+<p class={$$props.class}>
   { question }
 </p>
 

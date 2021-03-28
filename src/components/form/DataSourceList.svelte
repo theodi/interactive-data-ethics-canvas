@@ -17,11 +17,11 @@
     
   </script>
   
-  <form>
+  <form class='dataSourceList'>
     <Question { question } />
     <ol>
         {#each content as l, i}
-            <li><Question question={'Title'} /><input class='ninety-five' id='title-{ i }' bind:value={ l.title} /><Question question={'Description'}/><textarea class='ninety-five' id='description-{ i}' bind:value={ l.description } rows=10></textarea><Question question={'URL'}/><input class='ninety-five' id='url-{ i }' bind:value={ l.url} /><Question question={'Owner'}/><input class='ninety-five' id='owner-{ i }' bind:value={ l.owner} /></li>
+            <li><Question class='subQuestion' question={'Title'} /><input class='ninety-five' id='title-{ i }' bind:value={ l.title} /><Question class='subQuestion' question={'Description'}/><textarea class='ninety-five' id='description-{ i}' bind:value={ l.description } rows=10></textarea><Question class='subQuestion' question={'URL'}/><input class='ninety-five' id='url-{ i }' bind:value={ l.url} /><Question class='subQuestion' question={'Owner'}/><input class='ninety-five' id='owner-{ i }' bind:value={ l.owner} /></li>
         {/each}
     </ol>  
   </form>
@@ -49,5 +49,10 @@
         border: none;
         resize: none;
         margin-bottom: 1em;
+    }
+
+    .dataSourceList :global(.subQuestion) {
+      font-size: 1.0em;
+      margin-left: 1.25%;
     }
   </style>

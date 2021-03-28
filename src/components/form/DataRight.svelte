@@ -14,8 +14,8 @@
   }
 </script>
 
-  <form>
-    <h2>{ title }</h2>
+  <form class="dataRight">
+    <h3>{ title }</h3>
     <Question question='What basis or licence do you have for using this data?' />
     <input class='ninety-five' id='license-rights-{ sourceIndex }' bind:value={ content.license } /> 
     <BooleanAndTextarea question='Was the data collected for this project or another purpose?' questionIndex={ sourceIndex + 'data_collection' } bind:content={ content.data_collection } />
@@ -25,11 +25,10 @@
   </form>
  
   <style>
-
-    h2 {
+    h3 {
       width: 100%;
       font-weight: bold;
-      font-size: 1.4em;
+      font-size: 1.3em;
       padding: 0.7rem;
       padding-left: 0;
     }
