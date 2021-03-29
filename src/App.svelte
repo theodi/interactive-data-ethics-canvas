@@ -3,6 +3,7 @@
   import ControlPanel from './components/ControlPanel.svelte';
   import StatusBar from './components/StatusBar.svelte';
   import Welcome from './components/Welcome.svelte';
+  import Warning from './components/Warning.svelte';
 
   import { initLocalizationContext } from './i18n';
   initLocalizationContext();
@@ -17,6 +18,7 @@
     <StatusBar />
   </footer>
   <Welcome />
+  <Warning />
 </main>
 
 <style>
