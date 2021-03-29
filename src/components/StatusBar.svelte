@@ -1,5 +1,5 @@
 <script lang='typescript'>
-  import { lastUpdate } from '../store';
+  import { lastUpdate } from '../store/last-updated';
   import { canvasState } from '../store';
   import { getLocalization } from '../i18n';
   import { getOverallCanvasStatus } from '../utils/canvas-state';

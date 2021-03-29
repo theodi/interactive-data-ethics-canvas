@@ -1,5 +1,6 @@
 <script lang='typescript'>
-  import { savedCanvases, canvasState, lastUpdate } from '../store';
+  import { savedCanvases, canvasState } from '../store';
+  import { lastUpdate } from '../store/last-updated';
   import CanvasCard from './CanvasCard.svelte';
   import { load, renameSavedCanvas, deleteCanvas } from '../utils/local-storage';
 

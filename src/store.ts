@@ -4,8 +4,7 @@ import { v4 as uuid } from 'uuid';
 import type { CanvasState, CanvasPrivateState } from './types';
 import { refreshStoredCanvasList } from './events';
 import { canvasReviver } from './utils/canvas-reviver';
-
-export const lastUpdate = <Writable<Date>>writable(new Date());
+import { lastUpdate } from './store/last-updated';
 
 // const CANVAS_STATE_KEY = 'canvas_state';
 const CURRENT_KEY = 'canvas_current_key';
@@ -32,7 +31,9 @@ const canvas = () => {
   const loadCanvas = ({ blobs, lastUpdated, title, uuid }: CanvasState) => {
     CANVAS_STATE_KEY = uuid;
     lastUpdate.set(lastUpdated);
+    stopTracking();
     set({ blobs, uuid, title });
+    startTracking();
     dispatchEvent(refreshStoredCanvasList);
   };
 
@@ -46,6 +47,19 @@ const canvas = () => {
 
   const getBlobId = (index: number) => currentBlobs[index].id;
 
+  let track = true;
+  const stopTracking = () => track = false;
+  const startTracking = () => track = true;
+
+  subscribe(c => {
+    if (!track) {
+      track = true;
+    } else {
+      console.log(c);
+      lastUpdate.timestamp();
+    }
+  })
+
   return {
     subscribe,
     set,
@@ -53,14 +67,12 @@ const canvas = () => {
     loadCanvas,
     resetState,
     getBlobId,
+    startTracking,
+    stopTracking, 
   };
 };
 
 export const canvasState = canvas();
-
-canvasState.subscribe((c: CanvasState) => {
-  lastUpdate.set(new Date());
-});
 
 export const serialisedCanvas = derived<[Writable<CanvasPrivateState>, Writable<Date>], CanvasState>(
   [canvasState, lastUpdate],
