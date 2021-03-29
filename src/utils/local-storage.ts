@@ -23,3 +23,12 @@ export const deleteCanvas = (uuid: string) => {
   localStorage.removeItem(uuid);
   dispatchEvent(refreshStoredCanvasList);
 }
+
+export const getLocalCanvases = () => Object.entries(localStorage).map(([uuid, v]) => {
+  try {
+    const { title, lastUpdated, blobs } = JSON.parse(v, canvasReviver);
+    return { uuid, title, lastUpdated, blobs };
+  } catch {
+    return undefined;
+  }
+}).filter(x => x);
