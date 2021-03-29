@@ -72,7 +72,6 @@
     overflow-y: scroll;
   }
   h2 {
-    font-weight: bold;
     font-size: 1.25em;
   }
   textarea {
