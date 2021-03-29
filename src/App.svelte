@@ -2,6 +2,7 @@
   import Canvas from './components/Canvas.svelte';
   import ControlPanel from './components/ControlPanel.svelte';
   import StatusBar from './components/StatusBar.svelte';
+  import Welcome from './components/Welcome.svelte';
 
   import { initLocalizationContext } from './i18n';
   initLocalizationContext();
@@ -15,6 +16,7 @@
   <footer>
     <StatusBar />
   </footer>
+  <Welcome />
 </main>
 
 <style>
@@ -22,6 +24,7 @@
 		margin: 0 auto;
     max-width: 1200px;
     background: var(--pale-grey);
+    position: relative;
 	}
   :global(:root) {
     --know: hsl(321, 77%, 52%);

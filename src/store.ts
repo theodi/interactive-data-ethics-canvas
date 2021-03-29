@@ -85,10 +85,14 @@ serialisedCanvas.subscribe(c => {
   dispatchEvent(refreshStoredCanvasList);
 });
 
-const getLocalCanvases = () => Object.entries(localStorage).filter(([k, v]) => k !== CURRENT_KEY).map(([uuid, v]) => {
-  const { title, lastUpdated, blobs } = JSON.parse(v, canvasReviver);
-  return { uuid, title, lastUpdated, blobs };
-});
+const getLocalCanvases = () => Object.entries(localStorage).map(([uuid, v]) => {
+  try {
+    const { title, lastUpdated, blobs } = JSON.parse(v, canvasReviver);
+    return { uuid, title, lastUpdated, blobs };
+  } catch {
+    return undefined;
+  }
+}).filter(x => x);
 
 export const savedCanvases = readable(getLocalCanvases(), (set) => {
   const handler = () => set(getLocalCanvases());
