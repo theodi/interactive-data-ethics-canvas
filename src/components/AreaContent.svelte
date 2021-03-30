@@ -20,7 +20,7 @@
     { title }
   </h2>
   {#if focussed}
-    <Editor { blobRef } />
+    <Editor { blobRef } on:resetcanvas />
   {:else}
     <p class='description'>
       { description }

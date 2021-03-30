@@ -1,4 +1,6 @@
 <script lang='ts'>
+  import { createEventDispatcher } from 'svelte';
+  import { Boundary } from '@crownframework/svelte-error-boundary';
   import { canvasState } from '../store';
   import Basic from './editors/Basic.svelte';
   import SimpleList from './editors/SimpleList.svelte';
@@ -14,6 +16,9 @@
   import KnowRights from './editors/KnowRights.svelte';
   import Actions from './editors/Actions.svelte';
   import ListWithDescription from './editors/ListWithDescription.svelte';
+  import { resetCanvas } from '../events';
+
+  const dispatch = createEventDispatcher();
 
   const editors = {
     Basic,
@@ -33,11 +38,31 @@
   }
   export let blobRef: number;
 
-  if ( !$canvasState.blobs[blobRef].content ) $canvasState.blobs[blobRef].content = [];
+  if ( !$canvasState.blobs[blobRef].content ) {
+    $canvasState.blobs[blobRef].content = [];
+  }
+
+  function captureContent() {
+    const currentContent = JSON.stringify($canvasState.blobs[blobRef].content, null, 2);
+    if (!$canvasState.blobs[blobRef].notes) {
+      $canvasState.blobs[blobRef].notes = '';
+    }
+    $canvasState.blobs[blobRef].notes += `Failing content
+    
+    ${currentContent}
+    `;
+    $canvasState.blobs[blobRef].content = [];
+
+    // Force a view reset
+    dispatch(resetCanvas);
+    window.location.reload();
+  }
 </script>
 
 <section>
-  <svelte:component this={ editors[$canvasState.blobs[blobRef].editor] } ref={ blobRef } />
+  <Boundary onError={captureContent} >
+    <svelte:component this={ editors[$canvasState.blobs[blobRef].editor] } ref={ blobRef } />
+  </Boundary>
 </section>
 
 <style>
