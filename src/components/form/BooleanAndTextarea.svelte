@@ -1,7 +1,6 @@
 <script lang='ts'>
   import { v4 as uuid } from 'uuid';
 
-  import Question from './Question.svelte';
   import { getLocalization } from '../../i18n';
   import { Choice } from '../../types';
   import Choices from './Choices.svelte';
@@ -18,27 +17,22 @@
 </script>
 
 <form>
-  <div>
-    <Question { question } />
-
-    <Choices bind:value={ content.checked } options={
+  <Choices bind:value={ content.checked } 
+    label={ question }
+    options={
       [
         { value: Choice.YES, label: $t(Choice.YES) },
         { value: Choice.NO, label: $t(Choice.NO) },
         { value: Choice.UNSET, label: $t(Choice.UNSET) },
       ]
-    } />
-  </div>
+    }
+  />
   <textarea class='ninety-five' bind:value={ content.text } rows=3></textarea>
 </form>
 
 <style>
   form {
     padding-bottom: 1em;
-  }
-  div {
-    display: flex;
-    flex-wrap: nowrap;
   }
   textarea {
     width: 100%;
