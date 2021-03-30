@@ -52,6 +52,7 @@
     <li>
       <Question question={ $t(`action:title:${ action.type }`) } />
       <input id={'title-' + i} bind:value={action.title} />
+      {#if action.type === 'action' }
       <Choices
         bind:value={ action.priority }
         label={ $t('action:priority') }
@@ -61,6 +62,7 @@
           { value: Priority.HIGH, label: $t('priority:HIGH') },
         ]}
       />
+      {/if}
       <Question question={ $t('action:description') } />
       <textarea id={'description-' + i} bind:value={action.description} />
       <Question question={ $t('action:responsible') } />

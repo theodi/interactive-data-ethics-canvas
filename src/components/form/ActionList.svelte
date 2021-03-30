@@ -28,6 +28,7 @@
       <li>
         <Question question={ $t('action:title_with_link', { type: l.type, area: l.area }) } />
         <input class="ninety-five" id="title-{i}" bind:value={l.title} />
+        {#if l.type === 'action' }
         <Choices
           bind:value={ l.priority }
           label={ $t('actions:priority') }
@@ -37,6 +38,7 @@
             { value: Priority.HIGH, label: $t('priority:HIGH') },
           ]}
         />
+        {/if}
         <Textarea question={ $t('actions:description') } bind:content={ l.description } />
         <Question question={ $t('actions:responsible') } />
         <input class='ninety-five' bind:value={ l.responsibility } />
