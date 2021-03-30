@@ -112,8 +112,9 @@
     left: -5px;
   }
   h2 {
-    font-size: 1.25em;
-    padding-bottom: 1em;
+    font-size: 1em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
   }
   ul {
     display: flex;
@@ -124,9 +125,11 @@
     display: block;
     width: 50%;
     padding-bottom: 0.5em;
+    font-size: 0.8em;
   }
   fieldset {
     display: block;
+    margin: 0.5em;
   }
   .container {
     position: relative;
@@ -153,6 +156,9 @@
       border-left: 1px dashed var(--mid-grey);
       overflow-y: auto;
       max-height: 800px;
+    }
+    fieldset {
+      margin: 0em;
     }
     .wide-bordered-bottom {
       border-bottom: 1px dashed var(--mid-grey);
