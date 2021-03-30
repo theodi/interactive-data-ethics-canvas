@@ -47,6 +47,7 @@
     max-height: 90%;
     padding: 0.7rem;
     overflow-y: auto;
+    font-size: 1.1em;
   }
   section :global(.ninety-five) {
     max-width: 95%;

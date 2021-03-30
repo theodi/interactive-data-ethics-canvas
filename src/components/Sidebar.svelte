@@ -34,12 +34,12 @@
           <Guidance id={ id } />
         {/if}
         {#if selected == 'action'}
-          <ActionCapture />
+          <ActionCapture area={ id } />
         {/if}
         {#if selected == 'notes'}
           <textarea bind:value={ $canvasState.blobs[blobIndex].notes }/>
         {/if}
-  </div>
+      </div>
     </aside>
   </foreignObject>  
 </g>

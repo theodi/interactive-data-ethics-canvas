@@ -31,6 +31,16 @@ export default {
       duplicate_file_clone: 'Make a copy',
       duplicate_file_cancel: 'Cancel upload',
     },
+    action: {
+      title: {
+        action: 'Action',
+        decision: 'Decision',
+      },
+      title_with_link: "$t(action:title.{{ type }}) (linked to $t(areas:{{ area }}.title))",
+      priority: 'Priority',
+      description: 'Description',
+      responsible: 'Who will be responsible for this action, and who must be involved?',
+    },
     priority: {
       LOW: 'Low',
       MEDIUM: 'Medium',
@@ -143,7 +153,7 @@ export default {
       },
       'actions': {
         title: 'Your actions',
-        questions: ['What action will you take before moving forward with this project?', 'Who will be responsible for this action, and who must be involved?', 'Will you openly publish your actions and answers to this canvas?'],
+        questions: ['What action will you take before moving forward with this project?', 'Will you openly publish your actions and answers to this canvas?'],
       }
     }
   },

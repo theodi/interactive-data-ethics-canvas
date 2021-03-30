@@ -32,10 +32,13 @@ export interface CanvasState {
   blobs: BlobState[];
 }
 
-export interface Action {
+export type Action {
   title: string;
-  priority: Priority;
+  priority?: Priority;
   responsibility: string;
+  description: string;
+  type: 'action' | 'decision';
+  area: AreaIdentifier;
 }
 
 export interface DataSource {
