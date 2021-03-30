@@ -7,6 +7,12 @@
 {#if !accept && !isWelcomeSurpressed() }
 <div>
   <section>
+    <p class='right'>
+      <a class="close" on:click={ () => {
+        if (dontShowAgain) surpressWelcome();
+        accept = true;
+      } }>X</a>  
+    </p>
     <h2>
       Welcome
     </h2>  
@@ -16,7 +22,7 @@
     </p>
     
     <img src='./images/example-editor.png' alt='An example of one of the canvas editors in its opened state' />
-    <p>
+    <p style="padding-top: 1em;">
       Click on each bubble to:
     </p>
 
@@ -34,10 +40,10 @@
         Set a status for each area.
       </li>
     </ol>
+    <span class="bottom-border">&nbsp</span>
     <h3>
       Saving your work
     </h3>
-
     <img src='./images/example-load-card.png' alt='An example of one a canvas load card.' />
     <p>
       Please note that all progress is saved locally in your browser (no data ever leaves your computer).
@@ -56,13 +62,9 @@
         Click the download ( ) or share ( ) icons against each canvas in the New / Load area.
       </li>
     </ul>
-    <p class='centred'>
+    <p class='right'>
       <label for='save-choice'>Don't show this message again</label>
       <input id='save-choice' type='checkbox' bind:checked={ dontShowAgain } />
-      <button on:click={ () => {
-        if (dontShowAgain) surpressWelcome();
-        accept = true;
-      } }>Accept and close</button>  
     </p>
   </section>
 </div>
@@ -81,18 +83,24 @@
     color: white;
     background: var(--dark-blue);
     position: absolute;
-    top: 10%;
+    top: 10.2%;
     max-height: 80%;
-    left: 10%;
-    right: 10%;
-    font-size: 1.5em;
+    left: 6%;
+    font-size: 1.2em;
     padding: 1em;
     line-height: 1.2;
+    width: 88%;
+  }
+  .bottom-border {
+    border-top: 1px dashed white;
+    display: block;
+    width: 100%;
+    margin-top: 4.2em;
   }
   h2 {
     font-size: 1.3em;
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
   h3 {
     font-size: 1.15em;
@@ -109,9 +117,21 @@
   }
   li {
     margin-left: 2em;
+    padding-top: 0.5em;
   }
   p {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
+  }
+  .right {
+    float: right;
+    margin-bottom: 0em;
+  }
+  .close {
+    font-size: 2em;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
+    right: -5px;
   }
   .centred {
     text-align: center;
@@ -120,9 +140,34 @@
     margin-left: 2em;
   }
   img {
-    max-width: 30%;
+    max-width: 45%;
     float: right;
     padding-right: 20px;
-    padding-left: 20px;
+    padding-left: 100px;
+  }
+  @media (min-width: 1480px) {
+    section {
+      width: 1060px;
+      left: 70px;
+      top: 115px;
+    }
+  }
+  @media (max-width: 1100px) {
+    section {
+      top: 8%;
+    }
+    .bottom-border {
+      margin-top: 0em;
+    }
+  }
+  @media (max-width: 1000px) {
+    section {
+      top: 6%;
+    }
+  }
+  @media (max-width: 750px) {
+    section {
+      top: 4%;
+    }
   }
 </style>
