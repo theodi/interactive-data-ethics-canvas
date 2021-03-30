@@ -3,11 +3,12 @@
   import Upload from './Upload.svelte';
   import { getLocalization } from '../i18n';
 
-  import File from './icons/noun_File_3809021.svelte';
-  import Plus from './icons/noun_Plus_2224966.svelte';
-  import UploadIcon from './icons/noun_Upload_3814884.svelte';
+  import Icon from 'svelte-awesome';
+  import { plus, fileO, upload } from 'svelte-awesome/icons';
 
   const { t } = getLocalization();
+
+  const scale = 3;
 
   let startScreen;
   let actionComponent;
@@ -26,7 +27,7 @@
 <nav>
   {#if startScreen }
     <button on:click={ () => startScreen = false }>
-      <Plus />
+      <Icon data={ plus } { scale }/>
       <h2>{ $t('new_canvas_button') }</h2>
     </button>
   {:else if actionComponent }
@@ -34,11 +35,11 @@
   {:else}
     <div>
       <button class='right-border' on:click={ () => { canvasState.resetState(); reset(); } }>
-        <File />
+        <Icon data={ fileO } { scale }/>
         <p>{ $t('blank_button') }</p>
       </button>
       <button><label for='file-loader'>
-        <UploadIcon />
+        <Icon data={ upload } { scale } />
         <p>{ $t('upload_button') }</p>
       </label></button>  
     </div>
@@ -60,9 +61,9 @@
   .right-border {
     border-right: 1px dashed var(--mid-grey);
   }
-  nav :global(svg) {
+  /* nav :global(svg) {
     height: 2.5em;
-  }
+  } */
   div {
     display: flex;
     align-items: bottom;

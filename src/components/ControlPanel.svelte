@@ -5,7 +5,6 @@
   import { getLocalization } from '../i18n';
   import Info from './Info.svelte';
   import LoadControls from './LoadControls.svelte';
-  import DownloadIcon from './icons/noun_Notebook_791773.svelte';
 
   const { t } = getLocalization();
 

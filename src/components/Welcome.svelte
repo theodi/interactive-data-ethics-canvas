@@ -1,5 +1,7 @@
 <script lang='typescript'>
   import { isWelcomeSurpressed, surpressWelcome } from '../utils/agreements';
+  import Icon from 'svelte-awesome';
+  import { times } from 'svelte-awesome/icons';
   let accept = false;
   let dontShowAgain = false;
 </script>
@@ -8,10 +10,10 @@
 <div>
   <section>
     <p class='right'>
-      <a class="close" on:click={ () => {
+      <button class="close" on:click={ () => {
         if (dontShowAgain) surpressWelcome();
         accept = true;
-      } }>X</a>  
+      } }><Icon data={times} scale="2"/></button>
     </p>
     <h2>
       Welcome
@@ -137,6 +139,10 @@
     text-align: center;
   }
   button {
+    color: white;
+    background: inherit;
+    padding: 0;
+    font-size: 3em;
     margin-left: 2em;
   }
   img {

@@ -1,11 +1,9 @@
 <script lang='typescript'>
-  import Trash from './icons/noun_Trash_3775714.svelte';
-  import Print from './icons/noun_print_89538.svelte';
   import { getOverallCanvasStatus } from '../utils/canvas-state';
   import type { BlobState } from '../types';
   import { getLocalization } from '../i18n';
-import ActionList from './form/ActionList.svelte';
-import Actions from './editors/Actions.svelte';
+  import Icon from 'svelte-awesome';
+  import { print, trash } from 'svelte-awesome/icons';
 
   const { t } = getLocalization();
 
@@ -18,6 +16,7 @@ import Actions from './editors/Actions.svelte';
   export let renameAction: (name: string) => void;
   export let deleteAction: () => void;
 
+  const scale = 1.3; 
   let action = undefined;
   let renaming = false;
   let newName: string;
@@ -53,10 +52,10 @@ import Actions from './editors/Actions.svelte';
         { $t(loaded ? 'loaded' : 'load_action') }
       </li>
       <li>
-        <a href='./report?uuid={ uuid }' target='_blank' alt='Open a printable version of this canvas'><Print /></a>
+        <a href='./report?uuid={ uuid }' target='_blank' alt='Open a printable version of this canvas'><Icon data={ print } { scale } /></a>
       </li>
       {#if deleteAction }
-        <li on:click|stopPropagation={ () => action = 'delete' }><Trash /></li>
+        <li on:click|stopPropagation={ () => action = 'delete' }><Icon data={ trash }  { scale } /></li>
       {/if}
     </ul>
   </footer>
@@ -117,5 +116,8 @@ import Actions from './editors/Actions.svelte';
   .highlight, input:focus, input:hover {
     border-bottom-width: 2px;
     border-bottom-style: dotted;
+  }
+  a {
+    color: inherit;
   }
 </style>
