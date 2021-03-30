@@ -19,7 +19,7 @@
   }
 
   const blankAction = (i: number): Action => ({
-    title: `Action ${i}`,
+    title: $t('action:title.action') + ' ' + i,
     priority: Priority.MEDIUM,
     description: '',
     responsibility: '',
@@ -27,14 +27,24 @@
     area,
   });
 
-  const appendAction = () => {
+  const blankDecision = (i: number): Action => ({
+    title: $t('action:title.decision') + ' ' + i,
+    description: '',
+    responsibility: '',
+    type: 'decision',
+    area,
+  });
+
+  const appendItem = (generator) => {
     const len = $canvasState.blobs[ref].content[0].length;
-    $canvasState.blobs[ref].content[0][len] = blankAction(len + 1);
+    $canvasState.blobs[ref].content[0][len] = generator(len + 1);
   };
+
 </script>
 
 <header>
-  <button on:click={appendAction}>Add action</button>
+  <button on:click={() => appendItem(blankAction)}>Add action</button>
+  <button on:click={() => appendItem(blankDecision)}>Add decision</button>
 </header>
 <ol>
   {#each $canvasState.blobs[ref].content[0] as action, i}
