@@ -29,7 +29,7 @@
   </li>
   <li>
     <h3>
-      <a href="https://gatesopenresearch.org/documents/2-45" target="_blank"
+      <a href="https://theodi.github.io/staging.learndata.info/def2/" target="_blank"
         >eLearning: Working with data from third party sources</a
       >
     </h3>
