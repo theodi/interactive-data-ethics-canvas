@@ -30,6 +30,7 @@ export default {
       duplicate_file_overwrite: 'Overwrite canvas',
       duplicate_file_clone: 'Make a copy',
       duplicate_file_cancel: 'Cancel upload',
+      reload_error: 'We have detected an error in the canvas and need to reload. Corrupted canvas data is accessible in the notes tab.',
     },
     action: {
       title: {

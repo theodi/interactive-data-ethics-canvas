@@ -13,6 +13,9 @@
 
   import { canvasState } from '../store';
   import { filtered } from '../store/filtered';
+  import { getLocalization } from '../i18n';
+
+  const { t } = getLocalization();
 
   const spacing = 200;
   const overlap = 0.05;
@@ -149,7 +152,20 @@
         width={content.focussed.size}
         height={content.focussed.size}
       >
-        <AreaContent blobRef={focussed} focussed={ true }/>
+        <AreaContent blobRef={focussed} focussed={ true }
+          on:resetarea={(d) => {
+            const id = d.detail.id;
+            const contentString = JSON.stringify($canvasState.blobs[id].content, null, 2);
+            
+            $canvasState.blobs[id].notes = $canvasState.blobs[id].notes || 'Rescued content\n';
+            $canvasState.blobs[id].notes += contentString;
+            $canvasState.blobs[id].notes += '\n\n';
+            $canvasState.blobs[id].content = new Array();
+            focussed = undefined;
+            const reload = window.confirm($t('reload_error'));
+            if (reload) window.location.reload();
+          }}
+        />
       </foreignObject>
       <SvgButton
         x={580}
@@ -160,7 +176,6 @@
 
       <Sidebar blobIndex={ focussed } />
       <Status ref={ focussed }/>
-
     </g>
   {/if}
 </svg>
