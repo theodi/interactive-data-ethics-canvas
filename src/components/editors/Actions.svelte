@@ -11,6 +11,9 @@
 
   const { t } = getLocalization();
   const id = canvasState.getBlobId(ref);
+  $: if (!Array.isArray($canvasState.blobs[ref].content[0])) {
+    $canvasState.blobs[ref].content[0] = [];
+  }
   $: actionCount = $canvasState.blobs[ref].content[0].length;
 </script>
 

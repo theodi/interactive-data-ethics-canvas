@@ -30,7 +30,7 @@
       {#if l.type === 'action' }
       <Choices
         bind:value={ l.priority }
-        label={ $t('actions:priority') }
+        label={ $t('action:priority') }
         options={[
           { value: Priority.LOW, label: $t('priority:LOW') },
           { value: Priority.MEDIUM, label: $t('priority:MEDIUM') },
@@ -38,8 +38,8 @@
         ]}
       />
       {/if}
-      <Textarea question={ $t('actions:description') } bind:content={ l.description } />
-      <Question question={ $t('actions:responsible') } />
+      <Textarea question={ $t('action:description') } bind:content={ l.description } />
+      <Question question={ $t('action:responsible') } />
       <input class='ninety-five' bind:value={ l.responsibility } />
     </li>
   {/if}
