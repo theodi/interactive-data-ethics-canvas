@@ -1,5 +1,5 @@
 <script lang='ts'>
-  import { afterUpdate, createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
   import { Boundary } from '@crownframework/svelte-error-boundary';
   import { canvasState } from '../store';
   import Basic from './editors/Basic.svelte';
@@ -17,9 +17,12 @@
   import Actions from './editors/Actions.svelte';
   import ListWithDescription from './editors/ListWithDescription.svelte';
 
+  import { editors } from '../utils/editors';
+import Blob from './Blob.svelte';
+  
   const dispatch = createEventDispatcher();
 
-  const editors = {
+  const registeredEditors = {
     Basic,
     SimpleList,
     TextareaList,
@@ -37,6 +40,11 @@
   }
   export let blobRef: number;
 
+  const expectedEditor = editors[$canvasState.blobs[blobRef].id];
+  if ( $canvasState.blobs[blobRef].editor !== expectedEditor ) {
+    $canvasState.blobs[blobRef].editor = expectedEditor;
+  }
+
   if ( !$canvasState.blobs[blobRef].content ) {
     $canvasState.blobs[blobRef].content = [];
   }
@@ -48,9 +56,9 @@
   }
 </script>
 
-<section on:error={ () => console.log('OH WOE IS ME!') }>
+<section>
   <Boundary onError={handleError} >
-    <svelte:component this={ editors[$canvasState.blobs[blobRef].editor] } ref={ blobRef } />
+    <svelte:component this={ registeredEditors[$canvasState.blobs[blobRef].editor] } ref={ blobRef } />
   </Boundary>
 </section>
 
