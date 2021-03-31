@@ -1,5 +1,5 @@
 <script lang='ts'>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onDestroy } from 'svelte';
   import { Boundary } from '@crownframework/svelte-error-boundary';
   import { canvasState } from '../store';
   import Basic from './editors/Basic.svelte';
@@ -18,7 +18,6 @@
   import ListWithDescription from './editors/ListWithDescription.svelte';
 
   import { editors } from '../utils/editors';
-import Blob from './Blob.svelte';
   
   const dispatch = createEventDispatcher();
 
@@ -54,6 +53,52 @@ import Blob from './Blob.svelte';
     console.error(error);
     dispatch('resetarea', { id: blobRef });
   }
+
+  onDestroy(() => {
+    console.log($canvasState.blobs[blobRef].id);
+    console.dir($canvasState.blobs[blobRef].content);
+    const area = $canvasState.blobs[blobRef].id;
+    const cleanUpFunctions = {
+      'sources': (c) => {
+        c = c.filter(x => !!x.title);
+        return c;
+      },
+      'limitations': (c) => {
+        c[0] = c[0].filter(x => !!x.title);
+        return c;
+      },
+      'ethical-legislative': (c) => {
+        c[0] = c[0].filter(x => !!x.title);
+        return c;
+      },
+      'reasons': (c) => {
+        c[1] = c[1].filter(x => !!x);
+        return c;
+      },
+      'positive-effects': (c) => {
+        c[0] = c[0].filter(x => !!x.title);
+        return c;
+      },
+      'negative-effects': (c) => {
+        c[0] = c[0].filter(x => !!x.title);
+        return c;
+      },
+      'implementation': (c) => {
+        c[1] = c[1].filter(x => !!x);
+        return c;
+      },
+      'actions': (c) => {
+        c[0] = c[0].filter(x => !!x.title);
+        return c;
+      },
+    }
+    const scrub = cleanUpFunctions[area] || null;
+    if (scrub) {
+      // $canvasState.blobs[blobRef].content =
+      $canvasState.blobs[blobRef].content = scrub($canvasState.blobs[blobRef].content);
+    }
+    console.dir($canvasState.blobs[blobRef].content);
+  })
 </script>
 
 <section>
