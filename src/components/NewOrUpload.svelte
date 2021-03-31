@@ -41,11 +41,11 @@
       <button><label for='file-loader'>
         <Icon data={ upload } { scale } />
         <p>{ $t('upload_button') }</p>
+        <input id='file-loader' type="file" accept=".json" bind:this={ fileInput } on:change={ () => { actionComponentOptions = { fileInput }; actionComponent = Upload; }} >
       </label></button>  
     </div>
   {/if}
 </nav>
-<input id='file-loader' type="file" accept=".json" bind:this={ fileInput } on:change={ () => { actionComponentOptions = { fileInput }; actionComponent = Upload; }} >
 
 <style>
   nav {
