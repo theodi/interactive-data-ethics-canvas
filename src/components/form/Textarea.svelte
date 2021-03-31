@@ -18,6 +18,5 @@
     width: 100%;
     box-sizing: border-box;
     border: none;
-    resize: none;
   }
 </style>

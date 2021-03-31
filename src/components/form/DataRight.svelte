@@ -50,6 +50,5 @@
       font-size: 1em;
       box-sizing: border-box;
       border: none;
-      resize: none;
     }
   </style>

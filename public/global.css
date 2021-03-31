@@ -65,7 +65,7 @@ body, textarea, input, button {
   border: none;
 }
 textarea {
-  resize: none;
+  resize: vertical;
 }
 button {
   appearance: none;
