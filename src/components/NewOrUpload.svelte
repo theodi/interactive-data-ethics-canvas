@@ -24,37 +24,28 @@
   reset();
 </script>
 
-<nav>
-  {#if startScreen }
-    <button on:click={ () => startScreen = false }>
-      <Icon data={ plus } { scale }/>
-      <h2>{ $t('new_canvas_button') }</h2>
+{#if startScreen }
+  <button on:click={ () => startScreen = false }>
+    <Icon data={ plus } { scale }/>
+    <h2>{ $t('new_canvas_button') }</h2>
+  </button>
+{:else if actionComponent }
+  <svelte:component this={ actionComponent } { ...actionComponentOptions } doneAction={ () => reset() }/>
+{:else}
+  <div>
+    <button class='right-border' on:click={ () => { canvasState.resetState(); reset(); } }>
+      <Icon data={ fileO } { scale }/>
+      <p>{ $t('blank_button') }</p>
     </button>
-  {:else if actionComponent }
-    <svelte:component this={ actionComponent } { ...actionComponentOptions } doneAction={ () => reset() }/>
-  {:else}
-    <div>
-      <button class='right-border' on:click={ () => { canvasState.resetState(); reset(); } }>
-        <Icon data={ fileO } { scale }/>
-        <p>{ $t('blank_button') }</p>
-      </button>
-      <button><label for='file-loader'>
-        <Icon data={ upload } { scale } />
-        <p>{ $t('upload_button') }</p>
-        <input id='file-loader' type="file" accept=".json" bind:this={ fileInput } on:change={ () => { actionComponentOptions = { fileInput }; actionComponent = Upload; }} >
-      </label></button>  
-    </div>
-  {/if}
-</nav>
+    <button><label for='file-loader'>
+      <Icon data={ upload } { scale } />
+      <p>{ $t('upload_button') }</p>
+      <input id='file-loader' type="file" accept=".json" bind:this={ fileInput } on:change={ () => { actionComponentOptions = { fileInput }; actionComponent = Upload; }} >
+    </label></button>  
+  </div>
+{/if}
 
 <style>
-  nav {
-    height: 100px;
-    width: 100%;
-    border: 1px dashed var(--mid-grey);
-    margin-bottom: 0.5em;
-    padding: 0.5em 0;
-  }
   #file-loader {
     display: none;
   }

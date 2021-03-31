@@ -1,6 +1,7 @@
 <script lang='typescript'>
   import { savedCanvases, canvasState } from '../store';
   import { lastUpdate } from '../store/last-updated';
+  import NewOrUpload from './NewOrUpload.svelte';
   import CanvasCard from './CanvasCard.svelte';
   import { load, renameSavedCanvas, deleteCanvas } from '../utils/local-storage';
 
@@ -23,6 +24,9 @@
 
 <div>
   <ul>
+    <li>
+      <NewOrUpload />
+    </li>
     <li class='loaded'>
       <CanvasCard
         title={ $canvasState.title }
@@ -54,7 +58,8 @@
 <style>
   ul {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
+    overflow-x: scroll;
   }
   li {
     display: block;
@@ -65,6 +70,7 @@
     margin-right: 0.5em;
     padding: 0.3em;
     max-width: 280px;
+    flex-shrink: 0;
   }
   .loaded {
     border-style: none;
@@ -87,6 +93,7 @@
   @media (min-width: 1480px) {
     ul {
       display: initial;
+      overflow-x: initial;
     }
     li {
       margin-right: 0;

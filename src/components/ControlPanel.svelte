@@ -133,7 +133,7 @@
   .container {
     position: relative;
   }
-  .content-holder {
+  aside :global(.content-holder) {
     padding: 0.5em;
     margin-bottom: 0.5em;
   }
