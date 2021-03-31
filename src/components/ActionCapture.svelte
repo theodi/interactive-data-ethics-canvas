@@ -67,11 +67,9 @@
       <textarea id={'description-' + i} bind:value={action.description} />
       <Question question={ $t('action:responsible') } />
       <input bind:value={ action.responsibility } />
-      <p>Linked area: { $t(action.area)}</p>
     </li>
     {/if}
   {/each}
-  <!-- <ActionList questions={ $t('areas:actions.questions', { returnObjects: true }) } bind:content={ $canvasState.blobs[ref].content[0] } /> -->
 </ol>
 
 <style>
