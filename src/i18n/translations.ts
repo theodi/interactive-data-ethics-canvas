@@ -37,6 +37,13 @@ export default {
         action: 'Action',
         decision: 'Decision',
       },
+      no_actions: 'You have not recorded any actions. You can do this in the \'Actions/Decisions\' tab to the right.',
+      priority_title: {
+        high: 'High priority actions',
+        decisions: 'Decisions',
+        medium: 'Medium priority actions',
+        low: 'Low priority actions',
+      },
       title_with_link: "$t(action:title.{{ type }}) (linked to $t(areas:{{ area }}.title))",
       priority: 'Priority',
       description: 'Description',

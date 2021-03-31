@@ -11,8 +11,8 @@
 
   import type { UserContent } from '../../types';
 
-  export let questions: any;
   export let content: Action[];
+  export let selector: (value: any) => boolean = () => true;
 
   const contentTest = (c: UserContent): boolean =>
     c && Array.isArray(c) && c.length > 0;
@@ -21,40 +21,34 @@
   if (!contentTest(content)) content = initialValue;
 </script>
 
-<form>
-  <Question question={questions[0]} />
-  <ol>
-    {#each content as l, i}
-      <li>
-        <Question question={ $t('action:title_with_link', { type: l.type, area: l.area }) } />
-        <input class="ninety-five" id="title-{i}" bind:value={l.title} />
-        {#if l.type === 'action' }
-        <Choices
-          bind:value={ l.priority }
-          label={ $t('actions:priority') }
-          options={[
-            { value: Priority.LOW, label: $t('priority:LOW') },
-            { value: Priority.MEDIUM, label: $t('priority:MEDIUM') },
-            { value: Priority.HIGH, label: $t('priority:HIGH') },
-          ]}
-        />
-        {/if}
-        <Textarea question={ $t('actions:description') } bind:content={ l.description } />
-        <Question question={ $t('actions:responsible') } />
-        <input class='ninety-five' bind:value={ l.responsibility } />
-      </li>
-    {/each}
-  </ol>
-</form>
+<ol>
+  {#each content as l, i}
+  {#if selector(l)}
+    <li>
+      <Question question={ $t('action:title_with_link', { type: l.type, area: l.area }) } />
+      <input class="ninety-five" id="title-{i}" bind:value={l.title} />
+      {#if l.type === 'action' }
+      <Choices
+        bind:value={ l.priority }
+        label={ $t('actions:priority') }
+        options={[
+          { value: Priority.LOW, label: $t('priority:LOW') },
+          { value: Priority.MEDIUM, label: $t('priority:MEDIUM') },
+          { value: Priority.HIGH, label: $t('priority:HIGH') },
+        ]}
+      />
+      {/if}
+      <Textarea question={ $t('actions:description') } bind:content={ l.description } />
+      <Question question={ $t('actions:responsible') } />
+      <input class='ninety-five' bind:value={ l.responsibility } />
+    </li>
+  {/if}
+  {/each}
+</ol>
 
 <style>
-  h2 {
-    font-weight: bold;
-    font-size: 1.4em;
-    padding: 0.7rem;
-    padding-left: 0;
-  }
-  form {
+  li {
+    padding-top: 1em;
     border-bottom: 1px dashed white;
     margin-bottom: 1em;
   }
@@ -65,13 +59,5 @@
     padding: 0.3em;
     border: none;
     background: rgba(255, 255, 255);
-  }
-  form {
-    padding-bottom: 1em;
-  }
-  li {
-    border-top: 1px dashed white;
-    padding-top: 1em;
-    margin-bottom: 1em;
   }
 </style>
