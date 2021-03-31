@@ -48,7 +48,6 @@ const canvas = () => {
     if (!track) {
       track = true;
     } else {
-      console.log(c);
       lastUpdate.timestamp();
     }
   })
