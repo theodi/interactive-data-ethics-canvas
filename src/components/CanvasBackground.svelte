@@ -16,7 +16,7 @@
   {/each}
   <rect width={columns - 1} height={rows - 1} />
 </g>
-<g transform="translate(0 -20) scale(0.5)">
+<g transform="translate(0 -15) scale(0.63)">
   <OdiLogo />
 </g>
 
