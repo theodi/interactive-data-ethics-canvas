@@ -1,10 +1,12 @@
 <script lang="ts">
-  import { canvasState, savedCanvases, serialisedCanvas } from '../store';
+  import { canvasState, serialisedCanvas } from '../store';
+  import { lastUpdate } from '../store/last-updated';
   import { filtered } from '../store/filtered';
   import { Group, Status } from '../types';
   import { getLocalization } from '../i18n';
   import Info from './Info.svelte';
   import LoadControls from './LoadControls.svelte';
+  import DownloadLink from './DownloadLink.svelte';
 
   const { t } = getLocalization();
 
@@ -28,10 +30,6 @@
       )
     }
   }
-  $: dataUrl = URL.createObjectURL(
-    new Blob([JSON.stringify($serialisedCanvas)], { type: 'application/json'})
-  )
-  $: downloadFilename = `DataEthicsCanvas_${ $canvasState.uuid }.json`
 </script>
 
 <aside class='container'>
@@ -43,7 +41,10 @@
   {:else}
     <div class='content-holder narrow-bordered-right wide-bordered-bottom'>
       <button class='large-button' on:click={ () => sidebarComponent = LoadControls }>{ $t('new_button') }</button>
-      <a class='large-button' href='{ dataUrl }' download='{ downloadFilename }'>{ $t('export_button') }</a>
+      <DownloadLink classes='large-button' getter={ () => JSON.stringify($serialisedCanvas) } title={ $canvasState.title } lastUpdated={ $lastUpdate }>
+        { $t('export_button') }
+      </DownloadLink>
+
       <a
         class='large-button'
         href='report?uuid={ $canvasState.uuid }'

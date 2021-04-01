@@ -3,7 +3,8 @@
   import type { BlobState } from '../types';
   import { getLocalization } from '../i18n';
   import Icon from 'svelte-awesome';
-  import { print, trash } from 'svelte-awesome/icons';
+  import { print, trash, download } from 'svelte-awesome/icons';
+  import DownloadLink from './DownloadLink.svelte';
 
   const { t } = getLocalization();
 
@@ -50,6 +51,11 @@
     <ul>
       <li>
         { $t(loaded ? 'loaded' : 'load_action') }
+      </li>
+      <li>
+        <DownloadLink getter={ () => localStorage.getItem(uuid) } { title } { lastUpdated }>
+          <Icon data={ download } />
+        </DownloadLink>
       </li>
       <li>
         <a href='./report?uuid={ uuid }' target='_blank' alt='Open a printable version of this canvas'><Icon data={ print } { scale } /></a>
