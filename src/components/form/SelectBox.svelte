@@ -14,10 +14,22 @@
 </select>
 
 <style>
+  label {
+    display: none;
+    padding-right: 0.5em;
+    font-size: 1.1em;
+  }
   select {
     padding: 0.25em 0.5em;
     line-height: 1.1;
-    background-color: white;
+    background-color: inherit;
     display: inline-block;
+    appearance: auto;
+    color: white;
+    border: 1px dashed white;
+  }
+  select option {
+    color: var(--dark-blue);
+    background-color: inherit;
   }
 </style>
