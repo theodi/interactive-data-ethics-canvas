@@ -74,6 +74,8 @@ button {
 }
 select{
   appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
   background-color: transparent;
   border: none;
   padding: 0 1em 0 0;

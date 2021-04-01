@@ -146,9 +146,8 @@
     />
     <g transition:fade>
       <foreignObject
-        transform="translate({(height - content.focussed.size) / 2} {(height -
-          content.focussed.size) /
-          2})"
+        x={(height - content.focussed.size) / 2 }
+        y={(height - content.focussed.size) / 2 }
         width={content.focussed.size}
         height={content.focussed.size}
       >

@@ -22,7 +22,7 @@
   {#if focussed}
     <Editor { blobRef } on:resetarea />
   {:else}
-    <p class='description'>
+    <p>
       { description }
     </p>
   {/if}
@@ -33,29 +33,21 @@
     height: 100%;
     color: white;
     font-size: 0.8em;
-    position: fixed;
-    left: 0;
-    right: 0;
+    padding: 0.7em;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
   }
   section.focussed {
     font-size: 1em;
-    margin: 1em;
+    padding: 1.7em;
     cursor: unset;
-  }
-  h2, .description {
-    padding: 0.7rem;
+    display: block;
   }
   h2 {
     font-weight: bold;
     font-size: 1.4em;
-  }
-  .description {
-    position: absolute;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    bottom: 0;
-    left: 0;
+    flex-grow: 1;
+    padding-bottom: 0.7em;
   }
 </style>

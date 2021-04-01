@@ -111,10 +111,9 @@
   section {
     box-sizing: border-box;
     width: 100%;
-    max-height: 90%;
-    padding: 0.7rem;
-    overflow-y: auto;
     font-size: 1.1em;
+    max-height: 95%;
+    overflow-y: auto;
   }
   section :global(.ninety-five) {
     max-width: 95%;
