@@ -1,17 +1,20 @@
 <script lang="ts">
   import Question from './Question.svelte';
   import type { UserContent } from '../../types';
+import { lastUpdate } from '../../store/last-updated';
 
   export let question: string;
   export let content: string[];
 
   const contentTest = (c: UserContent): boolean => c && Array.isArray(c) && c.length > 0;
-  const initialValue = [null]
+  const initialValue = [''];
 
   $: {
+    lastUpdate.lock();
     if (!contentTest(content)) content = initialValue;
     const lastItem = content.slice(-1)[0];
-    if (lastItem) content = [...content, null];
+    if (lastItem !== '') content = [...content, ''];
+    lastUpdate.lock();
   }
 </script>
 

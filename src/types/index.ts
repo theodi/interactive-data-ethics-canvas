@@ -67,4 +67,9 @@ export interface CanvasPrivateState {
   title?: string;
 }
 
-export type UserContent = string | string[] | DataSource[] | Action[];
+export type ListWithDescription = {
+  title: string;
+  description: string;
+}
+
+export type UserContent = any;

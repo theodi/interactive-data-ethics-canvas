@@ -5,7 +5,6 @@
   import { lastUpdate } from '../store/last-updated';
   import { editors } from '../utils/editors';
   import Actions from './editors/Actions.svelte';
-  import Basic from './editors/Basic.svelte';
   import BooleanAndTextareaList from './editors/BooleanAndTextareaList.svelte';
   import ExploreNegativeEffects from './editors/ExploreNegativeEffects.svelte';
   import ExplorePositiveEffects from './editors/ExplorePositiveEffects.svelte';
@@ -16,26 +15,23 @@
   import ListWithDescription from './editors/ListWithDescription.svelte';
   import PlanCommunicating from './editors/PlanCommunicating.svelte';
   import PlanEngaging from './editors/PlanEngaging.svelte';
-  import SimpleList from './editors/SimpleList.svelte';
   import TextareaList from './editors/TextareaList.svelte';
   
   const dispatch = createEventDispatcher();
 
   const registeredEditors = {
-    Basic,
-    SimpleList,
-    TextareaList,
-    ExploreReasons,
-    ExplorePositiveEffects,
-    ExploreNegativeEffects,
+    Actions,
     BooleanAndTextareaList,
+    ExploreNegativeEffects,
+    ExplorePositiveEffects,
+    ExploreReasons,
+    IntegrateImplementation,
+    KnowRights,
+    KnowSources,
+    ListWithDescription,
     PlanCommunicating,
     PlanEngaging,
-    IntegrateImplementation,
-    KnowSources,
-    KnowRights,
-    Actions,
-    ListWithDescription
+    TextareaList,
   }
   export let blobRef: number;
 
