@@ -36,10 +36,12 @@
     position: fixed;
     left: 0;
     right: 0;
+    cursor: pointer;
   }
   section.focussed {
     font-size: 1em;
     margin: 1em;
+    cursor: unset;
   }
   h2, .description {
     padding: 0.7rem;
