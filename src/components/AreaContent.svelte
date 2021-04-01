@@ -36,6 +36,7 @@
     position: fixed;
     left: 0;
     right: 0;
+    cursor: pointer;
   }
   section.focussed {
     font-size: 1em;
