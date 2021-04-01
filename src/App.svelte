@@ -24,6 +24,7 @@
 <style>
 	main {
 		margin: 0 auto;
+    min-width: 1024px;
     max-width: 1200px;
     background: var(--pale-grey);
     position: relative;
