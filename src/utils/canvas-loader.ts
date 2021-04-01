@@ -9,8 +9,8 @@ import { loadFromLocalStorage } from './local-storage';
 
 export const loadCanvas = ({ blobs, lastUpdated, title, uuid }: CanvasState) => {
   currentKey.set(uuid);
-  lastUpdate.set(lastUpdated);
   canvasState.set({ blobs, uuid, title });
+  lastUpdate.set(lastUpdated);
   dispatchEvent(refreshStoredCanvasList);
 };
 
