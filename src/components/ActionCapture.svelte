@@ -1,6 +1,6 @@
 <script lang="ts">
   
-  import { canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
   import { getLocalization } from '../i18n';
   import Choices from './form/Choices.svelte';
   import Question from './form/Question.svelte';

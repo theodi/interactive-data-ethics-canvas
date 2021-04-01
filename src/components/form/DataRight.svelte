@@ -45,10 +45,4 @@
       border-bottom: 1px dashed white;
       width: 100%;
     }
-    textarea {
-      width: 100%;
-      font-size: 1em;
-      box-sizing: border-box;
-      border: none;
-    }
   </style>

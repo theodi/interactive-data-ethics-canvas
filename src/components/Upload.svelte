@@ -3,9 +3,9 @@
   export let doneAction: () => void;
 
   import { v4 as newUuid } from 'uuid';
-  import { canvasState } from '../store';
-  import { savedCanvases } from '../store';
   import { getLocalization } from '../i18n';
+  import { savedCanvases } from '../store/saved-canvases';
+  import { loadCanvas } from '../utils/canvas-loader';
   import { loadFile } from '../utils/file-loader';
 
   const { t } = getLocalization();
@@ -26,7 +26,7 @@
   }
 
   function proceedUpload() {
-    canvasState.loadCanvas(contents);
+    loadCanvas(contents);
     doneAction();
   }
 </script>

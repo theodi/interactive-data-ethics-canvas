@@ -1,5 +1,5 @@
 <script lang='typescript'>
-  import { canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
   import { getLocalization } from '../i18n';
   const { t } = getLocalization();
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { canvasState } from '../../store';
+  import { canvasState } from '../../store/canvas';
   import { getLocalization } from '../../i18n';
   import Textarea from '../form/Textarea.svelte';
   import BooleanAndTextarea from '../form/BooleanAndTextarea.svelte';

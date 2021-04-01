@@ -32,7 +32,7 @@ export interface CanvasState {
   blobs: BlobState[];
 }
 
-export type Action {
+export type Action = {
   title: string;
   priority?: Priority;
   responsibility: string;

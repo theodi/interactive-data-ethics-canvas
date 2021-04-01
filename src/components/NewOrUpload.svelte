@@ -1,7 +1,7 @@
 <script lang='typescript'>
-  import { canvasState } from '../store';
   import Upload from './Upload.svelte';
   import { getLocalization } from '../i18n';
+  import { resetState } from '../utils/canvas-loader';
 
   import Icon from 'svelte-awesome';
   import { plus, fileO, upload } from 'svelte-awesome/icons';
@@ -33,7 +33,7 @@
   <svelte:component this={ actionComponent } { ...actionComponentOptions } doneAction={ () => reset() }/>
 {:else}
   <div>
-    <button class='right-border' on:click={ () => { canvasState.resetState(); reset(); } }>
+    <button class='right-border' on:click={ () => { resetState(); reset(); } }>
       <Icon data={ fileO } { scale }/>
       <p>{ $t('blank_button') }</p>
     </button>

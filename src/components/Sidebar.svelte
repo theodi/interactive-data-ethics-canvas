@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import { getLocalization } from '../i18n';
-  import { canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
   import Guidance from './Guidance.svelte';
   import ActionCapture from './ActionCapture.svelte';
 

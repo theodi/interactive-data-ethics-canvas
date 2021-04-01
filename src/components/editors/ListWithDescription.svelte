@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { canvasState } from '../../store';
+    import { canvasState } from '../../store/canvas';
     import { getLocalization } from '../../i18n';
     import DynamicListWithDescription from '../form/DynamicListWithDescription.svelte';
   

@@ -1,7 +1,7 @@
 <script lang='ts'>
   import { createEventDispatcher, onDestroy } from 'svelte';
   import { Boundary } from '@crownframework/svelte-error-boundary';
-  import { canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
   import Basic from './editors/Basic.svelte';
   import SimpleList from './editors/SimpleList.svelte';
   import TextareaList from './editors/TextareaList.svelte';

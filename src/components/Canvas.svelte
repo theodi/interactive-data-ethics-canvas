@@ -11,7 +11,7 @@
   import Status from './Status.svelte';
   import Title from './Title.svelte'
 
-  import { canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
   import { filtered } from '../store/filtered';
   import { getLocalization } from '../i18n';
 

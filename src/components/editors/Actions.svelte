@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { canvasState } from '../../store';
+  import { canvasState } from '../../store/canvas';
   import { getLocalization } from '../../i18n';
 
   import Question from '../form/Question.svelte';
@@ -60,8 +60,5 @@
     border-bottom: 1px white dashed;
     padding-bottom: 1em;
     margin-bottom: 1em;
-  }
-  h3 {
-    font-size: 1.1em;
   }
 </style>

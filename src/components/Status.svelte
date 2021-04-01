@@ -2,7 +2,7 @@
   import { getContext } from 'svelte';
 
   import { getLocalization } from '../i18n';
-  import { canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
   import { Status } from '../types';
   
   import SelectBox from './form/SelectBox.svelte';

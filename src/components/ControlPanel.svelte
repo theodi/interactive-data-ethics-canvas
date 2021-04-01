@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { canvasState, serialisedCanvas } from '../store';
+  import { canvasState } from '../store/canvas';
   import { lastUpdate } from '../store/last-updated';
   import { filtered } from '../store/filtered';
+  import { serialisedCanvas } from '../store/serialised-canvas';
   import { Group, Status } from '../types';
   import { getLocalization } from '../i18n';
   import Info from './Info.svelte';

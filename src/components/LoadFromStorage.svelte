@@ -1,9 +1,11 @@
 <script lang='typescript'>
-  import { savedCanvases, canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
+  import { savedCanvases } from '../store/saved-canvases';
   import { lastUpdate } from '../store/last-updated';
-  import NewOrUpload from './NewOrUpload.svelte';
+  import { loadFromStorage, resetState } from '../utils/canvas-loader';
+  import { deleteCanvas, renameSavedCanvas } from '../utils/local-storage';
   import CanvasCard from './CanvasCard.svelte';
-  import { load, renameSavedCanvas, deleteCanvas } from '../utils/local-storage';
+  import NewOrUpload from './NewOrUpload.svelte';
 
   let currentCanvas;
   $: {
@@ -15,9 +17,9 @@
     const thisUuid = $canvasState.uuid;
     const otherUuid = $savedCanvases.map(x => x.uuid).filter(x => x !== $canvasState.uuid);
     if (otherUuid.length < 1)
-      canvasState.resetState()
+      resetState();
     else
-      load(otherUuid[0]);
+      loadFromStorage(otherUuid[0]);
     deleteCanvas(thisUuid);
   }
 </script>
@@ -40,7 +42,7 @@
     </li>
     {#each $savedCanvases as canvas }
       {#if canvas.uuid !== $canvasState.uuid }
-      <li class='loadable' on:click={ () => load(canvas.uuid)}>
+      <li class='loadable' on:click={ () => loadFromStorage(canvas.uuid)}>
         <CanvasCard
           title={ canvas.title }
           uuid={ canvas.uuid }

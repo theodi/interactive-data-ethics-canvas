@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { canvasState } from '../store';
+  import { canvasState } from '../store/canvas';
   import Editor from './Editor.svelte';
 
   export let blobRef: number;
