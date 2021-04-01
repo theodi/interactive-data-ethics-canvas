@@ -123,7 +123,7 @@
     border-bottom-width: 2px;
     border-bottom-style: dotted;
   }
-  a {
+  section :global(a) {
     color: inherit;
   }
 </style>
