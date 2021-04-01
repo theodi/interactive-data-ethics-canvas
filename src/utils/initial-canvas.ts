@@ -11,6 +11,6 @@ export const initialCanvas = (): CanvasPrivateState => {
   const localStorageCanvas = loadFromLocalStorage(CANVAS_STATE_KEY);
   if (localStorageCanvas === null) return cleanTemplate(CANVAS_STATE_KEY);
   const { blobs, title, lastUpdated, uuid } = localStorageCanvas;
-  lastUpdate.set(lastUpdated || new Date());
+  lastUpdate.set(lastUpdated);
   return { blobs, title, uuid };
 };
