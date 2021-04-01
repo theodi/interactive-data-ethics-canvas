@@ -1,17 +1,21 @@
 <script lang='typescript'>
   import { getContext } from 'svelte';
-
   import { getLocalization } from '../i18n';
   import { canvasState } from '../store/canvas';
+  import { lastUpdate } from '../store/last-updated';
   import { Status } from '../types';
-  
   import SelectBox from './form/SelectBox.svelte';
+
 
   const { height } = getContext('canvasConfig');
 
   const { t } = getLocalization();
   export let ref: number;
-  $: if ($canvasState.blobs[ref].status === undefined) $canvasState.blobs[ref].status = Status.IN_PROGRESS;
+  $: if ($canvasState.blobs[ref].status === undefined) {
+    lastUpdate.lock();
+    $canvasState.blobs[ref].status = Status.IN_PROGRESS;
+    lastUpdate.unlock();
+  }
 </script>
 
 <foreignObject x=-20 y={ height + 30 } width=640 height=40>

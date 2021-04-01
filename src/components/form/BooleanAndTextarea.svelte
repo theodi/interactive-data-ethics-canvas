@@ -1,7 +1,7 @@
 <script lang='ts'>
   import { v4 as uuid } from 'uuid';
-
   import { getLocalization } from '../../i18n';
+  import { lastUpdate } from '../../store/last-updated';
   import { Choice } from '../../types';
   import Choices from './Choices.svelte';
 
@@ -11,7 +11,11 @@
   const { t } = getLocalization();
 
   $: {
-    if (!content) content  = { checked: Choice.UNSET, text: null };
+    if (!content) {
+      lastUpdate.lock();
+      content  = { checked: Choice.UNSET, text: '' };
+      lastUpdate.unlock();
+    }
   }
   const id = uuid();
 </script>
@@ -39,10 +43,4 @@
     box-sizing: border-box;
     border: none;
   }
-  /* form :global(fieldset) {
-    flex-shrink: 0;
-  }
-  /* form :global(p) {
-    max-width: 50%;
-  } */
 </style>

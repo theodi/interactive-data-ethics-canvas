@@ -1,18 +1,23 @@
 <script lang="ts">
-  import { canvasState } from '../../store/canvas';
   import { getLocalization } from '../../i18n';
-
-  import Question from '../form/Question.svelte';
+  import { canvasState } from '../../store/canvas';
+  import { lastUpdate } from '../../store/last-updated';
+  import { Priority } from '../../types';
   import ActionList from '../form/ActionList.svelte';
   import BooleanAndTextarea from '../form/BooleanAndTextarea.svelte';
-  import { Priority } from '../../types';
+  import Question from '../form/Question.svelte';
 
   export let ref: number;
 
   const { t } = getLocalization();
   const id = canvasState.getBlobId(ref);
-  $: if (!Array.isArray($canvasState.blobs[ref].content[0])) {
-    $canvasState.blobs[ref].content[0] = [];
+
+  $: {
+    if (!Array.isArray($canvasState.blobs[ref].content[0])) {
+      lastUpdate.lock();
+      $canvasState.blobs[ref].content[0] = [];
+      lastUpdate.unlock();
+    }
   }
   $: actionCount = $canvasState.blobs[ref].content[0].length;
 </script>

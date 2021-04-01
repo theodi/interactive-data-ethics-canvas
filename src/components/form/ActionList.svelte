@@ -1,24 +1,24 @@
 <script lang="ts">
+  import { getLocalization } from '../../i18n';
+  import { lastUpdate } from '../../store/last-updated';
+  import type { Action,UserContent } from '../../types';
+  import { Priority } from '../../types';
+  import Choices from './Choices.svelte';
   import Question from './Question.svelte';
   import Textarea from './Textarea.svelte';
-  import Choices from './Choices.svelte';
-
-  import { getLocalization } from '../../i18n';
-  const { t } = getLocalization();
-
-  import { Priority } from '../../types';
-  import type { Action } from '../../types';
-
-  import type { UserContent } from '../../types';
-
+  
   export let content: Action[];
   export let selector: (value: any) => boolean = () => true;
+  
+  const { t } = getLocalization();
 
   const contentTest = (c: UserContent): boolean =>
     c && Array.isArray(c) && c.length > 0;
   const initialValue = [];
 
+  lastUpdate.lock();
   if (!contentTest(content)) content = initialValue;
+  lastUpdate.unlock();
 </script>
 
 <ol>

@@ -6,7 +6,20 @@
   import Warning from './components/Warning.svelte';
 
   import { initLocalizationContext } from './i18n';
+  import { canvasState } from './store/canvas';
+  import { lastUpdate } from './store/last-updated';
   initLocalizationContext();
+
+  // Track changes
+  let lastState = JSON.stringify($canvasState);
+  canvasState.subscribe((c) => {
+    const newState = JSON.stringify(c);
+    if (lastState !== newState) console.dir({newState, lastState});
+    console.log($lastUpdate);
+    if (lastState !== newState) lastUpdate.timestamp();
+    console.log($lastUpdate);
+    lastState = newState;
+  });
 </script>
 
 <main role="main">

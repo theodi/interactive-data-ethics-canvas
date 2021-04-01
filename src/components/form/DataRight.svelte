@@ -1,16 +1,18 @@
 <script lang="ts">
-  import Question from './Question.svelte';
-  import BooleanAndTextarea from './BooleanAndTextarea.svelte';
-  import Textarea from './Textarea.svelte';
+  import { lastUpdate } from '../../store/last-updated';
   import { Choice } from '../../types';
-  import { getLocalization } from '../../i18n';
+  import BooleanAndTextarea from './BooleanAndTextarea.svelte';
+  import Question from './Question.svelte';
+  import Textarea from './Textarea.svelte';
   
   export let title: string;
   export let sourceIndex: number;
   export let content: {title: string, license: string, data_collection: {checked: Choice, text: string },personal_information: {checked: Choice, text: string }, commercial_data: {checked: Choice, text: string }, notes: string};
 
   $: {
+    lastUpdate.lock();
     if (!content) content  = {title: title, license: null, data_collection: {checked: Choice.UNSET, text: null }, personal_information: {checked: Choice.UNSET, text: null}, commercial_data: {checked: Choice.UNSET, text: null }, notes: null};
+    lastUpdate.unlock();
   }
 </script>
 

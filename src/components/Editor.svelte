@@ -1,23 +1,23 @@
 <script lang='ts'>
-  import { createEventDispatcher, onDestroy } from 'svelte';
   import { Boundary } from '@crownframework/svelte-error-boundary';
+  import { createEventDispatcher,onDestroy } from 'svelte';
   import { canvasState } from '../store/canvas';
+  import { lastUpdate } from '../store/last-updated';
+  import { editors } from '../utils/editors';
+  import Actions from './editors/Actions.svelte';
   import Basic from './editors/Basic.svelte';
-  import SimpleList from './editors/SimpleList.svelte';
-  import TextareaList from './editors/TextareaList.svelte';
-  import ExploreReasons from './editors/ExploreReasons.svelte';
-  import ExplorePositiveEffects from './editors/ExplorePositiveEffects.svelte';
-  import ExploreNegativeEffects from './editors/ExploreNegativeEffects.svelte';
   import BooleanAndTextareaList from './editors/BooleanAndTextareaList.svelte';
+  import ExploreNegativeEffects from './editors/ExploreNegativeEffects.svelte';
+  import ExplorePositiveEffects from './editors/ExplorePositiveEffects.svelte';
+  import ExploreReasons from './editors/ExploreReasons.svelte';
+  import IntegrateImplementation from './editors/IntegrateImplementation.svelte';
+  import KnowRights from './editors/KnowRights.svelte';
+  import KnowSources from './editors/KnowSources.svelte';
+  import ListWithDescription from './editors/ListWithDescription.svelte';
   import PlanCommunicating from './editors/PlanCommunicating.svelte';
   import PlanEngaging from './editors/PlanEngaging.svelte';
-  import IntegrateImplementation from './editors/IntegrateImplementation.svelte';
-  import KnowSources from './editors/KnowSources.svelte';
-  import KnowRights from './editors/KnowRights.svelte';
-  import Actions from './editors/Actions.svelte';
-  import ListWithDescription from './editors/ListWithDescription.svelte';
-
-  import { editors } from '../utils/editors';
+  import SimpleList from './editors/SimpleList.svelte';
+  import TextareaList from './editors/TextareaList.svelte';
   
   const dispatch = createEventDispatcher();
 
@@ -41,11 +41,15 @@
 
   const expectedEditor = editors[$canvasState.blobs[blobRef].id];
   if ( $canvasState.blobs[blobRef].editor !== expectedEditor ) {
+    lastUpdate.lock();
     $canvasState.blobs[blobRef].editor = expectedEditor;
+    lastUpdate.unlock();
   }
 
   if ( !$canvasState.blobs[blobRef].content ) {
+    lastUpdate.lock();
     $canvasState.blobs[blobRef].content = [];
+    lastUpdate.unlock();
   }
 
   function handleError(error) {
@@ -55,8 +59,7 @@
   }
 
   onDestroy(() => {
-    console.log($canvasState.blobs[blobRef].id);
-    console.dir($canvasState.blobs[blobRef].content);
+    lastUpdate.lock();
     const area = $canvasState.blobs[blobRef].id;
     const cleanUpFunctions = {
       'sources': (c) => {
@@ -94,10 +97,9 @@
     }
     const scrub = cleanUpFunctions[area] || null;
     if (scrub) {
-      // $canvasState.blobs[blobRef].content =
       $canvasState.blobs[blobRef].content = scrub($canvasState.blobs[blobRef].content);
     }
-    console.dir($canvasState.blobs[blobRef].content);
+    lastUpdate.unlock();
   })
 </script>
 
