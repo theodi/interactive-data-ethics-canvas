@@ -52,6 +52,10 @@
     color: white;
     position: fixed;
   }
+  aside :global(button) {
+    background: white;
+    width: 45%;
+  }
   .tabs {
     display: flex;
   }
@@ -85,12 +89,18 @@
     color: var(--know);
     background: var(--pale-grey);
   }
+  .know :global(button) {
+    color: var(--know);
+  }
   .explore {
     background: var(--explore-light);
   }
   .explore.inactive {
     color: var(--explore);
     background: var(--pale-grey);
+  }
+  .explore :global(button) {
+    color: var(--explore);
   }
   .plan {
     background: var(--plan-light);
@@ -99,11 +109,17 @@
     color: var(--plan);
     background: var(--pale-grey);
   }
+  .plan :global(button) {
+    color: var(--plan);
+  }
   .integrate {
     background: var(--integrate-light);
   }
   .integrate.inactive {
     color: var(--integrate);
     background: var(--pale-grey);
+  }
+  .integrate :global(button) {
+    color: var(--integrate);
   }
 </style>
