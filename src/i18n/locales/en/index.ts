@@ -153,10 +153,22 @@ export default {
     'sources': {
       title: 'Data Sources',
       questions: ['Name/describe your project’s key data sources, whether you’re collecting data yourself or accessing via third parties.'],
+      labels: {
+        title: 'Title',
+        description: 'Description',
+        url: 'URL',
+        owner: 'Owner',
+      }
     },
     'rights': {
       title: 'Rights around data',
-      questions: [],
+      questions: [
+        'What basis or licence do you have for using this data?',
+        'Was the data collected for this project or another purpose?',
+        'Does the data contain any personal information?',
+        'Does the data contain any commercially or otherwise sensitive information?',
+        'Additional notes related to this data source.'
+      ],
     },
     'actions': {
       title: 'Your actions',

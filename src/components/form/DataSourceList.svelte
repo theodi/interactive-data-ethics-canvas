@@ -1,10 +1,13 @@
 <script lang="ts">
+  import { getLocalization } from '../../i18n';
   import { lastUpdate } from '../../store/last-updated';
   import type { DataSource,UserContent } from '../../types';
   import Question from './Question.svelte';
 
   export let question: string;
   export let content: DataSource[];
+  
+  const { t } = getLocalization();
 
   const contentTest = (c: UserContent): boolean =>
     c && Array.isArray(c) && c.length > 0;
@@ -35,20 +38,20 @@
   <ol>
     {#each content as l, i}
       <li>
-        <Question class="subQuestion" question={'Title'} /><input
+        <Question class="subQuestion" question={ $t('areas:sources.labels.title') } /><input
           class="ninety-five"
           id="title-{i}"
           bind:value={l.title}
-        /><Question class="subQuestion" question={'Description'} /><textarea
+        /><Question class="subQuestion" question={ $t('areas:sources.labels.description') } /><textarea
           class="ninety-five"
           id="description-{i}"
           bind:value={l.description}
           rows="10"
-        /><Question class="subQuestion" question={'URL'} /><input
+        /><Question class="subQuestion" question={ $t('areas:sources.labels.url') } /><input
           class="ninety-five"
           id="url-{i}"
           bind:value={l.url}
-        /><Question class="subQuestion" question={'Owner'} /><input
+        /><Question class="subQuestion" question={ $t('areas:sources.labels.owner') } /><input
           class="ninety-five"
           id="owner-{i}"
           bind:value={l.owner}

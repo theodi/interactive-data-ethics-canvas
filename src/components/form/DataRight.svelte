@@ -1,10 +1,13 @@
 <script lang="ts">
+  import { getLocalization } from '../../i18n';
   import { lastUpdate } from '../../store/last-updated';
   import { Choice } from '../../types';
   import BooleanAndTextarea from './BooleanAndTextarea.svelte';
   import Question from './Question.svelte';
   import Textarea from './Textarea.svelte';
-  
+
+  const { t } = getLocalization();
+
   export let title: string;
   export let sourceIndex: number;
   export let content: {title: string, license: string, data_collection: {checked: Choice, text: string },personal_information: {checked: Choice, text: string }, commercial_data: {checked: Choice, text: string }, notes: string};
@@ -18,12 +21,12 @@
 
   <form class="dataRight">
     <h3>{ title }</h3>
-    <Question question='What basis or licence do you have for using this data?' />
+    <Question question={ $t('areas:rights.questions.0') } />
     <input class='ninety-five' id='license-rights-{ sourceIndex }' bind:value={ content.license } /> 
-    <BooleanAndTextarea question='Was the data collected for this project or another purpose?' questionIndex={ sourceIndex + 'data_collection' } bind:content={ content.data_collection } />
-    <BooleanAndTextarea question='Does the data contain any personal information?' questionIndex={ sourceIndex + 'personal_information' } bind:content={ content.personal_information } />
-    <BooleanAndTextarea question='Does the data contain any commercially or otherwise sensitive information? ' questionIndex={ sourceIndex + 'commercial_data' } bind:content={ content.commercial_data } />
-    <Textarea question='Additional notes related to this data source.' bind:content={ content.notes } />
+    <BooleanAndTextarea question={ $t('areas:rights.questions.1') } questionIndex={ sourceIndex + 'data_collection' } bind:content={ content.data_collection } />
+    <BooleanAndTextarea question={ $t('areas:rights.questions.2') } questionIndex={ sourceIndex + 'personal_information' } bind:content={ content.personal_information } />
+    <BooleanAndTextarea question={ $t('areas:rights.questions.3') } questionIndex={ sourceIndex + 'commercial_data' } bind:content={ content.commercial_data } />
+    <Textarea question={ $t('areas:rights.questions.4') } bind:content={ content.notes } />
   </form>
  
   <style>
