@@ -31,7 +31,7 @@ function serve() {
   };
 }
 
-const plugins = [
+const plugins = (ref) => [
   svelte({
     preprocess: sveltePreprocess({
       sourceMap: !production,
@@ -49,7 +49,7 @@ const plugins = [
   }),
   // we'll extract any component CSS out into
   // a separate file - better for performance
-  css({ output: 'bundle.css' }),
+  css({ output: `bundle-${ref}.css` }),
 
   // If you have external dependencies installed from
   // npm, you'll most likely need these plugins. In
@@ -88,7 +88,7 @@ export default [
       name: 'app',
       file: 'public/build/bundle.js'
     },
-    plugins,
+    plugins: plugins('main'),
     watch: {
       clearScreen: false
     }
@@ -101,7 +101,7 @@ export default [
       name: 'app',
       file: 'public/build/bundle-report.js'
     },
-    plugins,
+    plugins: plugins('report'),
     watch: {
       clearScreen: false
     }
