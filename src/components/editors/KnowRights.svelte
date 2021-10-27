@@ -20,7 +20,7 @@
 
 
 {#if sources.length == 0}
-    <p>PPlease complete the 'Data sources' section before filling in this section.</p>
+    <p>Please complete the 'Data sources' section before filling in this section.</p>
 {:else}
     {#each sources as l, i}
         {#if l.title}
