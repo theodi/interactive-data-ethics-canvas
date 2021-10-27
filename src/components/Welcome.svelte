@@ -28,29 +28,27 @@
       Click on each bubble to:
     </p>
 
-    <ol>
+    <ul>
       <li>
         Complete specific questions related to each area.
       </li>
       <li>
-        Access further guidance on each area as well as discover links to additional resources and learning related to each area.
+        'Access further guidance on each area as well as links to additional resources and related learning.'
       </li>
       <li>
-        Create actions and note decisions. The "Your Actions" bubble collates all actions/decisions and allows you to add additional ones.
+        'Create actions and note decisions. The ‘Your actions’ bubble (in the bottom right-hand corner) collates all the actions/decisions you’ve logged and allows you to add additional ones.'
       </li>
       <li>
         Set a status for each area.
       </li>
-    </ol>
+    </ul>
     <span class="bottom-border">&nbsp</span>
     <h3>
       Saving your work
     </h3>
     <img src='./images/example-load-card.png' alt='An example of one a canvas load card.' />
     <p>
-      Please note that all progress is saved locally in your browser (no data ever leaves your computer).
-      If you are in private browsing mode then once you close the tab all progress will be lost.
-      The same is true if you clear your browsing history.
+      If you are in private browsing mode then once you close the tab all progress will be lost. The same is true if you clear your browsing history.’ to ‘If you are in private browsing mode or clear your browsing history, all progress will be lost once you close the tab.
     </p>
       
     <p>
@@ -58,10 +56,10 @@
     </p>
     <ul>
       <li>
-        Download each canvas using the button in the control panel
+        Download each canvas using the export button in the control panel
       </li>
       <li>
-        Click the download ( ) or share ( ) icons against each canvas in the New / Load area.
+        Click the download icon against each canvas in the New / Load area.
       </li>
     </ul>
     <p class='right'>
@@ -109,7 +107,8 @@
     margin-bottom: 1em;
     clear: both;
   }
-  ol {
+
+  ul {
     list-style-type: decimal;
     margin-bottom: 1em;
   }

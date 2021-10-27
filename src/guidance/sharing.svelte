@@ -1,6 +1,6 @@
 <p>There is a danger that in some places, organisations hoard data. They may use inappropriate business or funding models for data that limit the value that we, as a society, get from it. Here, value is concentrated in data monopolies, increasing inequality and other unethical outcomes from data.</p>
-<p>The ODI calls this scenario the oil field because data is treated like oil. Its value is only realised by a few organisations and there are negative side-effects from its use that affect society as a whole.</p>
-<p>On top of this a lack of data sharing can result in:</p>
+<p>The ODI calls this scenario the 'oil field' because data is treated like oil. Its value is only realised by a few organisations and there are negative side effects from its use that affect society as a whole.</p>
+<p>On top of this, a lack of data sharing can result in:</p>
 <ul>
 <li>A limited amount of biased data being used to train models and inform policy decisions, stifling innovation. </li>
 <li>A lack of evidence to support the equity and fairness of a service or project.</li>
@@ -16,7 +16,7 @@
         >Report: The value of data sharing in the private sector</a>
     </h3>
     <p>
-      In this report we look to demonstrate the value of sharing data in the private sector and encourage more private sector organisations to explore data-sharing possibilities and the potential benefits in making a move towards ‘openness.’
+      In this report we look to demonstrate the value of sharing data in the private sector and encourage more private sector organisations to explore data sharing possibilities and the potential benefits in making a move towards ‘openness.’
     </p>
   </li>
   <li>
@@ -37,5 +37,13 @@
       What does it mean to license data? What licence should you use? How can you indicate the licence that a dataset is available under? This guide answers these questions.
     </p>
   </li>
-
+  <li>
+    <h3>
+      <a href="https://theodi.org/project/the-data-access-map/" target="_blank"
+        >Tool: The Data Access Map</a>
+    </h3>
+    <p>
+      When it comes to sharing or increasing access to data, there is a wide range of different approaches out there and finding the most suitable approach can be tricky. We’ve created the Data Access Map to help people and organisations explore the various options and navigate this difficult terrain.
+    </p>
+  </li>
 </ul>

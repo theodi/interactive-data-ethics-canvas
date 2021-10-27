@@ -4,7 +4,7 @@ export default {
     action_title: 'Actions / decisions',
     notes_title: 'Notes',
     status_title: 'Status',
-    new_button: 'New / Load Canvas',
+    new_button: 'Create new/load saved',
     new_canvas_button: 'New Canvas',
     blank_button: 'Blank',
     upload_button: 'Upload',
@@ -15,7 +15,7 @@ export default {
     filter_by_status_title: 'Filter by status',
     YES: 'Yes',
     NO: 'No',
-    UNSET: 'Unset',
+    UNSET: 'Unsure',
     canvas_title: 'Canvas title',
     canvas_title_placeholder: 'Enter a name for your canvas',
     data_ethics_canvas: 'Data Ethics Canvas',
@@ -36,7 +36,7 @@ export default {
       action: 'Action',
       decision: 'Decision',
     },
-    no_actions: 'You have not recorded any actions. You can do this in the \'Actions / decisions\' tab to the right.',
+    no_actions: 'You have not recorded any actions. You can do this in the \'Actions/decisions\' tab to the right.',
     priority_title: {
       high: 'High priority actions',
       decisions: 'Decisions',
@@ -123,7 +123,7 @@ export default {
     },
     'negative-effects': {
       title: 'Negative effects on people',
-      questions: ['Who could be negatively affected by this project?', 'Could the way that data is collected, used or shared cause harm or expose individuals to risk of being re-identified?', 'Could it be used to target,profile or prejudice people, or unfairly restrict access (eg exclusive arrangements)?', 'How are limitations and risks communicated to people?'],
+      questions: ['Who could be negatively affected by this project?', 'Could the way that data is collected, used or shared cause harm or expose individuals to risk of being re-identified?', 'Could it be used to target, profile or prejudice people, or unfairly restrict access (eg exclusive arrangements)?', 'How are limitations and risks communicated to people?'],
       listlabel: 'How?'
     },
     'openness': {
@@ -136,7 +136,7 @@ export default {
     },
     'communicating': {
       title: 'Communicating your purpose',
-      questions: ['Do people understand your purpose – especially people whom the data is about or who are impacted by its use?', 'How have you been communicating your purpose? Has this communication been clear?', 'How are you ensuring more vulnerable individuals or groups understand?'],
+      questions: ['Do people understand your purpose – especially people whom the data is about or who are impacted by its use?', 'How have you been communicating your purpose? Has this communication been clear?', 'How are you ensuring more vulnerable individuals or groups understand?', 'Communities that might be affected by your data project deserve to know how you plan to deliver positive impacts for them, while minimising harmful impacts. Poor communication of your intended impact can lead to misunderstandings and distrust from those communities, so it is important to make sure that you communicate your purpose as openly and clearly as possible.'],
     },
     'engaging': {
       title: 'Engaging with people',
@@ -161,7 +161,7 @@ export default {
       }
     },
     'rights': {
-      title: 'Rights around data',
+      title: 'Rights around data sources',
       questions: [
         'What basis or licence do you have for using this data?',
         'Was the data collected for this project or another purpose?',

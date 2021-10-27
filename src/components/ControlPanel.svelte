@@ -71,7 +71,8 @@
 
         <ul>
           {#each groups as group}
-            <li on:mouseover={ () => infoPane = group } on:mouseout={ () => infoPane = undefined }>
+            <!-- <li on:mouseover={ () => infoPane = group } on:mouseout={ () => infoPane = undefined }> -->
+            <li>
               <input id={group} type=checkbox bind:group={ visibleGroups } value="{ group }">
               <label for={group}>{ $t(`group:${group}`) }</label>  
             </li>

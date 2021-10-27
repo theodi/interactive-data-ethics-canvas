@@ -24,10 +24,19 @@ When thinking about the effects, consideration should be paid to societal, envir
   <li>
     <h3>
       <a href="https://theodi.org/article/data-ecosystem-mapping-tool/" target="_blank"
-        >Tool: Ecosystem mapping</a>
+        >Tool: Data Ecosystem Mapping</a>
     </h3>
     <p>
       The data ecosystem can be complex with many stakeholders. The ecosystem mapping tool is designed to help illustrate the ecosystem and the connections between stakeholders within it.
+    </p>
+  </li>
+  <li>
+    <h3>
+      <a href="https://theodi.org/article/data-ecosystem-mapping-tool/" target="_blank"
+        >Guide: Identifying and managing ethical issues around data</a>
+    </h3>
+    <p>
+      This guide is designed to help those collecting, sharing and using data identify and manage ethical issues, and is contextualised by Covid-19 considerations for data.
     </p>
   </li>
 </ul>

@@ -1,5 +1,5 @@
 <p>
-  It is rare that data will be collected in a way that covers all demographics equitably and thus there are always likely to be limitations and biases in the data. Even in carefully controlled experiments it is difficult to eliminate all bias. Other aspects such as gaps, omissions or quality problems can also limit the potential of data and increase risks.
+  Often, data is not collected in a way that covers all demographics equitably. This means there’s often limitations and biases in data.
 </p>
 
 <p>
@@ -23,6 +23,54 @@
     </h3>
     <p>
       Although data may be adequately managed, this doesn’t mean it is free from errors that increase risk. This module looks at common errors in data and techniques to fix them.
+    </p>
+  </li>
+  <li>
+    <h3>
+      <a href="https://certificates.theodi.org/" target="_blank">Tool: Open Data Certificates</a>
+    </h3>
+    <p>
+      This tool can help you to determine the quality of the data you publish
+    </p>
+  </li>
+  <li>
+    <h3>
+      <a href="http://csvlint.io/" target="_blank">Tool: CSVlint</a>
+    </h3>
+    <p>
+      Check that your CSV files are easy for reusers to consume, and conform to standards and schemas
+    </p>
+  </li>
+  <li>
+    <h3>
+      <a href="http://comma-chameleon.io/" target="_blank">Tool: Comma Chameleon</a>
+    </h3>
+    <p>
+      A desktop CSV editor for Windows, OSX and Linux that helps your make easily-reusable, valid CSV files
+    </p>
+  </li>
+  <li>
+    <h3>
+      <a href="https://theodi.org/article/anonymisation-report/" target="_blank">Report: Anonymisation and open data: an introduction to managing the risk of re-identification</a>
+    </h3>
+    <p>
+      An introductory report to provide organisations with a better understanding of how responsible data management can increase access to data while retaining trust
+    </p>
+  </li>
+  <li>
+    <h3>
+      <a href="https://standards.theodi.org/" target="_blank">Guide: Open Standards for Data Guidebook</a>
+    </h3>
+    <p>
+      This guidebook helps people and organisations create, develop and adopt open standards for data
+    </p>
+  </li>
+  <li>
+    <h3>
+      <a href="https://standards.theodi.org/" target="_blank">Guide: Open Standards for Data Guidebook</a>
+    </h3>
+    <p>
+      This guidebook helps people and organisations create, develop and adopt open standards for data
     </p>
   </li>
 </ul>
