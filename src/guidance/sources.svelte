@@ -34,8 +34,7 @@
       >
     </h3>
     <p>
-      This module looks at spectrum of data and how permission is granted and/or
-      obtained to integrate, analyse and otherwise reuse data.
+      This module looks at a spectrum of data and how permission is granted and/or obtained to integrate, analyse and otherwise reuse data.
     </p>
   </li>
 </ul>

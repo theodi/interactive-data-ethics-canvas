@@ -12,7 +12,7 @@ if (params.has('lang')) {
 }
 
 let debug = false;
-if (params.has('debug_i18n'))
+if (params.has('debug_i18n')){
   debug = true;
 }
 
