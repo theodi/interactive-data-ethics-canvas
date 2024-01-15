@@ -48,7 +48,7 @@
     </h3>
     <img src='./images/example-load-card.png' alt='An example of one a canvas load card.' />
     <p>
-      If you are in private browsing mode then once you close the tab all progress will be lost. The same is true if you clear your browsing history.’ to ‘If you are in private browsing mode or clear your browsing history, all progress will be lost once you close the tab.
+      If you are in private browsing mode or you clear your browsing history, all progress will be lost once you close the tab.
     </p>
       
     <p>
